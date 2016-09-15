@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1B5E3D8D48B3582E52A969AE /* libPods-ZMWJokeOC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F70811872AC539D571899CE /* libPods-ZMWJokeOC.a */; };
+		B2B1394C1D8A1BCE00AAC4E5 /* TextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B1394B1D8A1BCE00AAC4E5 /* TextViewController.m */; };
+		B2B1394F1D8A1BD900AAC4E5 /* PictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B1394E1D8A1BD900AAC4E5 /* PictureViewController.m */; };
+		B2B139521D8A1BE500AAC4E5 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B139511D8A1BE500AAC4E5 /* MoreViewController.m */; };
+		B2B139551D8A1BF000AAC4E5 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B139541D8A1BF000AAC4E5 /* CollectionViewController.m */; };
 		FF995E171D87DC1800C62FB0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF995E161D87DC1800C62FB0 /* main.m */; };
 		FF995E1A1D87DC1800C62FB0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF995E191D87DC1800C62FB0 /* AppDelegate.m */; };
 		FF995E221D87DC1800C62FB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF995E211D87DC1800C62FB0 /* Assets.xcassets */; };
@@ -32,6 +36,14 @@
 /* Begin PBXFileReference section */
 		3D2A6B4E624552C4067C7290 /* Pods-ZMWJokeOC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZMWJokeOC.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZMWJokeOC/Pods-ZMWJokeOC.release.xcconfig"; sourceTree = "<group>"; };
 		4F70811872AC539D571899CE /* libPods-ZMWJokeOC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZMWJokeOC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2B1394A1D8A1BCE00AAC4E5 /* TextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewController.h; sourceTree = "<group>"; };
+		B2B1394B1D8A1BCE00AAC4E5 /* TextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewController.m; sourceTree = "<group>"; };
+		B2B1394D1D8A1BD900AAC4E5 /* PictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureViewController.h; sourceTree = "<group>"; };
+		B2B1394E1D8A1BD900AAC4E5 /* PictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureViewController.m; sourceTree = "<group>"; };
+		B2B139501D8A1BE500AAC4E5 /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
+		B2B139511D8A1BE500AAC4E5 /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
+		B2B139531D8A1BF000AAC4E5 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
+		B2B139541D8A1BF000AAC4E5 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
 		BF05F4AF5821C082D0B7E24A /* Pods-ZMWJokeOC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZMWJokeOC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZMWJokeOC/Pods-ZMWJokeOC.debug.xcconfig"; sourceTree = "<group>"; };
 		FF995E121D87DC1800C62FB0 /* ZMWJokeOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZMWJokeOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF995E161D87DC1800C62FB0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -103,6 +115,42 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B2B139461D8A1BAF00AAC4E5 /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				B2B139531D8A1BF000AAC4E5 /* CollectionViewController.h */,
+				B2B139541D8A1BF000AAC4E5 /* CollectionViewController.m */,
+			);
+			path = Collection;
+			sourceTree = "<group>";
+		};
+		B2B139471D8A1BAF00AAC4E5 /* More */ = {
+			isa = PBXGroup;
+			children = (
+				B2B139501D8A1BE500AAC4E5 /* MoreViewController.h */,
+				B2B139511D8A1BE500AAC4E5 /* MoreViewController.m */,
+			);
+			path = More;
+			sourceTree = "<group>";
+		};
+		B2B139481D8A1BAF00AAC4E5 /* Picture */ = {
+			isa = PBXGroup;
+			children = (
+				B2B1394D1D8A1BD900AAC4E5 /* PictureViewController.h */,
+				B2B1394E1D8A1BD900AAC4E5 /* PictureViewController.m */,
+			);
+			path = Picture;
+			sourceTree = "<group>";
+		};
+		B2B139491D8A1BAF00AAC4E5 /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				B2B1394A1D8A1BCE00AAC4E5 /* TextViewController.h */,
+				B2B1394B1D8A1BCE00AAC4E5 /* TextViewController.m */,
+			);
+			path = Text;
+			sourceTree = "<group>";
+		};
 		FF995E091D87DC1800C62FB0 = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +176,10 @@
 				FF995E191D87DC1800C62FB0 /* AppDelegate.m */,
 				FF995E571D87E17000C62FB0 /* BaseViewController.h */,
 				FF995E581D87E17000C62FB0 /* BaseViewController.m */,
+				B2B139461D8A1BAF00AAC4E5 /* Collection */,
+				B2B139471D8A1BAF00AAC4E5 /* More */,
+				B2B139481D8A1BAF00AAC4E5 /* Picture */,
+				B2B139491D8A1BAF00AAC4E5 /* Text */,
 				FF995E5A1D87E2D500C62FB0 /* User */,
 				FF995E2C1D87E02300C62FB0 /* MyFrameworks */,
 				FF995E2D1D87E02300C62FB0 /* RequestSDK */,
@@ -287,7 +339,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		29B970CCFADE8EE59E2E1A65 /* [CP] Embed Pods Frameworks */ = {
@@ -328,11 +380,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF995E5F1D87E2ED00C62FB0 /* UserManager.m in Sources */,
+				B2B1394F1D8A1BD900AAC4E5 /* PictureViewController.m in Sources */,
 				FF995E501D87E02300C62FB0 /* DJTextField.m in Sources */,
 				FF995E541D87E02300C62FB0 /* UIColor+IOSUtils.m in Sources */,
 				FF995E521D87E02300C62FB0 /* NSString+IOSUtils.m in Sources */,
 				FF995E561D87E02300C62FB0 /* UIView+Utils.m in Sources */,
 				FF995E4C1D87E02300C62FB0 /* RequestBaseManager.m in Sources */,
+				B2B1394C1D8A1BCE00AAC4E5 /* TextViewController.m in Sources */,
 				FF995E1A1D87DC1800C62FB0 /* AppDelegate.m in Sources */,
 				FF995E171D87DC1800C62FB0 /* main.m in Sources */,
 				FF995E601D87E2ED00C62FB0 /* UserModel.m in Sources */,
@@ -344,6 +398,8 @@
 				FF995E531D87E02300C62FB0 /* Tooles.m in Sources */,
 				FF995E4F1D87E02300C62FB0 /* CustomTextView.m in Sources */,
 				FF995E4B1D87E02300C62FB0 /* NSDictionary+CodeFragments.m in Sources */,
+				B2B139521D8A1BE500AAC4E5 /* MoreViewController.m in Sources */,
+				B2B139551D8A1BF000AAC4E5 /* CollectionViewController.m in Sources */,
 				FF995E551D87E02300C62FB0 /* UIImage+IOSUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

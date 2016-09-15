@@ -1,5 +1,6 @@
+source 'https://github.com/CocoaPods/Specs.git'
 
-platform :ios, '7.0'
+platform :ios, '8.0'
 
 inhibit_all_warnings!
 
@@ -12,5 +13,10 @@ pod 'ReactiveCocoa', '~> 2.5'
 pod 'AFNetworking', '~> 3.1.0'
 
 pod 'Masonry', '~> 1.0.1'
+
+pod 'MJRefresh', '~> 3.1.12'
+
+# 这个自定义tabbar至少需要ios8.0
+pod 'WXTabBarController', '~> 0.1'
 
 end

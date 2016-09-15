@@ -95,7 +95,7 @@ typedef enum  {
 /**
  *  把横屏倒转过来 拍照的时候，经常横屏。
  *
- *  @param UIImage 原始图片
+ *  @param aImage 原始图片
  *
  *  @return 返回的图片
  */
