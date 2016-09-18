@@ -31,7 +31,9 @@ instance_implementation(RequestBaseManager, defaultManager)
         [[self.sessionManager requestSerializer] setHTTPShouldHandleCookies:YES];
         
         // 感觉用缓存更好，有待验证！！！
-//        [[self.sessionManager requestSerializer] setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+        [[self.sessionManager requestSerializer] setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+        
+        self.sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
         [self createRequestHeader];
     }
     return self;

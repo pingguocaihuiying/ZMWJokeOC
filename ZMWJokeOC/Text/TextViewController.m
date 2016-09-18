@@ -10,6 +10,8 @@
 #import <Masonry.h>
 #import "TextCell.h"
 #import "TextRequestManager.h"
+#import "TextModel.h"
+#import <YYModel.h>
 
 @interface TextViewController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -37,8 +39,21 @@
 - (void)requestAction {
     
     self.currentPage = 1;
+    __weak typeof(self) wSelf = self;
     [TextRequestManager getTextWithPage:self.currentPage response:^(BOOL successed, NSInteger code, NSString *responseString) {
-        
+        if (successed) {
+            NSArray *resultArray = [[responseString jsonvalue] objectForKey:@"data"];
+            if (resultArray && resultArray.count > 0) {
+                wSelf.dataArray = [NSMutableArray array];
+                for (int i = 0; i < resultArray.count; i++) {
+                    NSDictionary *dict = resultArray[i];
+                    TextModel *model = [[TextModel alloc] init];
+                    [model yy_modelSetWithDictionary:dict];
+                    [wSelf.dataArray addObject:model];
+                }
+            }
+        }
+        [wSelf.tableView reloadData];
     }];
 }
 
@@ -77,7 +92,6 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
     return self.dataArray.count;
 }
 
