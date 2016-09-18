@@ -7,12 +7,7 @@
 //
 
 #import "BaseViewController.h"
-#import "IOSUtilsConfig.h"
-#import "UIColor+IOSUtils.h"
-#import "UIView+Utils.h"
-#import "NSString+IOSUtils.h"
-#import <ReactiveCocoa/ReactiveCocoa.h>
-#import "NSString+IOSUtils.h"
+
 
 @interface BaseViewController () {
     

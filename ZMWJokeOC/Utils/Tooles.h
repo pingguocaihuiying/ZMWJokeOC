@@ -2,14 +2,12 @@
 //  Tooles.h
 //  Vodka
 //
-//  Created by 小明 on 15-12-26.
+//  Created by xiaoming on 14-9-4.
 //  Copyright (c) 2014年 Beijing Beast Technology Co.,Ltd. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import <ReactiveCocoa/ReactiveCocoa.h>         //各种方便的block封装
-#import <Masonry.h>
 
 @interface Tooles : NSObject
 
@@ -20,74 +18,133 @@ typedef enum  {
     uprightTolowLeft = 3,//右上到左下
 }GradientType;
 
+/// 获取带 image/title 的按钮 (左右排列) 排序方式
+typedef enum {
+    imageLeft_wholeCenter   =   0,      // 图片居左，整体居中
+    imageLeft_wholeLeft     =   1,      // 图片居左，整体居左
+    imageleft_wholeRight    =   2,      // 图片居左，整体居右
+    imageRight_wholeCenter  =   3,      // 图片居右，整体居中
+    imageRight_wholeLeft    =   4,      // 图片居右，整体居左
+    imageRight_wholeRight   =   5,      // 图片居右，整体居右
+    
+}ButtonImageTitleType;
+
++ (BOOL)removeImageWithName:(NSString *)imageName;
++ (UIImage *)scaleImage:(UIImage *)image toScale:(float)scaleSize;
+
++ (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size;
+///下面两个方法可以存储自定义的对象---TMCache就不行。
++ (BOOL)saveFileToLoc:(NSString *)fileName theFile:(id)file;
++ (BOOL)getFileFromLoc:(NSString *)filePath into:(id)dic;
++ (BOOL)removeLoc:(NSString *)fileName;//删除。
+//自定义对象的时候用的。
++ (NSData *)getDataFileFromLoc:(NSString *)filePath into:(id)file;
+///获取pathForResource 本地的图片。代替 imageNamed 的方法。--------除非是cell 的重复很多的默认图用imageNamed 否则都不建议用。
+///去除所有空格。
++ (NSString *)removeAllBlank:(NSString *)string;
+///根据色值 获取渐变 UIImage
++ (UIImage *)getImageFromColors:(NSArray *)colors ByGradientType:(GradientType)gradientType frame:(CGRect)frame;
+
 /**
- *  获取 UILabel 便利方法
+ *  获取本地路径url 或者 网络url
  *
- *  @param frame     label frame
- *  @param fontSize  字体大小
- *  @param alignment 对齐方式
- *  @param textColor 字体颜色
+ *  @param folderName 文件夹名称  本地路径的时候用，否则传 nil
+ *  @param fileName   文件名字 本地路径的时候用，否则传 nil
+ *  @param urlString  网络urlString
+ *
+ *  @return NSURL（网络或者本地）
+ */
++ (NSURL *)getURLWithFolderName:(NSString *)folderName fileName:(NSString *)fileName urlString:(NSString *)urlString;
+///判断时区是否在中国
++ (BOOL)          isInChina;
+
+/**
+ *  textFild 限制字数的方法
+ *
+ *  @param maxTextLength 最大长度
+ *  @param resultString  返回的textField.text 的值 可以传空
+ *  @param textField     textField 对象
+ *
+ *  @return 输入后的结果字符串
+ */
++ (NSString *)textFieldLimtWithMaxLength:(int)maxTextLength resultString:(NSString *)resultString textField:(UITextField *)textField;
+
+/**
+ *  textView 限制字数的方法
+ *
+ *  @param maxTextLength 最大长度
+ *  @param resultString  返回的textView.text 的值 可以传空
+ *  @param textView     textView 对象
+ *
+ *  @return 输入后的结果字符串
+ */
++ (NSString *)textViewLimtWithMaxLength:(int)maxTextLength resultString:(NSString *)resultString textView:(UITextView *)textView;
+
+/// 获取国家编号
++ (NSString *)    getCountryCode;
++ (NSString *)    getLanguageCode;
+/// 获取国家编号的字典。
++ (NSDictionary *)countryCodeDict;
+
++ (NSString *)quKongGe:(NSString *)sender;
++ (NSString *)quKongGeAndEnder:(NSString *)sender;
+
+/// 删除多余的SSDWindow   Tool 通用的方法  分享登录 卡死页面 用的
++ (void)          removeSSDWindowAction;
+
+///  解码 url 字符串
++ (NSString *)URLDecodedString:(NSString *)stringURL;
+
+/**
+ *  设置statusBar颜色是否是白色的
+ *
+ *  @param isWhiteColor YES:白色、NO:黑色
+ */
++ (void)setStatusBarTitleColorIsWhiteColor:(BOOL)isWhiteColor;
+
+/**
+ *  获取常用的 UILabel
+ *
+ *  @param font      UIFont
+ *  @param alignment NSTextAlignment
+ *  @param textColor UIColor
  *
  *  @return UILabel
  */
-+(UILabel *)getLabel:(CGRect)frame fontSize:(float)fontSize alignment:(NSTextAlignment)alignment textColor:(UIColor *)textColor;
++ (UILabel *)getLabelWithFont:(UIFont *)font alignment:(NSTextAlignment)alignment textColor:(UIColor *)textColor;
 
 /**
- *  获取UILabel - masonry方式
+ *  获取常用的 UIButton
  *
- *  @param font      UIFont字体
- *  @param alignment 对齐方式
- *  @param textColor 字体颜色
- *
- *  @return UILabel
- */
-+ (UILabel *) getLabelMasonryFont:(UIFont *)font alignment:(NSTextAlignment)alignment textColor:(UIColor *)textColor;
-
-/**
- *  获取 UIButton 便利方法
- *
- *  @param frame      按钮frame
  *  @param title      按钮文字
  *  @param titleColor 文字颜色
- *  @param titleSize  字体大小
+ *  @param font       字体
  *
  *  @return UIButton
  */
-+(UIButton *)getButton:(CGRect)frame title:(NSString *)title titleColor:(UIColor *)titleColor titleSize:(float)titleSize;
++ (UIButton *)getButtonWithTitle:(NSString *)title titleColor:(UIColor *)titleColor font:(UIFont *)font;
 
 /**
- *  获取 UIImageView 便利方法
+ *  获取常用的 UIImageView
  *
- *  @param frame        图片frame
  *  @param cornerRadius 圆角大小 - 为0的时候没有圆角
  *
  *  @return UIImageView
  */
-+(UIImageView *)getImageView:(CGRect)frame cornerRadius:(float)cornerRadius;
++ (UIImageView *)getImageViewWithCornerRadius:(float)cornerRadius;
 
 /**
- *  获取 带 image title 的按钮
+ *  获取带 image/title 的按钮 (左右排列)
  *
- *  @param frame      按钮大小
- *  @param title      按钮标题
- *  @param image      按钮图片
- *  @param titleColor 按钮字体颜色
- *  @param titleSize  按钮字体大小
- *  @param kSpacing   按钮字体和图片的间距
- *  @param type       图片和title的位置 ：0：图片左 整体居中 1：图片左 整体居左 2: 图片左 整体居右 ---- 3:图片右 整体居中 4：图片右 整体居左 5：图片右 整体居右
+ *  @param image      image
+ *  @param title      title
+ *  @param titleColor 字体颜色
+ *  @param font       font
+ *  @param spacing    image和title的间隔
+ *  @param type       排列方式
  *
  *  @return UIButton
  */
-+(UIButton *)getButtonWithImageAndTitle:(CGRect)frame title:(NSString *)title image:(UIImage *)image titleColor:(UIColor *)titleColor titleSize:(float)titleSize kSpacing:(float)kSpacing alignmentType:(int)type;
-
-/// - 根据色值 获取渐变 UIImage
-+ (UIImage*) getImageFromColors:(NSArray*)colors ByGradientType:(GradientType)gradientType frame:(CGRect)frame;
-
-/**
- *  设置状态栏字体的颜色
- *
- *  @param color 色值
- */
-+(void)setStatusBarTitleColor:(UIColor *)color;
++ (UIButton *)getButtonImageTitleWithImage:(UIImage *)image title:(NSString *)title titleColor:(UIColor *)titleColor spacing:(float)spacing alignmentType:(ButtonImageTitleType)type aFont:(UIFont *)aFont;
 
 @end

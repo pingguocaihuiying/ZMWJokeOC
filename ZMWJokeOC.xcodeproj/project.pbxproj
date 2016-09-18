@@ -31,6 +31,10 @@
 		FF995E591D87E17000C62FB0 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF995E581D87E17000C62FB0 /* BaseViewController.m */; };
 		FF995E5F1D87E2ED00C62FB0 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF995E5C1D87E2ED00C62FB0 /* UserManager.m */; };
 		FF995E601D87E2ED00C62FB0 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF995E5E1D87E2ED00C62FB0 /* UserModel.m */; };
+		FFA283271D8E76FC00888EDF /* TextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA283261D8E76FC00888EDF /* TextCell.m */; };
+		FFA2832E1D8E7D4200888EDF /* NSObject+CodeFragments.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA2832D1D8E7D4200888EDF /* NSObject+CodeFragments.m */; };
+		FFA283311D8E7E1100888EDF /* PictureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA283301D8E7E1100888EDF /* PictureCell.m */; };
+		FFA283341D8E85F700888EDF /* TextRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA283331D8E85F700888EDF /* TextRequestManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +88,17 @@
 		FF995E5C1D87E2ED00C62FB0 /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
 		FF995E5D1D87E2ED00C62FB0 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		FF995E5E1D87E2ED00C62FB0 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		FFA283251D8E76FC00888EDF /* TextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextCell.h; sourceTree = "<group>"; };
+		FFA283261D8E76FC00888EDF /* TextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextCell.m; sourceTree = "<group>"; };
+		FFA283291D8E77E000888EDF /* SizeMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizeMacro.h; sourceTree = "<group>"; };
+		FFA2832A1D8E77FA00888EDF /* PathMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathMacro.h; sourceTree = "<group>"; };
+		FFA2832B1D8E780B00888EDF /* UtilMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilMacro.h; sourceTree = "<group>"; };
+		FFA2832C1D8E7D4200888EDF /* NSObject+CodeFragments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CodeFragments.h"; sourceTree = "<group>"; };
+		FFA2832D1D8E7D4200888EDF /* NSObject+CodeFragments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CodeFragments.m"; sourceTree = "<group>"; };
+		FFA2832F1D8E7E1100888EDF /* PictureCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureCell.h; sourceTree = "<group>"; };
+		FFA283301D8E7E1100888EDF /* PictureCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureCell.m; sourceTree = "<group>"; };
+		FFA283321D8E85F700888EDF /* TextRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextRequestManager.h; sourceTree = "<group>"; };
+		FFA283331D8E85F700888EDF /* TextRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextRequestManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +153,8 @@
 			children = (
 				B2B1394D1D8A1BD900AAC4E5 /* PictureViewController.h */,
 				B2B1394E1D8A1BD900AAC4E5 /* PictureViewController.m */,
+				FFA2832F1D8E7E1100888EDF /* PictureCell.h */,
+				FFA283301D8E7E1100888EDF /* PictureCell.m */,
 			);
 			path = Picture;
 			sourceTree = "<group>";
@@ -147,6 +164,8 @@
 			children = (
 				B2B1394A1D8A1BCE00AAC4E5 /* TextViewController.h */,
 				B2B1394B1D8A1BCE00AAC4E5 /* TextViewController.m */,
+				FFA283251D8E76FC00888EDF /* TextCell.h */,
+				FFA283261D8E76FC00888EDF /* TextCell.m */,
 			);
 			path = Text;
 			sourceTree = "<group>";
@@ -176,6 +195,7 @@
 				FF995E191D87DC1800C62FB0 /* AppDelegate.m */,
 				FF995E571D87E17000C62FB0 /* BaseViewController.h */,
 				FF995E581D87E17000C62FB0 /* BaseViewController.m */,
+				FFA283281D8E778400888EDF /* Macro */,
 				B2B139461D8A1BAF00AAC4E5 /* Collection */,
 				B2B139471D8A1BAF00AAC4E5 /* More */,
 				B2B139481D8A1BAF00AAC4E5 /* Picture */,
@@ -215,6 +235,8 @@
 				FF995E311D87E02300C62FB0 /* NSDictionary+CodeFragments.m */,
 				FF995E321D87E02300C62FB0 /* RequestBaseManager.h */,
 				FF995E331D87E02300C62FB0 /* RequestBaseManager.m */,
+				FFA283321D8E85F700888EDF /* TextRequestManager.h */,
+				FFA283331D8E85F700888EDF /* TextRequestManager.m */,
 			);
 			path = RequestSDK;
 			sourceTree = "<group>";
@@ -235,6 +257,8 @@
 				FF995E3F1D87E02300C62FB0 /* IOSUtilsConfig.h */,
 				FF995E401D87E02300C62FB0 /* NSString+IOSUtils.h */,
 				FF995E411D87E02300C62FB0 /* NSString+IOSUtils.m */,
+				FFA2832C1D8E7D4200888EDF /* NSObject+CodeFragments.h */,
+				FFA2832D1D8E7D4200888EDF /* NSObject+CodeFragments.m */,
 				FF995E421D87E02300C62FB0 /* Tooles.h */,
 				FF995E431D87E02300C62FB0 /* Tooles.m */,
 				FF995E441D87E02300C62FB0 /* UIColor+IOSUtils.h */,
@@ -256,6 +280,16 @@
 				FF995E5E1D87E2ED00C62FB0 /* UserModel.m */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		FFA283281D8E778400888EDF /* Macro */ = {
+			isa = PBXGroup;
+			children = (
+				FFA283291D8E77E000888EDF /* SizeMacro.h */,
+				FFA2832B1D8E780B00888EDF /* UtilMacro.h */,
+				FFA2832A1D8E77FA00888EDF /* PathMacro.h */,
+			);
+			path = Macro;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -388,6 +422,7 @@
 				FF995E4C1D87E02300C62FB0 /* RequestBaseManager.m in Sources */,
 				B2B1394C1D8A1BCE00AAC4E5 /* TextViewController.m in Sources */,
 				FF995E1A1D87DC1800C62FB0 /* AppDelegate.m in Sources */,
+				FFA283311D8E7E1100888EDF /* PictureCell.m in Sources */,
 				FF995E171D87DC1800C62FB0 /* main.m in Sources */,
 				FF995E601D87E2ED00C62FB0 /* UserModel.m in Sources */,
 				FF995E511D87E02300C62FB0 /* EmptyView.m in Sources */,
@@ -395,11 +430,14 @@
 				FF995E591D87E17000C62FB0 /* BaseViewController.m in Sources */,
 				FF995E4D1D87E02300C62FB0 /* BigImageBrowser.m in Sources */,
 				FF995E4A1D87E02300C62FB0 /* NSArray+CodeFragments.m in Sources */,
+				FFA2832E1D8E7D4200888EDF /* NSObject+CodeFragments.m in Sources */,
 				FF995E531D87E02300C62FB0 /* Tooles.m in Sources */,
 				FF995E4F1D87E02300C62FB0 /* CustomTextView.m in Sources */,
+				FFA283341D8E85F700888EDF /* TextRequestManager.m in Sources */,
 				FF995E4B1D87E02300C62FB0 /* NSDictionary+CodeFragments.m in Sources */,
 				B2B139521D8A1BE500AAC4E5 /* MoreViewController.m in Sources */,
 				B2B139551D8A1BF000AAC4E5 /* CollectionViewController.m in Sources */,
+				FFA283271D8E76FC00888EDF /* TextCell.m in Sources */,
 				FF995E551D87E02300C62FB0 /* UIImage+IOSUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

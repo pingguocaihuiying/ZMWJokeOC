@@ -48,7 +48,6 @@
         WXTabBarController *tabBarController = [[WXTabBarController alloc] init];
         
         TextViewController *textVC = [[TextViewController alloc] init];
-        textVC.title = @"文字";
         textVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"文字" image:[UIImage imageNamed:@"home_normal"] selectedImage:[UIImage imageNamed:@"home_highlight"]];
         
         PictureViewController *pictureVC = [[PictureViewController alloc] init];
