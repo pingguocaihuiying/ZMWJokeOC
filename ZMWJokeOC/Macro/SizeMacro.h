@@ -27,4 +27,14 @@
 #define SYSTEM_VERSION_STRING              [[UIDevice currentDevice] systemVersion]
 #define SYSTEM_VERSION_FLOAT               [[[UIDevice currentDevice] systemVersion] floatValue]
 
+#pragma mark - 设备判断
+
+#define IS_IPHONE4                          (fabs((double)[[UIScreen mainScreen] bounds].size.height - (double)480) < DBL_EPSILON)
+#define IS_IPHONE5                          (fabs((double)[[UIScreen mainScreen] bounds].size.height - (double)568) < DBL_EPSILON)
+#define IS_IPHONE6                          (fabs((double)[[UIScreen mainScreen] bounds].size.height - (double)667) < DBL_EPSILON)
+
+#define IS_IPHONE6_PLUS                     (fabs((double)[[UIScreen mainScreen] bounds].size.height - (double)736) < DBL_EPSILON)
+
+
+
 #endif /* SizeMacro_h */

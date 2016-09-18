@@ -9,11 +9,14 @@
 #import "TextViewController.h"
 #import <Masonry.h>
 #import "TextCell.h"
+#import "TextRequestManager.h"
 
 @interface TextViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView       *tableView;
 @property (nonatomic, strong) NSMutableArray    *dataArray;
+
+@property (nonatomic, assign) int               currentPage;
 
 @end
 
@@ -26,9 +29,18 @@
     // 初始化表格
     [self initTableView];
 
-
+    [self requestAction];
+    
 }
 
+#pragma mark - 下拉刷新
+- (void)requestAction {
+    
+    self.currentPage = 1;
+    [TextRequestManager getTextWithPage:self.currentPage response:^(BOOL successed, NSInteger code, NSString *responseString) {
+        
+    }];
+}
 
 #pragma mark - 初始化表格
 - (void)initTableView {

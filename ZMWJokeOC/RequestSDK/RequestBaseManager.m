@@ -10,7 +10,7 @@
 #include <sys/types.h>
 #include <sys/sysctl.h>
 #import "NSString+IOSUtils.h"
-#import "IOSUtilsConfig.h"
+#import "UtilMacro.h"
 #import "NSArray+CodeFragments.h"
 #import "NSDictionary+CodeFragments.h"
 

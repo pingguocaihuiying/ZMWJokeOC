@@ -13,11 +13,25 @@
  *  @brief 输出格式如下的打印信息：(类名:行数   打印的信息), 只有在DEBUG模式下输出，release模式不会输出(Build Settings 中 Preprocessor Macros 的 Debug 后边会有 DEBUG = 1 定义)
  */
 
-#ifdef DEBUG
-#define NSLog(FORMAT, ...) fprintf(stderr, "%s:%d \t %s \n", [[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[NSString stringWithFormat:FORMAT, ## __VA_ARGS__] UTF8String]);
+#if DEBUG
+///debug模式下-----------------Begin--------------------------
+#define NSLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
 #else
-#define NSLog(...)
+///release模式下---------------End--------------------------
+#define NSLog(tmt, ...)
 #endif
+
+#define kAnimation_Time 0.3f
+#define kDegrees_To_Radian(x) (M_PI * (x) / 180.0)
+#define kRadian_To_Degrees(radian) (radian*180.0)/(M_PI)
+
+/// -----------------------------字符串、Number 保护-------------------------BEGIN
+#define kSafe_Get_String(presence, key) \
+([presence objectForKey: key] != nil && [presence objectForKey: key] != [NSNull null]) && [[presence objectForKey: key] isKindOfClass:[NSString class]] && ![[presence objectForKey: key] isEqualToString:@"null"] && ![[presence objectForKey: key] isEqualToString:@"<null>"] ? [presence objectForKey: key] : @"" \
+
+#define kSaft_Get_Number(presence, key)  \
+([presence objectForKey: key] != nil && [presence objectForKey: key] != [NSNull null]) ? [presence objectForKey: key] : @0 \
+/// -----------------------------字符串、Number 保护-------------------------END
 
 #pragma mark - 字体
 // Helvetica
@@ -59,15 +73,6 @@ return _instance; \
 - (id)copyWithZone:(NSZone *)zone { \
 return _instance; \
 }
-
-#pragma mark - 设备判断
-
-#define IS_IPHONE4                          (fabs((double)[[UIScreen mainScreen] bounds].size.height - (double)480) < DBL_EPSILON)
-#define IS_IPHONE5                          (fabs((double)[[UIScreen mainScreen] bounds].size.height - (double)568) < DBL_EPSILON)
-#define IS_IPHONE6                          (fabs((double)[[UIScreen mainScreen] bounds].size.height - (double)667) < DBL_EPSILON)
-
-#define IS_IPHONE6_PLUS                     (fabs((double)[[UIScreen mainScreen] bounds].size.height - (double)736) < DBL_EPSILON)
-
 #pragma mark - 颜色定义
 
 // 页面默认背景色、tablView的背景色

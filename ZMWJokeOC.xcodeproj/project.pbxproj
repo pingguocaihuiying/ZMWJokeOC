@@ -71,7 +71,6 @@
 		FF995E3C1D87E02300C62FB0 /* DJTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJTextField.m; sourceTree = "<group>"; };
 		FF995E3D1D87E02300C62FB0 /* EmptyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyView.h; sourceTree = "<group>"; };
 		FF995E3E1D87E02300C62FB0 /* EmptyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyView.m; sourceTree = "<group>"; };
-		FF995E3F1D87E02300C62FB0 /* IOSUtilsConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSUtilsConfig.h; sourceTree = "<group>"; };
 		FF995E401D87E02300C62FB0 /* NSString+IOSUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+IOSUtils.h"; sourceTree = "<group>"; };
 		FF995E411D87E02300C62FB0 /* NSString+IOSUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+IOSUtils.m"; sourceTree = "<group>"; };
 		FF995E421D87E02300C62FB0 /* Tooles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tooles.h; sourceTree = "<group>"; };
@@ -99,6 +98,7 @@
 		FFA283301D8E7E1100888EDF /* PictureCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureCell.m; sourceTree = "<group>"; };
 		FFA283321D8E85F700888EDF /* TextRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextRequestManager.h; sourceTree = "<group>"; };
 		FFA283331D8E85F700888EDF /* TextRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextRequestManager.m; sourceTree = "<group>"; };
+		FFA283351D8E8F0300888EDF /* ApiMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiMacro.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,7 +254,6 @@
 				FF995E3C1D87E02300C62FB0 /* DJTextField.m */,
 				FF995E3D1D87E02300C62FB0 /* EmptyView.h */,
 				FF995E3E1D87E02300C62FB0 /* EmptyView.m */,
-				FF995E3F1D87E02300C62FB0 /* IOSUtilsConfig.h */,
 				FF995E401D87E02300C62FB0 /* NSString+IOSUtils.h */,
 				FF995E411D87E02300C62FB0 /* NSString+IOSUtils.m */,
 				FFA2832C1D8E7D4200888EDF /* NSObject+CodeFragments.h */,
@@ -288,6 +287,7 @@
 				FFA283291D8E77E000888EDF /* SizeMacro.h */,
 				FFA2832B1D8E780B00888EDF /* UtilMacro.h */,
 				FFA2832A1D8E77FA00888EDF /* PathMacro.h */,
+				FFA283351D8E8F0300888EDF /* ApiMacro.h */,
 			);
 			path = Macro;
 			sourceTree = "<group>";

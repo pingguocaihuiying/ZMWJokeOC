@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <netinet/in.h>
-
+#import "UtilMacro.h"
 #import "AFNetworking.h"
-#import "IOSUtilsConfig.h"
+#import "ApiMacro.h"
 
 /// 服务器API版本号
 #define kCurrent_Api_Version                  @"/v2.4"

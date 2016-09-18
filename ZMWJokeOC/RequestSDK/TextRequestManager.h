@@ -10,4 +10,15 @@
 
 @interface TextRequestManager : RequestBaseManager
 
+#define kContentUrl       @"https://japi.juhe.cn/joke/content/text.from"
+
+
+/**
+ *  @brief  请求文字
+ *
+ *  @param  currentPage   当前页数
+ *  @param  response block
+ */
++ (void)getTextWithPage:(int)currentPage response:(RequestResponseBlock)response;
+
 @end
