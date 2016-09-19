@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSMutableArray    *dataArray;
 
 @property (nonatomic, assign) int               currentPage;
+@property (nonatomic, strong) NSCache           *rowHeightCache;
 
 @end
 
@@ -26,13 +27,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"文字";
+    self.navigationItem.title = @"文字";
     self.dataArray = [NSMutableArray array];
+    self.rowHeightCache = [[NSCache alloc] init];
     // 初始化表格
     [self initTableView];
 
+//    [self requestAction];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    // 测试请求
     [self requestAction];
-    
 }
 
 #pragma mark - 下拉刷新
@@ -69,7 +76,7 @@
     _tableView.separatorInset = UIEdgeInsetsMake(0, 10, 0, 0);
     [self.view addSubview:_tableView];
     [_tableView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(wSelf.view).with.insets(UIEdgeInsetsMake(NAVIGATIONBAR_HEIGHT, 0, TABBAR_HEIGHT, 0));
+        make.edges.equalTo(wSelf.view).with.insets(UIEdgeInsetsMake(0, 0, 0, 0));
     }];
     // 注册cell
     [_tableView registerClass:[TextCell class] forCellReuseIdentifier:@"TextCell"];
@@ -96,13 +103,33 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    TextModel *model = self.dataArray[indexPath.row];
+    if ([self.rowHeightCache objectForKey:model.hashId]) {
+        float height = [[self.rowHeightCache objectForKey:model.hashId] floatValue];
+        if (height > 0) {
+            return height;
+        }
+    }
+    
+    NSString *contentString = [model.content stringByReplacingOccurrencesOfString:@"&nbsp;" withString:@""];
+    CGSize size = [contentString boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 20, 1000.0f) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName: FONT_Helvetica(15) } context:nil].size;
+    
+    // 缓存下来
+    [self.rowHeightCache setObject:@(size.height + 20) forKey:model.hashId];
+    
+    return size.height + 20;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 100.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TextCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextCell" forIndexPath:indexPath];
+    TextModel *textModel = self.dataArray[indexPath.row];
     
-    [cell updateCellWithString:@"测试数据" indexPath:indexPath];
+    [cell updateCellWithModel:textModel indexPath:indexPath];
     
     return cell;
 }

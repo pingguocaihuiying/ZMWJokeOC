@@ -41,7 +41,7 @@ typedef void (^SaveImageComplete) (NSString *relativePath, NSString *absolutePat
 /**
  *  @brief 把数据保存到应用的沙盒中
  *
- *  @param image     要保存的图片
+ *  @param data     要保存的图片
  *  @param arguments 保存时的参数
  *  @param complete  保存完成后的block，会包含图片的绝对路径(absolutePath)和相对路径(relativePath)
  */

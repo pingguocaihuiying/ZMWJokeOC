@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TextModel.h"
 
 @interface TextCell : UITableViewCell
 
 @property (nonatomic, strong) UILabel       *detailLabel;
 
 #pragma mark - 自定义的cell赋值方法.
-- (void)updateCellWithString:(NSString *)string indexPath:(NSIndexPath *)indexP;
+- (void)updateCellWithModel:(TextModel *)model indexPath:(NSIndexPath *)indexP;
 
 @end

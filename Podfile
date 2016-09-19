@@ -16,9 +16,8 @@ pod 'Masonry', '~> 1.0.1'
 
 pod 'MJRefresh', '~> 3.1.12'
 
-# 这个自定义tabbar至少需要ios8.0
-pod 'WXTabBarController', '~> 0.1'
+pod 'XHTabBar', '~> 1.5.4'
 
-pod 'YYModel',                      '~> 1.0.3'      # YYKit
+pod 'YYModel', '~> 1.0.3'      # YYKit
 
 end

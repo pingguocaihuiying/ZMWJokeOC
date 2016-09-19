@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import <WXTabBarController.h>
+#import <XHTabBar.h>
 #import "TextViewController.h"
 #import "PictureViewController.h"
 #import "CollectionViewController.h"
@@ -16,8 +16,7 @@
 
 @interface AppDelegate ()
 
-@property (nonatomic, strong) UINavigationController    *navigationController;
-@property (nonatomic, strong) WXTabBarController        *tabBarController;
+@property (nonatomic, strong) XHTabBar                  *tabbar;
 
 @end
 
@@ -27,53 +26,29 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.window.rootViewController = self.navigationController;
-    [self.window makeKeyAndVisible];
     
+    // 初始化自定义tabbar
+    [self initTabbarAction];
+    //设置为根控制器
+    self.window.rootViewController = self.tabbar;
+    [self.window makeKeyAndVisible];
     
     return YES;
 }
 
-- (UINavigationController *)navigationController {
-    if (_navigationController == nil) {
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.tabBarController];
-        navigationController.navigationBar.tintColor = [UIColor colorWithRed:26 / 255.0 green:178 / 255.0 blue:10 / 255.0 alpha:1];
-        _navigationController = navigationController;
-    }
-    return _navigationController;
-}
-
-- (WXTabBarController *)tabBarController {
-    if (_tabBarController == nil) {
-        WXTabBarController *tabBarController = [[WXTabBarController alloc] init];
-        
-        TextViewController *textVC = [[TextViewController alloc] init];
-        textVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"文字" image:[UIImage imageNamed:@"home_normal"] selectedImage:[UIImage imageNamed:@"home_highlight"]];
-        
-        PictureViewController *pictureVC = [[PictureViewController alloc] init];
-        pictureVC.title = @"图片";
-        pictureVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"文字" image:[UIImage imageNamed:@"home_normal"] selectedImage:[UIImage imageNamed:@"home_highlight"]];
-        
-        CollectionViewController *collectionVC = [[CollectionViewController alloc] init];
-        collectionVC.title = @"文字";
-        collectionVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"文字" image:[UIImage imageNamed:@"home_normal"] selectedImage:[UIImage imageNamed:@"home_highlight"]];
-        
-        MoreViewController *moreVC = [[MoreViewController alloc] init];
-        moreVC.title = @"文字";
-        moreVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"文字" image:[UIImage imageNamed:@"home_normal"] selectedImage:[UIImage imageNamed:@"home_highlight"]];
-        
-        tabBarController.title = @"文字";
-        tabBarController.tabBar.tintColor = [UIColor colorWithRed:26 / 255.0 green:178 / 255.0 blue:10 / 255.0 alpha:1];
-        tabBarController.viewControllers = @[
-                                             [[UINavigationController alloc] initWithRootViewController:textVC],
-                                             [[UINavigationController alloc] initWithRootViewController:pictureVC],
-                                             [[UINavigationController alloc] initWithRootViewController:collectionVC],
-                                             [[UINavigationController alloc] initWithRootViewController:moreVC],
-                                             ];
-        
-        _tabBarController = tabBarController;
-    }
-    return _tabBarController;
+#pragma mark - 初始化自定义tabbar
+- (void) initTabbarAction {
+    //控制器数组
+    NSArray *controllerArray = @[@"TextViewController",@"PictureViewController",@"CollectionViewController",@"MoreViewController"];
+    //title数组
+    NSArray * titleArray = @[@"文字",@"图片",@"收藏",@"更多"];
+    //默认图片数组
+    NSArray *imageArray= @[@"home_normal",@"message_normal",@"home_normal",@"home_normal"];
+    //选中图片数组
+    NSArray *selImageArray = @[@"home_highlight",@"message_highlight",@"home_highlight",@"home_highlight"];
+    //初始化(height:最小高度为49.0,当传nil 或<49.0时均按49.0处理)
+    self.tabbar = [[XHTabBar alloc] initWithControllerArray:controllerArray titleArray:titleArray imageArray:imageArray selImageArray:selImageArray height:TABBAR_HEIGHT];
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

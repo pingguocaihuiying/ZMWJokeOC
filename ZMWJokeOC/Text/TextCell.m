@@ -12,6 +12,7 @@
 #import "UIColor+IOSUtils.h"
 #import <Masonry.h>
 #import "UtilMacro.h"
+#import "SizeMacro.h"
 
 @implementation TextCell
 
@@ -37,9 +38,13 @@
 }
 
 #pragma mark - 自定义的cell赋值方法.
-- (void)updateCellWithString:(NSString *)string indexPath:(NSIndexPath *)indexP {
+- (void)updateCellWithModel:(TextModel *)model indexPath:(NSIndexPath *)indexP {
     
-    self.detailLabel.text = string;
+    NSString *contentString = [model.content stringByReplacingOccurrencesOfString:@"&nbsp;" withString:@""];
+    self.detailLabel.text = contentString;
+    self.detailLabel.numberOfLines = 0;
+    [self.detailLabel sizeToFit];
+    
 }
 
 @end

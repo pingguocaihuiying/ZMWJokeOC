@@ -139,7 +139,7 @@ typedef enum {
  *  @param image      image
  *  @param title      title
  *  @param titleColor 字体颜色
- *  @param font       font
+ *  @param aFont       font
  *  @param spacing    image和title的间隔
  *  @param type       排列方式
  *
