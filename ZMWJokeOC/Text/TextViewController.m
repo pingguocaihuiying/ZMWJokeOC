@@ -19,6 +19,7 @@
 
 @property (nonatomic, strong) UITableView       *tableView;
 @property (nonatomic, strong) NSMutableArray    *dataArray;
+@property (nonatomic, strong) NSMutableArray    *jsonArray;     // 保存本地用的
 
 @property (nonatomic, assign) int               currentPage;
 @property (nonatomic, strong) NSCache           *rowHeightCache;
@@ -31,6 +32,7 @@
     [super viewDidLoad];
     self.navigationItem.title = @"文字";
     self.dataArray = [NSMutableArray array];
+    self.jsonArray = [NSMutableArray array];
     self.rowHeightCache = [[NSCache alloc] init];
     // 初始化表格
     [self initTableView];
@@ -81,6 +83,7 @@
         if (successed) {
             NSArray *resultArray = [[responseString jsonvalue] objectForKey:@"data"];
             if (resultArray && resultArray.count > 0) {
+                wSelf.jsonArray = [NSMutableArray arrayWithArray:resultArray];
                 [Tooles saveFileToLoc:kContentUrl theFile:resultArray];
                 wSelf.dataArray = [NSMutableArray array];
                 for (int i = 0; i < resultArray.count; i++) {
@@ -109,6 +112,8 @@
         if (successed) {
             NSArray *resultArray = [[responseString jsonvalue] objectForKey:@"data"];
             if (resultArray && resultArray.count > 0) {
+                [wSelf.jsonArray addObjectsFromArray:resultArray];
+                [Tooles saveFileToLoc:kContentUrl theFile:wSelf.jsonArray];
                 for (int i = 0; i < resultArray.count; i++) {
                     NSDictionary *dict = resultArray[i];
                     TextModel *model = [[TextModel alloc] init];

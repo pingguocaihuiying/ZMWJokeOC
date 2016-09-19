@@ -174,9 +174,9 @@ static const float scale=0.55;
         button.tag = 1000+i;
         
         //常态文字颜色
-        [button setTitleColor:TitleColor forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
         //选中文字颜色
-        [button setTitleColor:TitleColor_Sel forState:UIControlStateSelected];
+        [button setTitleColor:[UIColor blueColor] forState:UIControlStateSelected];
         
         button.titleLabel.font = [UIFont systemFontOfSize:TitleFontSize];
         [button setImage:[UIImage imageNamed:self.imageArray[i]] forState:UIControlStateNormal];
