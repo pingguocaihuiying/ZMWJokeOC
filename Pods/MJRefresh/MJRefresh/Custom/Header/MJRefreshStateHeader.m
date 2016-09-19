@@ -65,7 +65,7 @@
 - (void)setLastUpdatedTimeKey:(NSString *)lastUpdatedTimeKey
 {
     [super setLastUpdatedTimeKey:lastUpdatedTimeKey];
-    
+//    return;// 不需要时间的情况下。！！！！！！！！todo-zhangmingwei
     // 如果label隐藏了，就不用再处理
     if (self.lastUpdatedTimeLabel.hidden) return;
     

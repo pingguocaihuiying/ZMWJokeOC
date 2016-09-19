@@ -12,6 +12,7 @@
 #import "TextRequestManager.h"
 #import "TextModel.h"
 #import <YYModel.h>
+#import <MJRefresh.h>
 
 @interface TextViewController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -32,22 +33,29 @@
     self.rowHeightCache = [[NSCache alloc] init];
     // 初始化表格
     [self initTableView];
-
-//    [self requestAction];
+    [self requestAction];
+    
+    __weak typeof(self) wSelf = self;
+    // 下拉刷新
+    self.tableView.mj_header = [MJRefreshStateHeader headerWithRefreshingBlock:^{
+        [wSelf requestAction];
+    }];
+    // 加载更多
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [wSelf requestMoreAction];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    // 测试请求
-    [self requestAction];
 }
 
 #pragma mark - 下拉刷新
 - (void)requestAction {
-    
     self.currentPage = 1;
     __weak typeof(self) wSelf = self;
     [TextRequestManager getTextWithPage:self.currentPage response:^(BOOL successed, NSInteger code, NSString *responseString) {
+        [wSelf.tableView.mj_header endRefreshing];
         if (successed) {
             NSArray *resultArray = [[responseString jsonvalue] objectForKey:@"data"];
             if (resultArray && resultArray.count > 0) {
@@ -63,6 +71,33 @@
         [wSelf.tableView reloadData];
     }];
 }
+
+#pragma mark - 加载更多
+- (void)requestMoreAction {
+    
+    if (self.currentPage < 1) {
+        self.currentPage = 1;
+    }
+    
+    self.currentPage ++;
+    __weak typeof(self) wSelf = self;
+    [TextRequestManager getTextWithPage:self.currentPage response:^(BOOL successed, NSInteger code, NSString *responseString) {
+        [wSelf.tableView.mj_footer endRefreshing];
+        if (successed) {
+            NSArray *resultArray = [[responseString jsonvalue] objectForKey:@"data"];
+            if (resultArray && resultArray.count > 0) {
+                for (int i = 0; i < resultArray.count; i++) {
+                    NSDictionary *dict = resultArray[i];
+                    TextModel *model = [[TextModel alloc] init];
+                    [model yy_modelSetWithDictionary:dict];
+                    [wSelf.dataArray addObject:model];
+                }
+            }
+        }
+        [wSelf.tableView reloadData];
+    }];
+}
+
 
 #pragma mark - 初始化表格
 - (void)initTableView {
