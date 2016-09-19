@@ -249,6 +249,8 @@
 		FF995E341D87E02300C62FB0 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				FF995E421D87E02300C62FB0 /* Tooles.h */,
+				FF995E431D87E02300C62FB0 /* Tooles.m */,
 				FF995E351D87E02300C62FB0 /* BigImageBrowser.h */,
 				FF995E361D87E02300C62FB0 /* BigImageBrowser.m */,
 				FF995E371D87E02300C62FB0 /* CustomLabel.h */,
@@ -263,8 +265,6 @@
 				FF995E411D87E02300C62FB0 /* NSString+IOSUtils.m */,
 				FFA2832C1D8E7D4200888EDF /* NSObject+CodeFragments.h */,
 				FFA2832D1D8E7D4200888EDF /* NSObject+CodeFragments.m */,
-				FF995E421D87E02300C62FB0 /* Tooles.h */,
-				FF995E431D87E02300C62FB0 /* Tooles.m */,
 				FF995E441D87E02300C62FB0 /* UIColor+IOSUtils.h */,
 				FF995E451D87E02300C62FB0 /* UIColor+IOSUtils.m */,
 				FF995E461D87E02300C62FB0 /* UIImage+IOSUtils.h */,

@@ -13,6 +13,7 @@
 #import "TextModel.h"
 #import <YYModel.h>
 #import <MJRefresh.h>
+#import "Tooles.h"
 
 @interface TextViewController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -33,7 +34,10 @@
     self.rowHeightCache = [[NSCache alloc] init];
     // 初始化表格
     [self initTableView];
-    [self requestAction];
+    
+    if (![self getLocalArray]) {
+        [self requestAction];
+    }
     
     __weak typeof(self) wSelf = self;
     // 下拉刷新
@@ -48,6 +52,24 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+}
+
+#pragma mark - 获取本地缓存的数据
+- (BOOL)getLocalArray {
+    NSMutableArray *arr = [NSMutableArray array];
+    if ([Tooles getFileFromLoc:kContentUrl into:arr]) {
+        self.dataArray = [NSMutableArray array];
+        for (int i = 0; i < arr.count; i++) {
+            NSDictionary *dict = arr[i];
+            TextModel *model = [[TextModel alloc] init];
+            [model yy_modelSetWithDictionary:dict];
+            [self.dataArray addObject:model];
+        }
+        [self.tableView reloadData];
+        return YES;
+    }
+    return NO;
 }
 
 #pragma mark - 下拉刷新
@@ -59,6 +81,7 @@
         if (successed) {
             NSArray *resultArray = [[responseString jsonvalue] objectForKey:@"data"];
             if (resultArray && resultArray.count > 0) {
+                [Tooles saveFileToLoc:kContentUrl theFile:resultArray];
                 wSelf.dataArray = [NSMutableArray array];
                 for (int i = 0; i < resultArray.count; i++) {
                     NSDictionary *dict = resultArray[i];
