@@ -20,6 +20,4 @@ pod 'XHTabBar', '~> 1.5.4'
 
 pod 'YYModel', '~> 1.0.3'      # YYKit
 
-pod 'PYPhotoBrowser', '~> 1.0.0'
-
 end

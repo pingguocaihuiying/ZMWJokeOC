@@ -15,6 +15,8 @@
 #import <MJRefresh.h>
 #import "Tooles.h"
 
+#import "MSSBrowseDefine.h"
+
 @interface PictureViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView       *tableView;
@@ -23,6 +25,8 @@
 
 @property (nonatomic, assign) int               currentPage;
 @property (nonatomic, strong) NSCache           *rowHeightCache;
+
+@property (nonatomic,strong)NSMutableArray *arrayImageUrl;
 
 @end
 
@@ -34,6 +38,9 @@
     self.dataArray = [NSMutableArray array];
     self.jsonArray = [NSMutableArray array];
     self.rowHeightCache = [[NSCache alloc] init];
+    
+    [self initPhotoBrowerAction];
+    
     // 初始化表格
     [self initTableView];
     
@@ -57,16 +64,23 @@
     
 }
 
+#pragma mark - 初始化大图相关
+- (void)initPhotoBrowerAction {
+    self.arrayImageUrl = [NSMutableArray array];
+}
+
 #pragma mark - 获取本地缓存的数据
 - (BOOL)getLocalArray {
     NSMutableArray *arr = [NSMutableArray array];
     if ([Tooles getFileFromLoc:kPictureUrl into:arr]) {
         self.dataArray = [NSMutableArray array];
+        self.arrayImageUrl = [NSMutableArray arrayWithCapacity:10];
         for (int i = 0; i < arr.count; i++) {
             NSDictionary *dict = arr[i];
             TextModel *model = [[TextModel alloc] init];
             [model yy_modelSetWithDictionary:dict];
             [self.dataArray addObject:model];
+            [self.arrayImageUrl addObject:model.url];
         }
         [self.tableView reloadData];
         return YES;
@@ -86,11 +100,13 @@
                 wSelf.jsonArray = [NSMutableArray arrayWithArray:resultArray];
                 [Tooles saveFileToLoc:kPictureUrl theFile:resultArray];
                 wSelf.dataArray = [NSMutableArray array];
+                wSelf.arrayImageUrl = [NSMutableArray arrayWithCapacity:10];
                 for (int i = 0; i < resultArray.count; i++) {
                     NSDictionary *dict = resultArray[i];
                     TextModel *model = [[TextModel alloc] init];
                     [model yy_modelSetWithDictionary:dict];
                     [wSelf.dataArray addObject:model];
+                    [wSelf.arrayImageUrl addObject:model.url];
                 }
             }
         }
@@ -119,6 +135,7 @@
                     TextModel *model = [[TextModel alloc] init];
                     [model yy_modelSetWithDictionary:dict];
                     [wSelf.dataArray addObject:model];
+                    [wSelf.arrayImageUrl addObject:model.url];
                 }
             }
         }
@@ -200,6 +217,23 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    PictureCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PictureCell" forIndexPath:indexPath];
+
+    // 加载网络图片
+    NSMutableArray *browseItemArray = [[NSMutableArray alloc]init];
+    int i = 0;
+    for(i = 0;i < [self.arrayImageUrl count];i++)
+    {
+        UIImageView     *imageView = cell.smallImageView;
+        MSSBrowseModel *browseItem = [[MSSBrowseModel alloc]init];
+        browseItem.bigImageUrl = self.arrayImageUrl[i];// 加载网络图片大图地址
+        browseItem.smallImageView = imageView;// 小图
+        [browseItemArray addObject:browseItem];
+    }
+    MSSBrowseNetworkViewController *bvc = [[MSSBrowseNetworkViewController alloc]initWithBrowseItemArray:browseItemArray currentIndex:indexPath.row];
+    //    bvc.isEqualRatio = NO;// 大图小图不等比时需要设置这个属性（建议等比）
+    [bvc showBrowseViewController];
 }
+
 
 @end

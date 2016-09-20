@@ -37,8 +37,9 @@
         [self.smallImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(wSelf.contentView).offset(10);
             make.right.equalTo(wSelf.contentView).offset(-10);
-            make.top.equalTo(wSelf.detailLabel).offset(10);
+            make.top.equalTo(wSelf.detailLabel.mas_bottom).offset(10);
             make.height.mas_equalTo(100);
+            make.centerX.equalTo(wSelf.contentView);
         }];
         
         self.backgroundColor = kSpeedX_Color_Table_Cell_Default_Bg;
