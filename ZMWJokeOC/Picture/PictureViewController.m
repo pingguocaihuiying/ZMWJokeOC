@@ -188,7 +188,7 @@
     if ([self.rowHeightCache objectForKey:model.hashId]) {
         float height = [[self.rowHeightCache objectForKey:model.hashId] floatValue];
         if (height > 0) {
-            return height + 120;
+            return height;
         }
     }
     
@@ -196,9 +196,9 @@
     CGSize size = [contentString boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 20, 1000.0f) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName: FONT_Helvetica(15) } context:nil].size;
     
     // 缓存下来
-    [self.rowHeightCache setObject:@(size.height + 20) forKey:model.hashId];
+    [self.rowHeightCache setObject:@(size.height + 20 + 210) forKey:model.hashId];
     
-    return size.height + 20 + 120;
+    return size.height + 20 + 210;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {

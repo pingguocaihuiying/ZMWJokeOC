@@ -38,7 +38,7 @@
             make.left.equalTo(wSelf.contentView).offset(10);
             make.right.equalTo(wSelf.contentView).offset(-10);
             make.top.equalTo(wSelf.detailLabel.mas_bottom).offset(10);
-            make.height.mas_equalTo(100);
+            make.height.mas_equalTo(200);
             make.centerX.equalTo(wSelf.contentView);
         }];
         
