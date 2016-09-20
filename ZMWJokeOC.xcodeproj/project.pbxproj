@@ -12,6 +12,7 @@
 		B2B1394F1D8A1BD900AAC4E5 /* PictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B1394E1D8A1BD900AAC4E5 /* PictureViewController.m */; };
 		B2B139521D8A1BE500AAC4E5 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B139511D8A1BE500AAC4E5 /* MoreViewController.m */; };
 		B2B139551D8A1BF000AAC4E5 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B139541D8A1BF000AAC4E5 /* CollectionViewController.m */; };
+		FF0467491D911B7F008B30E7 /* PictureRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0467481D911B7F008B30E7 /* PictureRequestManager.m */; };
 		FF59D3AA1D8E9A1C003888ED /* TextModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF59D3A91D8E9A1C003888ED /* TextModel.m */; };
 		FF995E171D87DC1800C62FB0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF995E161D87DC1800C62FB0 /* main.m */; };
 		FF995E1A1D87DC1800C62FB0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF995E191D87DC1800C62FB0 /* AppDelegate.m */; };
@@ -50,6 +51,8 @@
 		B2B139531D8A1BF000AAC4E5 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
 		B2B139541D8A1BF000AAC4E5 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
 		BF05F4AF5821C082D0B7E24A /* Pods-ZMWJokeOC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZMWJokeOC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZMWJokeOC/Pods-ZMWJokeOC.debug.xcconfig"; sourceTree = "<group>"; };
+		FF0467471D911B7F008B30E7 /* PictureRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureRequestManager.h; sourceTree = "<group>"; };
+		FF0467481D911B7F008B30E7 /* PictureRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureRequestManager.m; sourceTree = "<group>"; };
 		FF59D3A81D8E9A1C003888ED /* TextModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextModel.h; sourceTree = "<group>"; };
 		FF59D3A91D8E9A1C003888ED /* TextModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextModel.m; sourceTree = "<group>"; };
 		FF995E121D87DC1800C62FB0 /* ZMWJokeOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZMWJokeOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -242,6 +245,8 @@
 				FF995E331D87E02300C62FB0 /* RequestBaseManager.m */,
 				FFA283321D8E85F700888EDF /* TextRequestManager.h */,
 				FFA283331D8E85F700888EDF /* TextRequestManager.m */,
+				FF0467471D911B7F008B30E7 /* PictureRequestManager.h */,
+				FF0467481D911B7F008B30E7 /* PictureRequestManager.m */,
 			);
 			path = RequestSDK;
 			sourceTree = "<group>";
@@ -432,6 +437,7 @@
 				FF995E171D87DC1800C62FB0 /* main.m in Sources */,
 				FF995E601D87E2ED00C62FB0 /* UserModel.m in Sources */,
 				FF995E511D87E02300C62FB0 /* EmptyView.m in Sources */,
+				FF0467491D911B7F008B30E7 /* PictureRequestManager.m in Sources */,
 				FF995E4E1D87E02300C62FB0 /* CustomLabel.m in Sources */,
 				FF995E591D87E17000C62FB0 /* BaseViewController.m in Sources */,
 				FF995E4D1D87E02300C62FB0 /* BigImageBrowser.m in Sources */,

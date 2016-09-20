@@ -15,4 +15,5 @@
 @property (nonatomic, strong) NSString      *updatetime;
 @property (nonatomic, assign) int           unixtime;
 
+@property (nonatomic, strong) NSString      *url;   // 图片特有的
 @end

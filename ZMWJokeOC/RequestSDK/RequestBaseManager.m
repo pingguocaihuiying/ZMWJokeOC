@@ -205,6 +205,38 @@ instance_implementation(RequestBaseManager, defaultManager)
 }
 
 /**
+ *  @brief  生成网络请求
+ *
+ *  @param  urlString url
+ *  @param  params    参数
+ *  @param  response  block
+ */
++ (void)createGetRequest:(NSString*)urlString params:(NSDictionary*)params response:(RequestResponseBlock)response {
+   
+    [self GET:urlString parameters:params networkStatusBlock:^(BOOL networkValid, NSString *message) {
+        //无网络连接
+        response(NO, kNetwork_Invalid_Code, message);
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSDictionary* dict = (NSDictionary*)responseObject;
+        NSInteger code = [kSaft_Get_Number(dict, kResponse_Code_Key) integerValue];
+        if(code == 0) {
+            if([dict[kResponse_Result_Key] isKindOfClass:[NSArray class]] || [dict[kResponse_Result_Key] isKindOfClass:[NSDictionary class]]){
+                response(YES, code, [dict[kResponse_Result_Key] jsonstring]);
+            }else{
+                response(YES, code, [NSString stringWithFormat:@"%@", kSaft_Get_Number(dict, kResponse_Result_Key)]);
+            }
+        }else{
+            if (code == kSession_Id_Expired) {
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"kReLoginAction" object:nil];
+            }
+            response(NO, code, dict[kResponse_Message_Key]);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        response(NO, kHttp_Error_Code, NSLocalizedString(@"当前网络不可用，请检查网络设置", nil));
+    }];
+}
+
+/**
  *  @brief  获取设备型号（仅 iPhone）
  *
  *  @return 设备型号

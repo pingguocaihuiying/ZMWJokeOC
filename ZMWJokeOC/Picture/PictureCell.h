@@ -7,14 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TextModel.h"
 
 @interface PictureCell : UITableViewCell
 
-@property (nonatomic, strong) UILabel       *nameLabel;
+
 @property (nonatomic, strong) UILabel       *detailLabel;
-@property (nonatomic, strong) UIImageView   *headerImageView;      // 头像特有的
+@property (nonatomic, strong) UIImageView   *smallImageView;
 
 #pragma mark - 自定义的cell赋值方法.
-- (void)updateCellWithString:(NSString *)string indexPath:(NSIndexPath *)indexP headerImage:(UIImage *)image;
+- (void)updateCellWithModel:(TextModel *)model indexPath:(NSIndexPath *)indexP;
 
 @end

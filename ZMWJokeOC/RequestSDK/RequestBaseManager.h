@@ -97,4 +97,13 @@ instance_interface(RequestBaseManager, defaultManager)
  */
 + (void)createRequest:(NSString*)urlString params:(NSDictionary*)params response:(RequestResponseBlock)response;
 
+/**
+ *  @brief  生成GET网络请求
+ *
+ *  @param  urlString url
+ *  @param  params    参数
+ *  @param  response  block
+ */
++ (void)createGetRequest:(NSString*)urlString params:(NSDictionary*)params response:(RequestResponseBlock)response;
+
 @end
