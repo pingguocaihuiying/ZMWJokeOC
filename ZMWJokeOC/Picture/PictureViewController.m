@@ -231,7 +231,7 @@
         [browseItemArray addObject:browseItem];
     }
     MSSBrowseNetworkViewController *bvc = [[MSSBrowseNetworkViewController alloc]initWithBrowseItemArray:browseItemArray currentIndex:indexPath.row];
-    //    bvc.isEqualRatio = NO;// 大图小图不等比时需要设置这个属性（建议等比）
+    bvc.isEqualRatio = NO;// 大图小图不等比时需要设置这个属性（建议等比）
     [bvc showBrowseViewController];
 }
 
