@@ -18,7 +18,9 @@ pod 'MJRefresh', '~> 3.1.12'
 
 # swift 版本也有，这个不错。 地址：https://github.com/CoderZhuXH/XHTabBar
 pod 'XHTabBar', '~> 1.5.4'
-
+# 导航栏很不错的. https://github.com/forkingdog/FDFullscreenPopGesture
+pod 'FDFullscreenPopGesture', '~> 1.1'
+ 
 pod 'YYModel', '~> 1.0.3'      # YYKit
 
 end

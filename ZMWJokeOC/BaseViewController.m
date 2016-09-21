@@ -36,13 +36,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor lightGrayColor];
     [self baseNextPageTitleButton:@"返回"];
     
     // 设置导航栏的 title 颜色 大小 如果修改的多的话，封装成类方法。
-    [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
-                                                           [UIColor blackColor], NSForegroundColorAttributeName,[UIFont boldSystemFontOfSize:18], NSFontAttributeName, nil]];
-    
+    [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys: [UIColor blackColor],NSForegroundColorAttributeName,[UIFont boldSystemFontOfSize:18], NSFontAttributeName, nil]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

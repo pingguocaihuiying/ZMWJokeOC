@@ -15,6 +15,8 @@
 #import <MJRefresh.h>
 #import "Tooles.h"
 
+#import "MoreViewController.h"
+
 @interface TextViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView       *tableView;
@@ -30,6 +32,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     self.navigationItem.title = @"文字";
     self.dataArray = [NSMutableArray array];
     self.jsonArray = [NSMutableArray array];
@@ -199,6 +202,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+//    MoreViewController *vc = [[MoreViewController alloc] init];
+//    vc.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:vc animated:YES];
     
 }
 

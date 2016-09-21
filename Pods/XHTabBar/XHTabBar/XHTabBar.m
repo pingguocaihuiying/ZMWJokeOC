@@ -7,6 +7,7 @@
 //  https://github.com/CoderZhuXH/XHTabBar
 
 #import "XHTabBar.h"
+#import "UINavigationController+FDFullscreenPopGesture.h"
 
 //RGB颜色
 #define RGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
@@ -68,14 +69,9 @@ static const float scale=0.55;
 
 #pragma mark-@interface XHTabBar
 @interface XHTabBar ()
-@property(nonatomic,strong)UIButton *seleBtn;
-@property(nonatomic,strong)UIView *tabBarView;
-@property(nonatomic,assign)CGFloat tabBarHeight;
-@property(nonatomic,strong)NSArray *titleArray;
-@property(nonatomic,strong)NSArray *imageArray;
-@property(nonatomic,strong)NSArray *selImageArray;
-@property(nonatomic,strong)NSArray *controllerArray;
+
 @end
+
 @implementation XHTabBar
 - (instancetype)init
 {

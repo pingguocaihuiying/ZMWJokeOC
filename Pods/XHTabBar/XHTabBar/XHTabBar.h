@@ -15,6 +15,14 @@
 
 @interface XHTabBar : UITabBarController
 
+@property(nonatomic,strong)UIButton *seleBtn;
+@property(nonatomic,strong)UIView *tabBarView;
+@property(nonatomic,assign)CGFloat tabBarHeight;
+@property(nonatomic,strong)NSArray *titleArray;
+@property(nonatomic,strong)NSArray *imageArray;
+@property(nonatomic,strong)NSArray *selImageArray;
+@property(nonatomic,strong)NSArray *controllerArray;
+
 /**
  *  初始化
  *

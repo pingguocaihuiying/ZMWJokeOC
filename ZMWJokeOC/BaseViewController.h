@@ -12,7 +12,7 @@
 #import "NSString+IOSUtils.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "NSString+IOSUtils.h"
-
+#import <UINavigationController+FDFullscreenPopGesture.h>
 // 宏
 #import "UtilMacro.h"
 #import "SizeMacro.h"
