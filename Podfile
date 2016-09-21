@@ -16,6 +16,7 @@ pod 'Masonry', '~> 1.0.1'
 
 pod 'MJRefresh', '~> 3.1.12'
 
+# swift 版本也有，这个不错。 地址：https://github.com/CoderZhuXH/XHTabBar
 pod 'XHTabBar', '~> 1.5.4'
 
 pod 'YYModel', '~> 1.0.3'      # YYKit

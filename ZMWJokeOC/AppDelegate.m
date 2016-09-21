@@ -43,9 +43,9 @@
     //title数组
     NSArray * titleArray = @[@"文字",@"图片",@"收藏",@"更多"];
     //默认图片数组
-    NSArray *imageArray= @[@"home_normal",@"message_normal",@"home_normal",@"home_normal"];
+    NSArray *imageArray= @[@"home_tabbar",@"find_tabbar",@"msg_tabbar",@"me_tabbar"];
     //选中图片数组
-    NSArray *selImageArray = @[@"home_highlight",@"message_highlight",@"home_highlight",@"home_highlight"];
+    NSArray *selImageArray = @[@"home_tabbar_sel",@"find_tabbar_sel",@"msg_tabbar_sel",@"me_tabbar_sel"];
     //初始化(height:最小高度为49.0,当传nil 或<49.0时均按49.0处理)
     self.tabbar = [[XHTabBar alloc] initWithControllerArray:controllerArray titleArray:titleArray imageArray:imageArray selImageArray:selImageArray height:TABBAR_HEIGHT];
     
