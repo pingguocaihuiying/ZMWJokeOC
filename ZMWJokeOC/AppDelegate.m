@@ -49,6 +49,13 @@
     //初始化(height:最小高度为49.0,当传nil 或<49.0时均按49.0处理)
     self.tabbar = [[XHTabBar alloc] initWithControllerArray:controllerArray titleArray:titleArray imageArray:imageArray selImageArray:selImageArray height:TABBAR_HEIGHT];
     
+//    //设置数字角标(可选)
+//    [self.tabbar showBadgeMark:100 index:1];
+//    //设置小红点(可选)
+//    [self.tabbar showPointMarkIndex:2];
+//    //不显示角标(可选)
+//    //[tabbar hideMarkIndex:3];
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
