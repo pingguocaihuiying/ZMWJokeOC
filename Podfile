@@ -23,4 +23,7 @@ pod 'FDFullscreenPopGesture', '~> 1.1'
  
 pod 'YYModel', '~> 1.0.3'      # YYKit
 
+# 暂时先不要删，检查内存的时候会经常用
+#pod 'MLeaksFinder'
+
 end

@@ -17,8 +17,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"更多";
-    // 隐藏导航栏添加这句
-//    self.fd_prefersNavigationBarHidden = YES;
 
 
 }
