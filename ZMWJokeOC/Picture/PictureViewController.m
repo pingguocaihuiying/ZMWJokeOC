@@ -28,6 +28,8 @@
 
 @property (nonatomic,strong)NSMutableArray *arrayImageUrl;
 
+@property (nonatomic, assign) int               currentSelectPicture;   // 点击当前cell或者滚动大图到的位置
+
 @end
 
 @implementation PictureViewController
@@ -56,6 +58,16 @@
     // 加载更多
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         [wSelf requestMoreAction];
+    }];
+    
+    [[[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"kCurrentPhotoIndex" object:nil] takeUntil:[self rac_willDeallocSignal]] subscribeNext:^(id x) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            wSelf.currentSelectPicture = [[x object] intValue];
+            NSLog(@"x====%@",x);
+            NSIndexPath *indexP = [NSIndexPath indexPathForRow:wSelf.currentSelectPicture inSection:0];
+            [wSelf.tableView scrollToRowAtIndexPath:indexP atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+        });
+        
     }];
 }
 
@@ -202,7 +214,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 100.0;
+    return 250.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -216,9 +228,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    PictureCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PictureCell" forIndexPath:indexPath];
+    self.currentSelectPicture = (int)indexPath.row;
+    [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
 
+    PictureCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PictureCell" forIndexPath:indexPath];
     // 加载网络图片
     NSMutableArray *browseItemArray = [[NSMutableArray alloc]init];
     int i = 0;

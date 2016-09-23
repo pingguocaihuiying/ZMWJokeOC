@@ -221,6 +221,12 @@
     _isRotate = NO;
 }
 
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    // 发送通知：当前显示的图片的位置
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"kCurrentPhotoIndex" object:@(_currentIndex)];
+
+}
+
 #pragma mark Tap Method
 - (void)tap:(MSSBrowseCollectionViewCell *)browseCell
 {
@@ -258,6 +264,14 @@
     if(browseItem.smallImageView)
     {
         CGRect rect = [self getFrameInWindow:browseItem.smallImageView];
+        // 强制在中间
+        rect = CGRectMake(10, (_screenHeight - 200)/2.0f, _screenWidth, 200);
+        if (_currentIndex == 0) {
+            rect = CGRectMake(10, 64 + 20, _screenWidth, 200);
+        }else if (_currentIndex == _browseItemArray.count - 1) {
+            rect = CGRectMake(10, (_screenHeight - 200)/2.0f + 200, _screenWidth, 200);
+        }
+        
         CGAffineTransform transform = CGAffineTransformMakeRotation(0);
         if(_currentOrientation == UIDeviceOrientationLandscapeLeft)
         {
