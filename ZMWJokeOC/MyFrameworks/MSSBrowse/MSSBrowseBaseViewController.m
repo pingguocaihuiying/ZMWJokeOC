@@ -14,6 +14,9 @@
 #import "MSSBrowseActionSheet.h"
 #import "MSSBrowseDefine.h"
 
+// 保存动态图片用的
+#import <AssetsLibrary/AssetsLibrary.h>
+
 @interface MSSBrowseBaseViewController ()
 
 @property (nonatomic,strong)NSArray *browseItemArray;
@@ -375,15 +378,24 @@
 
 #pragma mark MSSActionSheetClick
 - (void)browseActionSheetDidSelectedAtIndex:(NSInteger)index currentCell:(MSSBrowseCollectionViewCell *)currentCell
-{    // 保存图片
+{
+    MSSBrowseModel *currentBwowseItem = _browseItemArray[_currentIndex];
+    NSData *bigImageData = [self getImageDataWithUrlString:currentBwowseItem.bigImageUrl];
+    // 保存图片
     if(index == 0)
     {
-        UIImageWriteToSavedPhotosAlbum(currentCell.zoomScrollView.zoomImageView.image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+//        UIImageWriteToSavedPhotosAlbum(currentCell.zoomScrollView.zoomImageView.image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+        __weak typeof(self) wSelf = self;
+        // 可以保存动态图片
+        ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+        [library writeImageDataToSavedPhotosAlbum:bigImageData metadata:nil completionBlock:^(NSURL *assetURL, NSError *error) {
+            NSLog(@"errror===%@",error);
+            [wSelf image:nil didFinishSavingWithError:error contextInfo:nil];
+        }];
     }
     // 复制图片地址
     else if(index == 1)
     {
-        MSSBrowseModel *currentBwowseItem = _browseItemArray[_currentIndex];
         UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
         pasteboard.string = currentBwowseItem.bigImageUrl;
         [self showBrowseRemindViewWithText:@"复制图片地址成功"];
@@ -416,6 +428,25 @@
 {
     [_browseRemindView hideRemindView];
     _bgView.userInteractionEnabled = YES;
+}
+
+#pragma mark - 根据url获取缓存的Data
+- (NSData *)getImageDataWithUrlString:(NSString *)imageURL {
+    NSData *imageData = nil;
+    BOOL isExit = [[SDWebImageManager sharedManager] diskImageExistsForURL:[NSURL URLWithString:imageURL]];
+    if (isExit) {
+        NSString *cacheImageKey = [[SDWebImageManager sharedManager] cacheKeyForURL:[NSURL URLWithString:imageURL]];
+        if (cacheImageKey.length) {
+            NSString *cacheImagePath = [[SDImageCache sharedImageCache] defaultCachePathForKey:cacheImageKey];
+            if (cacheImagePath.length) {
+                imageData = [NSData dataWithContentsOfFile:cacheImagePath];
+            }
+        }
+    }
+    if (!imageData) {
+        imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
+    }
+    return imageData;
 }
 
 @end
