@@ -186,6 +186,13 @@
             __strong __typeof(weakSelf)strongSelf = weakSelf;
             [strongSelf tap:browseCell];
         }];
+        
+        [cell doubleTapClick:^(MSSBrowseCollectionViewCell *browseCell) {
+            __strong __typeof(weakSelf)strongSelf = weakSelf;
+            [strongSelf doubleTap:browseCell];
+        }];
+
+        
         [cell longPress:^(MSSBrowseCollectionViewCell *browseCell) {
             __strong __typeof(weakSelf)strongSelf = weakSelf;
             if([[SDImageCache sharedImageCache]diskImageExistsWithKey:browseItem.bigImageUrl])
@@ -304,6 +311,18 @@
                 
             }];
         }];
+    }
+}
+
+#pragma mark doubleTap Method
+- (void)doubleTap:(MSSBrowseCollectionViewCell *)browseCell
+{
+//    NSIndexPath *indexPath = [_collectionView indexPathForCell:browseCell];
+    browseCell.zoomScrollView.zoomScale = 1.0f;
+    if (browseCell.zoomScrollView.zoomScale == 1.0f) {
+        browseCell.zoomScrollView.zoomScale = 2.0f;
+    } else {
+        browseCell.zoomScrollView.zoomScale = 1.0f;
     }
 }
 

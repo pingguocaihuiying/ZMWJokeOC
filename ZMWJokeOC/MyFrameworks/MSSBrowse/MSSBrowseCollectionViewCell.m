@@ -12,6 +12,7 @@
 @interface MSSBrowseCollectionViewCell ()
 
 @property (nonatomic,copy)MSSBrowseCollectionViewCellTapBlock tapBlock;
+@property (nonatomic,copy)MSSBrowseCollectionViewCellDoubleTapBlock doubleTapBlock;
 @property (nonatomic,copy)MSSBrowseCollectionViewCellLongPressBlock longPressBlock;
 
 @end
@@ -43,6 +44,12 @@
     
     UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressGesture:)];
     [self.contentView addGestureRecognizer:longPressGesture];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapGesture:)];
+    tap.numberOfTapsRequired = 2;
+    tap.numberOfTouchesRequired = 2;
+    [self.contentView addGestureRecognizer:tap];
+    
 }
 
 - (void)tapClick:(MSSBrowseCollectionViewCellTapBlock)tapBlock
@@ -50,9 +57,27 @@
     _tapBlock = tapBlock;
 }
 
+- (void)doubleTapClick:(MSSBrowseCollectionViewCellDoubleTapBlock)doubleTapBlock {
+    _doubleTapBlock = doubleTapBlock;
+}
+
+
 - (void)longPress:(MSSBrowseCollectionViewCellLongPressBlock)longPressBlock
 {
     _longPressBlock = longPressBlock;
+}
+
+- (void)doubleTapGesture:(UITapGestureRecognizer *)gesture
+{
+    if(_doubleTapBlock)
+    {
+        if(gesture.numberOfTouches == 2)
+        {
+            _doubleTapBlock(self);
+        } else {
+            _tapBlock(self);
+        }
+    }
 }
 
 - (void)longPressGesture:(UILongPressGestureRecognizer *)gesture

@@ -13,6 +13,7 @@
 @class MSSBrowseCollectionViewCell;
 
 typedef void(^MSSBrowseCollectionViewCellTapBlock)(MSSBrowseCollectionViewCell *browseCell);
+typedef void(^MSSBrowseCollectionViewCellDoubleTapBlock)(MSSBrowseCollectionViewCell *browseCell);
 typedef void(^MSSBrowseCollectionViewCellLongPressBlock)(MSSBrowseCollectionViewCell *browseCell);
 
 @interface MSSBrowseCollectionViewCell : UICollectionViewCell
@@ -21,6 +22,7 @@ typedef void(^MSSBrowseCollectionViewCellLongPressBlock)(MSSBrowseCollectionView
 @property (nonatomic,strong)MSSBrowseLoadingImageView *loadingView; // 加载视图
 
 - (void)tapClick:(MSSBrowseCollectionViewCellTapBlock)tapBlock;
+- (void)doubleTapClick:(MSSBrowseCollectionViewCellDoubleTapBlock)tapBlock;
 - (void)longPress:(MSSBrowseCollectionViewCellLongPressBlock)longPressBlock;
 
 @end
