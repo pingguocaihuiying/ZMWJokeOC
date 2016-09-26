@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 
 typedef void(^MSSBrowseZoomScrollViewTapBlock)(void);
+typedef void(^MSSBrowseZoomScrollViewDoubleTapBlock)(void);
 
 @interface MSSBrowseZoomScrollView : UIScrollView<UIScrollViewDelegate>
 
 @property (nonatomic,strong)UIImageView *zoomImageView;
 
 - (void)tapClick:(MSSBrowseZoomScrollViewTapBlock)tapBlock;
+- (void)doubleTapClick:(MSSBrowseZoomScrollViewDoubleTapBlock)tapBlock;
 
 @end

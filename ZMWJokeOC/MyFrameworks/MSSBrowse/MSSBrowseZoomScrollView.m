@@ -12,7 +12,9 @@
 @interface MSSBrowseZoomScrollView ()
 
 @property (nonatomic,copy)MSSBrowseZoomScrollViewTapBlock tapBlock;
+@property (nonatomic,copy)MSSBrowseZoomScrollViewDoubleTapBlock doubleTapBlock;
 @property (nonatomic,assign)BOOL isSingleTap;
+@property (nonatomic, assign) BOOL  isDoubleTap;
 
 @end
 
@@ -32,8 +34,9 @@
 {
     self.delegate = self;
     _isSingleTap = NO;
+    _isDoubleTap = NO;
     self.minimumZoomScale = 1.0f;
-    self.maximumZoomScale = 3.0f;
+    self.maximumZoomScale = 8.0f;
     
     _zoomImageView = [[UIImageView alloc]init];
     _zoomImageView.userInteractionEnabled = YES;
@@ -65,14 +68,21 @@
     _tapBlock = tapBlock;
 }
 
+- (void)doubleTapClick:(MSSBrowseZoomScrollViewDoubleTapBlock)doubleTapBlock {
+    _doubleTapBlock = doubleTapBlock;
+}
+
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     UITouch *touch = touches.anyObject;
-    if(touch.tapCount == 1)
+    if(touch.tapCount == 2)
     {
+        _isSingleTap = NO;
+        [NSObject cancelPreviousPerformRequestsWithTarget:self];
+        [self performSelector:@selector(doubleTapClick) withObject:nil afterDelay:0.17];
+    } else if (touch.tapCount == 1) {
         [self performSelector:@selector(singleTapClick) withObject:nil afterDelay:0.17];
-    }
-    else
+    } else
     {
         [NSObject cancelPreviousPerformRequestsWithTarget:self];
         // 防止先执行单击手势后还执行下面双击手势动画异常问题
@@ -90,6 +100,15 @@
     if(_tapBlock)
     {
         _tapBlock();
+    }
+}
+
+- (void)doubleTapClick
+{
+    _isDoubleTap = YES;
+    if(_doubleTapBlock)
+    {
+        _doubleTapBlock();
     }
 }
 

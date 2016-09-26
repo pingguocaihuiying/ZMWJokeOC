@@ -39,16 +39,17 @@
     }];
     [self.contentView addSubview:_zoomScrollView];
     
+    [_zoomScrollView doubleTapClick:^{
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
+        strongSelf.doubleTapBlock(strongSelf);
+    }];
+    [self.contentView addSubview:_zoomScrollView];
+    
     _loadingView = [[MSSBrowseLoadingImageView alloc]init];
     [_zoomScrollView addSubview:_loadingView];
     
     UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressGesture:)];
     [self.contentView addGestureRecognizer:longPressGesture];
-    
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapGesture:)];
-    tap.numberOfTapsRequired = 2;
-    tap.numberOfTouchesRequired = 2;
-    [self.contentView addGestureRecognizer:tap];
     
 }
 
@@ -65,19 +66,6 @@
 - (void)longPress:(MSSBrowseCollectionViewCellLongPressBlock)longPressBlock
 {
     _longPressBlock = longPressBlock;
-}
-
-- (void)doubleTapGesture:(UITapGestureRecognizer *)gesture
-{
-    if(_doubleTapBlock)
-    {
-        if(gesture.numberOfTouches == 2)
-        {
-            _doubleTapBlock(self);
-        } else {
-            _tapBlock(self);
-        }
-    }
 }
 
 - (void)longPressGesture:(UILongPressGestureRecognizer *)gesture
