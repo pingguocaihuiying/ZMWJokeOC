@@ -112,8 +112,18 @@
     }
     else
     {
-        CGFloat width = self.bounds.size.width / self.maximumZoomScale;
-        CGFloat height = self.bounds.size.height / self.maximumZoomScale;
+        float bigScale = 2;
+        float w = self.zoomImageView.image.size.width;
+        if (w > 0) {
+            float tempW = self.bounds.size.height * w / self.zoomImageView.image.size.height;
+            if (tempW < (self.bounds.size.width - 10 * 2)/2) {
+                bigScale = tempW;
+            }
+        }
+//        CGFloat width = self.bounds.size.width / self.maximumZoomScale;
+//        CGFloat height = self.bounds.size.height / self.maximumZoomScale;
+        CGFloat width = self.bounds.size.width / bigScale;
+        CGFloat height = self.bounds.size.height / bigScale;
         [self zoomToRect:CGRectMake(touchPoint.x - width / 2, touchPoint.y - height / 2, width, height) animated:YES];
     }
 }
