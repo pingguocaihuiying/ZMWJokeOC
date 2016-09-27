@@ -37,7 +37,7 @@
     _isDoubleTap = NO;
     self.minimumZoomScale = 1.0f;
     self.maximumZoomScale = 8.0f;
-    
+    self.multipleTouchEnabled = YES;
     _zoomImageView = [[UIImageView alloc]init];
     _zoomImageView.userInteractionEnabled = YES;
     [self addSubview:_zoomImageView];
@@ -78,19 +78,11 @@
     if(touch.tapCount == 2)
     {
         _isSingleTap = NO;
-        [NSObject cancelPreviousPerformRequestsWithTarget:self];
-        [self performSelector:@selector(doubleTapClick) withObject:nil afterDelay:0.17];
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(singleTapClick) object:nil];
+        CGPoint touchPoint = [touch locationInView:_zoomImageView];
+        [self zoomDoubleTapWithPoint:touchPoint];
     } else if (touch.tapCount == 1) {
-        [self performSelector:@selector(singleTapClick) withObject:nil afterDelay:0.17];
-    } else
-    {
-        [NSObject cancelPreviousPerformRequestsWithTarget:self];
-        // 防止先执行单击手势后还执行下面双击手势动画异常问题
-        if(!_isSingleTap)
-        {
-            CGPoint touchPoint = [touch locationInView:_zoomImageView];
-            [self zoomDoubleTapWithPoint:touchPoint];
-        }
+        [self performSelector:@selector(singleTapClick) withObject:nil afterDelay:0.25];
     }
 }
 
