@@ -194,7 +194,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TextCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextCell" forIndexPath:indexPath];
     TextModel *textModel = self.dataArray[indexPath.row];
-    
     [cell updateCellWithModel:textModel indexPath:indexPath];
     
     return cell;
@@ -202,11 +201,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-//    MoreViewController *vc = [[MoreViewController alloc] init];
-//    vc.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:vc animated:YES];
-    
+    TextModel *textModel = self.dataArray[indexPath.row];
+    [Tooles saveOrRemoveToCollectionListWithId:textModel.hashId];
+    [self.tableView reloadData];
 }
 
 @end

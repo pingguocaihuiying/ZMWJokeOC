@@ -147,4 +147,18 @@ typedef enum {
  */
 + (UIButton *)getButtonImageTitleWithImage:(UIImage *)image title:(NSString *)title titleColor:(UIColor *)titleColor spacing:(float)spacing alignmentType:(ButtonImageTitleType)type aFont:(UIFont *)aFont;
 
+
+/**
+ 保存id到收藏列表
+
+ @param idString 需要收藏的id
+ */
++ (void)saveOrRemoveToCollectionListWithId:(NSString *)idString;
+
+/**
+ 在本地收藏列表的id里面是否有当前id
+ 
+ @param idString 传入的id
+ */
++ (BOOL)hasIdCollectionListWithId:(NSString *)idString;
 @end

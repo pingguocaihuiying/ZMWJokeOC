@@ -12,7 +12,7 @@
 #import "Masonry.h"
 #import "NSString+IOSUtils.h"
 #import "NSObject+CodeFragments.h"
-#import "PathMacro.h"
+#import "UtilMacro.h"
 
 @interface Tooles ()
 
@@ -578,5 +578,38 @@
     return button;
 }
 #pragma mark - masonry 布局的控件的便利方法 --------------------END---------------
+
+/**
+ 保存id到收藏列表
+ 
+ @param idString 需要收藏的id
+ */
++ (void)saveOrRemoveToCollectionListWithId:(NSString *)idString {
+    NSMutableArray *arr = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:kCollectionIds]];
+    if (![arr containsObject:idString]) { // 不包含就添加。
+        [arr addObject:idString];
+        [[NSUserDefaults standardUserDefaults] setObject:arr forKey:kCollectionIds];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    } else { // 包含就删除
+        [arr removeObject:idString];
+        [[NSUserDefaults standardUserDefaults] setObject:arr forKey:kCollectionIds];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+}
+
+
+/**
+ 在本地收藏列表的id里面是否有当前id
+
+ @param idString 传入的id
+ */
++ (BOOL)hasIdCollectionListWithId:(NSString *)idString {
+    NSMutableArray *arr = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:kCollectionIds]];
+    if ([arr containsObject:idString]) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
 
 @end

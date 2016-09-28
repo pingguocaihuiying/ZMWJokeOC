@@ -45,6 +45,11 @@
     self.detailLabel.numberOfLines = 0;
     [self.detailLabel sizeToFit];
     
+    if ([Tooles hasIdCollectionListWithId:model.hashId]) {
+        self.backgroundColor = [UIColor colorFromHexString:@"0xDDDDDD"];
+    } else {
+        self.backgroundColor = kSpeedX_Color_Table_Cell_Default_Bg;
+    }
 }
 
 @end

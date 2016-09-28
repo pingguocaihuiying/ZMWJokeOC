@@ -11,6 +11,7 @@
 #import "ApiMacro.h"                // 接口相关宏
 #import "NotificationMacro.h"       // 通知相关宏
 #import "ThridMacro.h"              // 第三方账号相关宏
+#import "UserDefaultMacro.h"        // userDefault相关存储的宏
 
 #ifndef UtilMacro_h
 #define UtilMacro_h

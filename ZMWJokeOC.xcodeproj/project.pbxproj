@@ -72,6 +72,7 @@
 		FF2F9D201D9B9346005FC20B /* ThridMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThridMacro.h; sourceTree = "<group>"; };
 		FF2F9D211D9B93C6005FC20B /* LocalAbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalAbumViewController.h; sourceTree = "<group>"; };
 		FF2F9D221D9B93C6005FC20B /* LocalAbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalAbumViewController.m; sourceTree = "<group>"; };
+		FF2F9D241D9B9684005FC20B /* UserDefaultMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserDefaultMacro.h; sourceTree = "<group>"; };
 		FF59D3A81D8E9A1C003888ED /* TextModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextModel.h; sourceTree = "<group>"; };
 		FF59D3A91D8E9A1C003888ED /* TextModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextModel.m; sourceTree = "<group>"; };
 		FF995E121D87DC1800C62FB0 /* ZMWJokeOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZMWJokeOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -357,6 +358,7 @@
 				FFA283351D8E8F0300888EDF /* ApiMacro.h */,
 				FF2F9D1F1D9B92E8005FC20B /* NotificationMacro.h */,
 				FF2F9D201D9B9346005FC20B /* ThridMacro.h */,
+				FF2F9D241D9B9684005FC20B /* UserDefaultMacro.h */,
 			);
 			path = Macro;
 			sourceTree = "<group>";
