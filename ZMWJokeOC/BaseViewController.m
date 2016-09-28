@@ -8,7 +8,6 @@
 
 #import "BaseViewController.h"
 
-
 @interface BaseViewController () {
     
 }
@@ -36,7 +35,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor lightGrayColor];
+    self.view.backgroundColor = [UIColor colorFromHexString:@"0xEFEFEF"];
     [self baseNextPageTitleButton:@"返回"];
     // 隐藏导航栏 在具体的页面的viewDidLoad方法添加这句
     //    self.fd_prefersNavigationBarHidden = YES;

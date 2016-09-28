@@ -15,8 +15,6 @@
 #import <UINavigationController+FDFullscreenPopGesture.h>
 // 宏
 #import "UtilMacro.h"
-#import "SizeMacro.h"
-#import "PathMacro.h"
 // 空视图.
 #import "EmptyView.h"
 

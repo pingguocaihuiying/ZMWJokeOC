@@ -138,7 +138,7 @@
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    _tableView.separatorColor = [UIColor colorFromHexString:@"0xEEEEEE"];
+    _tableView.separatorColor = [UIColor colorFromHexString:@"0xCCCCCC"];
     _tableView.separatorInset = UIEdgeInsetsMake(0, 10, 0, 0);
     [self.view addSubview:_tableView];
     [_tableView mas_updateConstraints:^(MASConstraintMaker *make) {
