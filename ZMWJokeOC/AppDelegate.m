@@ -39,13 +39,13 @@
 #pragma mark - 初始化自定义tabbar
 - (void) initTabbarAction {
     //控制器数组
-    NSArray *controllerArray = @[@"TextViewController",@"PictureViewController",@"CollectionViewController",@"MoreViewController"];
+    NSArray *controllerArray = @[@"TextViewController",@"PictureViewController",@"CollectionViewController",@"LocalAbumViewController",@"MoreViewController"];
     //title数组
-    NSArray * titleArray = @[@"文字",@"图片",@"收藏",@"更多"];
+    NSArray * titleArray = @[@"文字",@"图片",@"收藏",@"本地",@"更多"];
     //默认图片数组
-    NSArray *imageArray= @[@"home_tabbar",@"find_tabbar",@"msg_tabbar",@"me_tabbar"];
+    NSArray *imageArray= @[@"home_tabbar",@"find_tabbar",@"msg_tabbar",@"find_tabbar",@"me_tabbar"];
     //选中图片数组
-    NSArray *selImageArray = @[@"home_tabbar_sel",@"find_tabbar_sel",@"msg_tabbar_sel",@"me_tabbar_sel"];
+    NSArray *selImageArray = @[@"home_tabbar_sel",@"find_tabbar_sel",@"msg_tabbar_sel",@"find_tabbar_sel",@"me_tabbar_sel"];
     //初始化(height:最小高度为49.0,当传nil 或<49.0时均按49.0处理)
     self.tabbar = [[XHTabBar alloc] initWithControllerArray:controllerArray titleArray:titleArray imageArray:imageArray selImageArray:selImageArray height:TABBAR_HEIGHT];
     

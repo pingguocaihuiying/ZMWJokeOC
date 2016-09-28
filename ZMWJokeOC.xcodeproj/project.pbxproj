@@ -13,6 +13,7 @@
 		B2B139521D8A1BE500AAC4E5 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B139511D8A1BE500AAC4E5 /* MoreViewController.m */; };
 		B2B139551D8A1BF000AAC4E5 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B139541D8A1BF000AAC4E5 /* CollectionViewController.m */; };
 		FF0467491D911B7F008B30E7 /* PictureRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0467481D911B7F008B30E7 /* PictureRequestManager.m */; };
+		FF2F9D231D9B93C6005FC20B /* LocalAbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2F9D221D9B93C6005FC20B /* LocalAbumViewController.m */; };
 		FF59D3AA1D8E9A1C003888ED /* TextModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF59D3A91D8E9A1C003888ED /* TextModel.m */; };
 		FF995E171D87DC1800C62FB0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF995E161D87DC1800C62FB0 /* main.m */; };
 		FF995E1A1D87DC1800C62FB0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF995E191D87DC1800C62FB0 /* AppDelegate.m */; };
@@ -67,6 +68,10 @@
 		BF05F4AF5821C082D0B7E24A /* Pods-ZMWJokeOC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZMWJokeOC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZMWJokeOC/Pods-ZMWJokeOC.debug.xcconfig"; sourceTree = "<group>"; };
 		FF0467471D911B7F008B30E7 /* PictureRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureRequestManager.h; sourceTree = "<group>"; };
 		FF0467481D911B7F008B30E7 /* PictureRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureRequestManager.m; sourceTree = "<group>"; };
+		FF2F9D1F1D9B92E8005FC20B /* NotificationMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationMacro.h; sourceTree = "<group>"; };
+		FF2F9D201D9B9346005FC20B /* ThridMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThridMacro.h; sourceTree = "<group>"; };
+		FF2F9D211D9B93C6005FC20B /* LocalAbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalAbumViewController.h; sourceTree = "<group>"; };
+		FF2F9D221D9B93C6005FC20B /* LocalAbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalAbumViewController.m; sourceTree = "<group>"; };
 		FF59D3A81D8E9A1C003888ED /* TextModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextModel.h; sourceTree = "<group>"; };
 		FF59D3A91D8E9A1C003888ED /* TextModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextModel.m; sourceTree = "<group>"; };
 		FF995E121D87DC1800C62FB0 /* ZMWJokeOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZMWJokeOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -219,6 +224,15 @@
 			path = Text;
 			sourceTree = "<group>";
 		};
+		FF2F9D1E1D9B92C2005FC20B /* LocalAbum */ = {
+			isa = PBXGroup;
+			children = (
+				FF2F9D211D9B93C6005FC20B /* LocalAbumViewController.h */,
+				FF2F9D221D9B93C6005FC20B /* LocalAbumViewController.m */,
+			);
+			path = LocalAbum;
+			sourceTree = "<group>";
+		};
 		FF995E091D87DC1800C62FB0 = {
 			isa = PBXGroup;
 			children = (
@@ -245,6 +259,7 @@
 				FF995E571D87E17000C62FB0 /* BaseViewController.h */,
 				FF995E581D87E17000C62FB0 /* BaseViewController.m */,
 				FFA283281D8E778400888EDF /* Macro */,
+				FF2F9D1E1D9B92C2005FC20B /* LocalAbum */,
 				B2B139461D8A1BAF00AAC4E5 /* Collection */,
 				B2B139471D8A1BAF00AAC4E5 /* More */,
 				B2B139481D8A1BAF00AAC4E5 /* Picture */,
@@ -340,6 +355,8 @@
 				FFA2832B1D8E780B00888EDF /* UtilMacro.h */,
 				FFA2832A1D8E77FA00888EDF /* PathMacro.h */,
 				FFA283351D8E8F0300888EDF /* ApiMacro.h */,
+				FF2F9D1F1D9B92E8005FC20B /* NotificationMacro.h */,
+				FF2F9D201D9B9346005FC20B /* ThridMacro.h */,
 			);
 			path = Macro;
 			sourceTree = "<group>";
@@ -501,6 +518,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF2F9D231D9B93C6005FC20B /* LocalAbumViewController.m in Sources */,
 				FF995E5F1D87E2ED00C62FB0 /* UserManager.m in Sources */,
 				B2B1394F1D8A1BD900AAC4E5 /* PictureViewController.m in Sources */,
 				FF995E501D87E02300C62FB0 /* DJTextField.m in Sources */,

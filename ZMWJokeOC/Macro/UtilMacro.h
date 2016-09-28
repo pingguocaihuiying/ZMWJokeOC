@@ -6,6 +6,12 @@
 //  Copyright © 2016年 speedx. All rights reserved.
 //
 
+#import "SizeMacro.h"               // 尺寸相关宏
+#import "PathMacro.h"               // 路径相关宏
+#import "ApiMacro.h"                // 接口相关宏
+#import "NotificationMacro.h"       // 通知相关宏
+#import "ThridMacro.h"              // 第三方账号相关宏
+
 #ifndef UtilMacro_h
 #define UtilMacro_h
 
