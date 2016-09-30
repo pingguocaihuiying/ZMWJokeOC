@@ -15,6 +15,7 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - FDFullscreenPopGesture (1.1)
+  - HMSegmentedControl (1.5.3)
   - Masonry (1.0.1)
   - MJRefresh (3.1.12)
   - ReactiveCocoa (2.5):
@@ -33,6 +34,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
   - FDFullscreenPopGesture (~> 1.1)
+  - HMSegmentedControl (~> 1.5.3)
   - Masonry (~> 1.0.1)
   - MJRefresh (~> 3.1.12)
   - ReactiveCocoa (~> 2.5)
@@ -43,6 +45,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
+  HMSegmentedControl: 7c6145afb50f26cec5f3243082f6f12b9f41318f
   Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
@@ -50,6 +53,6 @@ SPEC CHECKSUMS:
   XHTabBar: 63fa6d295e1eb2e8d47056356cf138419a4458a2
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 9ff5c241eae7a288a77b1583a1992e710c7e187a
+PODFILE CHECKSUM: 3b0fe67b0254392f22d3bfd872134d603a126ff2
 
 COCOAPODS: 1.1.0.beta.2
