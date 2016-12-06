@@ -13,6 +13,7 @@
 #import <Masonry.h>
 #import "UtilMacro.h"
 #import "SizeMacro.h"
+#import "TextRequestManager.h"
 
 @implementation TextCell
 
@@ -44,8 +45,8 @@
     self.detailLabel.text = contentString;
     self.detailLabel.numberOfLines = 0;
     [self.detailLabel sizeToFit];
-    
-    if ([Tooles hasIdCollectionListWithId:model.hashId]) {
+    // 判断是否收藏，展示不同的样式
+    if ([Tooles existCollectionListWithModel:model]) {
         self.backgroundColor = [UIColor colorFromHexString:@"0xDDDDDD"];
     } else {
         self.backgroundColor = kSpeedX_Color_Table_Cell_Default_Bg;

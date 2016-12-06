@@ -10,7 +10,8 @@
 
 @interface TextRequestManager : RequestBaseManager
 
-#define kContentUrl       @"https://japi.juhe.cn/joke/content/text.from"
+#define kContentUrl             @"https://japi.juhe.cn/joke/content/text.from"  // 文字
+#define kContentUrl_Collection  @"https://japi.juhe.cn/joke/content/text.from_Collection"  // 收藏的文字
 
 
 /**

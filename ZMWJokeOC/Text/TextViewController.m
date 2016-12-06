@@ -202,7 +202,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     TextModel *textModel = self.dataArray[indexPath.row];
-    [Tooles saveOrRemoveToCollectionListWithId:textModel.hashId];
+    [Tooles saveOrRemoveToCollectionListWithModel:textModel];
     [self.tableView reloadData];
 }
 

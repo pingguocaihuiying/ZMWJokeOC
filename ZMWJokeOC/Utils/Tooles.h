@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "TextModel.h"               // 文字、图片公用的model
 
 @interface Tooles : NSObject
 
@@ -33,10 +34,16 @@ typedef enum {
 + (UIImage *)scaleImage:(UIImage *)image toScale:(float)scaleSize;
 
 + (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size;
+
 ///下面两个方法可以存储自定义的对象---TMCache就不行。
 + (BOOL)saveFileToLoc:(NSString *)fileName theFile:(id)file;
 + (BOOL)getFileFromLoc:(NSString *)filePath into:(id)dic;
 + (BOOL)removeLoc:(NSString *)fileName;//删除。
+// 是否是自定义的model
++ (BOOL)saveFileToLoc:(NSString *)fileName theFile:(id)file isModel:(BOOL)isModel;
+// 是否是自定义model
++ (BOOL)getFileFromLoc:(NSString *)filePath into:(id)file isModel:(BOOL)isModel;
+
 //自定义对象的时候用的。
 + (NSData *)getDataFileFromLoc:(NSString *)filePath into:(id)file;
 ///获取pathForResource 本地的图片。代替 imageNamed 的方法。--------除非是cell 的重复很多的默认图用imageNamed 否则都不建议用。
@@ -147,18 +154,21 @@ typedef enum {
  */
 + (UIButton *)getButtonImageTitleWithImage:(UIImage *)image title:(NSString *)title titleColor:(UIColor *)titleColor spacing:(float)spacing alignmentType:(ButtonImageTitleType)type aFont:(UIFont *)aFont;
 
-
 /**
- 保存id到收藏列表
-
- @param idString 需要收藏的id
- */
-+ (void)saveOrRemoveToCollectionListWithId:(NSString *)idString;
-
-/**
- 在本地收藏列表的id里面是否有当前id
+ 保存model到收藏列表
  
- @param idString 传入的id
+ @param textModel 需要收藏的model
  */
-+ (BOOL)hasIdCollectionListWithId:(NSString *)idString;
++ (void)saveOrRemoveToCollectionListWithModel:(TextModel *)textModel;
+
+/**
+ 在本地收藏列表的model里面是否有当前model
+ */
++ (BOOL)existCollectionListWithModel:(TextModel *)model;
+
+// 数组是否包含model
++ (BOOL)isContainsObject:(TextModel *)model withArray:(NSMutableArray *)array;
+// - 删除数组中的某个model
++ (void)removeObject:(TextModel *)model withArray:(NSMutableArray *)array;
+
 @end

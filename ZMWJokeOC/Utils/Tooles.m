@@ -13,6 +13,7 @@
 #import "NSString+IOSUtils.h"
 #import "NSObject+CodeFragments.h"
 #import "UtilMacro.h"
+#import "TextRequestManager.h"
 
 @interface Tooles ()
 
@@ -88,6 +89,24 @@
     return [file writeToFile:filename atomically:YES];
 }
 
+// 是否是自定义的model
++ (BOOL)saveFileToLoc:(NSString *)fileName theFile:(id)file isModel:(BOOL)isModel {
+    NSString *Path = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *CachePath = [fileName stringByReplacingOccurrencesOfString:@"/" withString:@"_"];
+    NSString *filename = [Path stringByAppendingPathComponent:CachePath];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if (![fileManager fileExistsAtPath:filename]) {
+        if (![fileManager createFileAtPath:filename contents:nil attributes:nil]) {
+            NSLog(@"createFile error occurred");
+        }
+    }
+    if (isModel) {
+        return [NSKeyedArchiver archiveRootObject:file toFile:filename];
+    }
+    return [file writeToFile:filename atomically:YES];
+}
+
 + (BOOL)getFileFromLoc:(NSString *)filePath into:(id)file {
     NSString *Path = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *CachePath = [filePath stringByReplacingOccurrencesOfString:@"/" withString:@"_"];
@@ -108,6 +127,46 @@
     } else if ([file isKindOfClass:[NSData class]]) {
         file = [NSData dataWithContentsOfFile:filename];
         
+        if ([file length] == 0) {
+            return NO;
+        }
+    }
+    
+    return YES;
+}
+
+// 是否是自定义model
++ (BOOL)getFileFromLoc:(NSString *)filePath into:(id)file isModel:(BOOL)isModel {
+    NSString *Path = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *CachePath = [filePath stringByReplacingOccurrencesOfString:@"/" withString:@"_"];
+    NSString *filename = [Path stringByAppendingPathComponent:CachePath];
+    
+    if ([file isKindOfClass:[NSMutableDictionary class]]) {
+        if (isModel) {
+            NSDictionary *dict = [NSKeyedUnarchiver unarchiveObjectWithFile:filename];
+            [file setDictionary:dict];
+        } else {
+            [file setDictionary:[NSMutableDictionary dictionaryWithContentsOfFile:filename]];
+        }
+        if ([file count] == 0) {
+            return NO;
+        }
+    } else if ([file isKindOfClass:[NSMutableArray class]]) {
+        if (isModel) {
+            NSArray *array = [NSKeyedUnarchiver unarchiveObjectWithFile:filename];
+            [file addObjectsFromArray:array];
+        } else {
+            [file addObjectsFromArray:[NSMutableArray arrayWithContentsOfFile:filename]];
+        }
+        if ([file count] == 0) {
+            return NO;
+        }
+    } else if ([file isKindOfClass:[NSData class]]) {
+        if (isModel) {
+            file = [NSKeyedUnarchiver unarchiveObjectWithFile:filename];
+        } else {
+            file = [NSData dataWithContentsOfFile:filename];
+        }
         if ([file length] == 0) {
             return NO;
         }
@@ -580,35 +639,58 @@
 #pragma mark - masonry 布局的控件的便利方法 --------------------END---------------
 
 /**
- 保存id到收藏列表
+ 保存model到收藏列表
  
- @param idString 需要收藏的id
+ @param textModel 需要收藏的model
  */
-+ (void)saveOrRemoveToCollectionListWithId:(NSString *)idString {
-    NSMutableArray *arr = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:kCollectionIds]];
-    if (![arr containsObject:idString]) { // 不包含就添加。
-        [arr addObject:idString];
-        [[NSUserDefaults standardUserDefaults] setObject:arr forKey:kCollectionIds];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    } else { // 包含就删除
-        [arr removeObject:idString];
-        [[NSUserDefaults standardUserDefaults] setObject:arr forKey:kCollectionIds];
-        [[NSUserDefaults standardUserDefaults] synchronize];
++ (void)saveOrRemoveToCollectionListWithModel:(TextModel *)textModel {
+    NSMutableArray *arr = [NSMutableArray array];
+    if ([Tooles getFileFromLoc:kContentUrl_Collection into:arr isModel:YES]) {
+        if (![Tooles isContainsObject:textModel withArray:arr]) { // 不包含就添加。
+            [arr addObject:textModel];
+        } else { // 包含就删除
+            [Tooles removeObject:textModel withArray:arr];
+        }
+        [Tooles saveFileToLoc:kContentUrl_Collection theFile:arr isModel:YES];
+    } else {
+        [arr addObject:textModel];
+        [Tooles saveFileToLoc:kContentUrl_Collection theFile:arr isModel:YES];
     }
 }
 
-
 /**
- 在本地收藏列表的id里面是否有当前id
-
- @param idString 传入的id
+ 在本地收藏列表的model里面是否有当前model
  */
-+ (BOOL)hasIdCollectionListWithId:(NSString *)idString {
-    NSMutableArray *arr = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:kCollectionIds]];
-    if ([arr containsObject:idString]) {
-        return YES;
-    } else {
-        return NO;
++ (BOOL)existCollectionListWithModel:(TextModel *)model {
+    NSMutableArray *arr = [NSMutableArray array];
+    if ([Tooles getFileFromLoc:kContentUrl_Collection into:arr isModel:YES]) {
+        if ([Tooles isContainsObject:model withArray:arr]) { // 包含
+            return YES;
+        } else { // 不包含
+            return NO;
+        }
+    }
+    return NO;
+}
+
+#pragma mark - 数组是否包含model
++ (BOOL)isContainsObject:(TextModel *)model withArray:(NSMutableArray *)array {
+    for (int i = 0; i < array.count; i++) {
+        TextModel *textModel = array[i];
+        if (![textModel.hashId isEmptyString] && [textModel.hashId isEqualToString:model.hashId]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+#pragma mark - 删除数组中的某个model
++ (void)removeObject:(TextModel *)model withArray:(NSMutableArray *)array {
+    for (int i = 0; i < array.count; i++) {
+        TextModel *textModel = array[i];
+        if (![textModel.hashId isEmptyString] && [textModel.hashId isEqualToString:model.hashId]) {
+            [array removeObjectAtIndex:i];
+        }
     }
 }
 

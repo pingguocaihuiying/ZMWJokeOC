@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface TextModel : NSObject
+// 想要保存到本地，需要NSCoding
+@interface TextModel : NSObject<NSCoding>
 
 @property (nonatomic, strong) NSString      *content;
 @property (nonatomic, strong) NSString      *hashId;
@@ -16,4 +16,5 @@
 @property (nonatomic, assign) int           unixtime;
 
 @property (nonatomic, strong) NSString      *url;   // 图片特有的
+
 @end
