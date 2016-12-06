@@ -17,7 +17,7 @@
 
 #import "MSSBrowseDefine.h"
 
-@interface PictureViewController ()<UITableViewDataSource, UITableViewDelegate>
+@interface PictureViewController ()<UITableViewDataSource, UITableViewDelegate,UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UITableView       *tableView;
 @property (nonatomic, strong) NSMutableArray    *dataArray;
@@ -26,8 +26,7 @@
 @property (nonatomic, assign) int               currentPage;
 @property (nonatomic, strong) NSCache           *rowHeightCache;
 
-@property (nonatomic,strong)NSMutableArray *arrayImageUrl;
-
+@property (nonatomic, strong) NSMutableArray    *arrayImageUrl;
 @property (nonatomic, assign) int               currentSelectPicture;   // 点击当前cell或者滚动大图到的位置
 
 @end
@@ -63,17 +62,10 @@
     [[[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"kCurrentPhotoIndex" object:nil] takeUntil:[self rac_willDeallocSignal]] subscribeNext:^(id x) {
         dispatch_async(dispatch_get_main_queue(), ^{
             wSelf.currentSelectPicture = [[x object] intValue];
-            NSLog(@"x====%@",x);
             NSIndexPath *indexP = [NSIndexPath indexPathForRow:wSelf.currentSelectPicture inSection:0];
             [wSelf.tableView scrollToRowAtIndexPath:indexP atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
         });
-        
     }];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
 }
 
 #pragma mark - 初始化大图相关
@@ -128,11 +120,9 @@
 
 #pragma mark - 加载更多
 - (void)requestMoreAction {
-    
     if (self.currentPage < 1) {
         self.currentPage = 1;
     }
-    
     self.currentPage ++;
     __weak typeof(self) wSelf = self;
     [PictureRequestManager getPictureWithPage:self.currentPage response:^(BOOL successed, NSInteger code, NSString *responseString) {
@@ -172,6 +162,11 @@
     }];
     // 注册cell
     [_tableView registerClass:[PictureCell class] forCellReuseIdentifier:@"PictureCell"];
+    // 给表格添加长按手势
+    UILongPressGestureRecognizer *lonGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    lonGesture.minimumPressDuration = 1.0; // seconds  设置响应时间
+    lonGesture.delegate = self;
+    [_tableView addGestureRecognizer:lonGesture]; //启用长按事件
 }
 
 #pragma mark - UITableViewDataSource
@@ -195,7 +190,6 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     TextModel *model = self.dataArray[indexPath.row];
     if ([self.rowHeightCache objectForKey:model.hashId]) {
         float height = [[self.rowHeightCache objectForKey:model.hashId] floatValue];
@@ -203,13 +197,10 @@
             return height;
         }
     }
-    
     NSString *contentString = [model.content stringByReplacingOccurrencesOfString:@"&nbsp;" withString:@""];
     CGSize size = [contentString boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 20, 1000.0f) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName: FONT_Helvetica(15) } context:nil].size;
-    
     // 缓存下来
     [self.rowHeightCache setObject:@(size.height + 20 + 210) forKey:model.hashId];
-    
     return size.height + 20 + 210;
 }
 
@@ -220,7 +211,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PictureCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PictureCell" forIndexPath:indexPath];
     TextModel *textModel = self.dataArray[indexPath.row];
-    
     [cell updateCellWithModel:textModel indexPath:indexPath];
     
     return cell;
@@ -248,5 +238,18 @@
     [bvc showBrowseViewController];
 }
 
+-(void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer  //长按响应函数
+{
+    CGPoint p = [gestureRecognizer locationInView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];//获取响应的长按的indexpath
+    if (indexPath == nil) {
+        NSLog(@"long press on table view but not on a row");
+    } else {
+        NSLog(@"long press on table view at row %ld", (long)indexPath.row);
+        TextModel *textModel = self.dataArray[indexPath.row];
+        [Tooles saveOrRemoveToCollectionListWithModel:textModel];
+        [self.tableView reloadData];
+    }
+}
 
 @end

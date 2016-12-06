@@ -14,6 +14,7 @@
 #import "NSObject+CodeFragments.h"
 #import "UtilMacro.h"
 #import "TextRequestManager.h"
+#import "PictureRequestManager.h"
 
 @interface Tooles ()
 
@@ -645,16 +646,20 @@
  */
 + (void)saveOrRemoveToCollectionListWithModel:(TextModel *)textModel {
     NSMutableArray *arr = [NSMutableArray array];
-    if ([Tooles getFileFromLoc:kContentUrl_Collection into:arr isModel:YES]) {
+    NSString *urlString = kContentUrl_Collection;
+    if (textModel.url && ![textModel.url isEmptyString]) {
+        urlString = kPictureUrl_Collection;
+    }
+    if ([Tooles getFileFromLoc:urlString into:arr isModel:YES]) {
         if (![Tooles isContainsObject:textModel withArray:arr]) { // 不包含就添加。
             [arr addObject:textModel];
         } else { // 包含就删除
             [Tooles removeObject:textModel withArray:arr];
         }
-        [Tooles saveFileToLoc:kContentUrl_Collection theFile:arr isModel:YES];
+        [Tooles saveFileToLoc:urlString theFile:arr isModel:YES];
     } else {
         [arr addObject:textModel];
-        [Tooles saveFileToLoc:kContentUrl_Collection theFile:arr isModel:YES];
+        [Tooles saveFileToLoc:urlString theFile:arr isModel:YES];
     }
 }
 
@@ -663,7 +668,11 @@
  */
 + (BOOL)existCollectionListWithModel:(TextModel *)model {
     NSMutableArray *arr = [NSMutableArray array];
-    if ([Tooles getFileFromLoc:kContentUrl_Collection into:arr isModel:YES]) {
+    NSString *urlString = kContentUrl_Collection;
+    if (model.url && ![model.url isEmptyString]) {
+        urlString = kPictureUrl_Collection;
+    }
+    if ([Tooles getFileFromLoc:urlString into:arr isModel:YES]) {
         if ([Tooles isContainsObject:model withArray:arr]) { // 包含
             return YES;
         } else { // 不包含

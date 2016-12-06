@@ -11,7 +11,7 @@
 @interface PictureRequestManager : RequestBaseManager
 
 #define kPictureUrl       @"http://japi.juhe.cn/joke/img/text.from"
-
+#define kPictureUrl_Collection  @"http://japi.juhe.cn/joke/img/text.from_Collection"  // 收藏的图片
 
 /**
  *  @brief  请求图文

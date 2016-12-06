@@ -10,11 +10,15 @@
 #import <HMSegmentedControl.h>
 #import <Masonry.h>
 #import "TextModel.h"
-#import <YYModel.h>
-#import <MJRefresh.h>
 #import "TextCell.h"
 #import "Tooles.h"
 #import "TextRequestManager.h"
+// 图片相关
+#import "PictureCell.h"
+#import "PictureRequestManager.h"
+#import <YYModel.h>
+#import "MSSBrowseDefine.h"
+
 
 @interface CollectionViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -24,6 +28,9 @@
 @property (nonatomic, strong) NSMutableArray    *dataArray;
 @property (nonatomic, strong) NSMutableArray    *jsonArray;     // 保存本地用的
 @property (nonatomic, strong) NSCache           *rowHeightCache;
+// 图片相关
+@property (nonatomic,strong)  NSMutableArray    *arrayImageUrl;
+@property (nonatomic, assign) int               currentSelectPicture;   // 点击当前cell或者滚动大图到的位置
 
 @end
 
@@ -33,12 +40,23 @@
     [super viewDidLoad];
     self.navigationItem.title = @"收藏";
     [self initSegment];
-    
+    self.pageType = PageTypeText;
     self.dataArray = [NSMutableArray array];
     self.jsonArray = [NSMutableArray array];
     self.rowHeightCache = [[NSCache alloc] init];
+    self.arrayImageUrl = [NSMutableArray array];
+    
     // 初始化表格
     [self initTableView];
+    __weak typeof(self) wSelf = self;
+    [[[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"kCurrentPhotoIndex" object:nil] takeUntil:[self rac_willDeallocSignal]] subscribeNext:^(id x) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            wSelf.currentSelectPicture = [[x object] intValue];
+            NSIndexPath *indexP = [NSIndexPath indexPathForRow:wSelf.currentSelectPicture inSection:0];
+            [wSelf.tableView scrollToRowAtIndexPath:indexP atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+        });
+        
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -90,6 +108,7 @@
     }];
     // 注册cell
     [_tableView registerClass:[TextCell class] forCellReuseIdentifier:@"TextCell"];
+    [_tableView registerClass:[PictureCell class] forCellReuseIdentifier:@"PictureCell"];
 }
 
 #pragma mark - UITableViewDataSource
@@ -113,7 +132,6 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     TextModel *model = self.dataArray[indexPath.row];
     if ([self.rowHeightCache objectForKey:model.hashId]) {
         float height = [[self.rowHeightCache objectForKey:model.hashId] floatValue];
@@ -125,36 +143,81 @@
     CGSize size = [contentString boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 20, 1000.0f) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName: FONT_Helvetica(15) } context:nil].size;
     
     // 缓存下来
-    [self.rowHeightCache setObject:@(size.height + 20) forKey:model.hashId];
-    
-    return size.height + 20;
+    if (self.pageType == PageTypeText) {
+        [self.rowHeightCache setObject:@(size.height + 20) forKey:model.hashId];
+        return size.height + 20;
+    } else {
+        [self.rowHeightCache setObject:@(size.height + 20 + 210) forKey:model.hashId];
+        return size.height + 20 + 210;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 100.0;
+    if (self.pageType == PageTypeText) {
+        return 100.0;
+    } else {
+        return 250.0;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TextCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextCell" forIndexPath:indexPath];
     TextModel *textModel = self.dataArray[indexPath.row];
-    [cell updateCellWithModel:textModel indexPath:indexPath];
-    
-    return cell;
+    if (self.pageType == PageTypeText) {
+        TextCell *textCell = [tableView dequeueReusableCellWithIdentifier:@"TextCell" forIndexPath:indexPath];
+        [textCell updateCellWithModel:textModel indexPath:indexPath];
+        return textCell;
+    } else {
+        PictureCell *picCell = [tableView dequeueReusableCellWithIdentifier:@"PictureCell" forIndexPath:indexPath];
+        [picCell updateCellWithModel:textModel indexPath:indexPath];
+        return picCell;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    TextModel *textModel = self.dataArray[indexPath.row];
-    [Tooles saveOrRemoveToCollectionListWithModel:textModel];
-    // 获取本地收藏的数据
-    [self getCollectionList:self.pageType];
+    if (self.pageType == PageTypeText) { // 文字
+        TextModel *textModel = self.dataArray[indexPath.row];
+        [Tooles saveOrRemoveToCollectionListWithModel:textModel];
+        // 获取本地收藏的数据
+        [self getCollectionList:self.pageType];
+    } else { // 图片
+        self.currentSelectPicture = (int)indexPath.row;
+        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+        
+        PictureCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PictureCell" forIndexPath:indexPath];
+        // 加载网络图片
+        NSMutableArray *browseItemArray = [[NSMutableArray alloc]init];
+        int i = 0;
+        for(i = 0;i < [self.arrayImageUrl count];i++)
+        {
+            UIImageView     *imageView = cell.smallImageView;
+            MSSBrowseModel *browseItem = [[MSSBrowseModel alloc]init];
+            browseItem.bigImageUrl = self.arrayImageUrl[i];// 加载网络图片大图地址
+            browseItem.smallImageView = imageView;// 小图
+            [browseItemArray addObject:browseItem];
+        }
+        MSSBrowseNetworkViewController *bvc = [[MSSBrowseNetworkViewController alloc]initWithBrowseItemArray:browseItemArray currentIndex:indexPath.row];
+        bvc.isEqualRatio = NO;// 大图小图不等比时需要设置这个属性（建议等比）
+        [bvc showBrowseViewController];
+    }
 }
 
 #pragma mark - 获取本地收藏的数据列表
 - (void)getCollectionList:(PageType)pageType {
     [self.dataArray removeAllObjects];
     self.dataArray = [NSMutableArray array];
-    [Tooles getFileFromLoc:kContentUrl_Collection into:self.dataArray isModel:YES];
+    if (self.pageType == PageTypeText) {
+        [Tooles getFileFromLoc:kContentUrl_Collection into:self.dataArray isModel:YES];
+    } else {
+        [Tooles getFileFromLoc:kPictureUrl_Collection into:self.dataArray isModel:YES];
+        [self.arrayImageUrl removeAllObjects];
+        self.arrayImageUrl = [NSMutableArray array];
+        for (TextModel *model in self.dataArray) {
+            if (model.url && ![model.url isEmptyString]) {
+                [self.arrayImageUrl addObject:model.url];
+            }
+        }
+    }
     [self.tableView reloadData];
 }
 
