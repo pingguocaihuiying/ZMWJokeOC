@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LLViewController.h"
+#import "BaseViewController.h"
 
-@interface LLMeViewController : LLViewController
+@interface LLMeViewController : BaseViewController
 
 @end

@@ -7,10 +7,10 @@
 //
 
 #import "LLUtils.h"
+#import "SizeMacro.h"   // SCREEN_WIDTH 重名了，所有导入自己的
 @import ImageIO;
 
-extern CGFloat SCREEN_WIDTH;
-extern CGFloat SCREEN_HEIGHT;
+
 extern CGSize SCREEN_SIZE;
 
 extern CGRect SCREEN_FRAME;

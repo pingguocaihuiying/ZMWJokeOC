@@ -10,8 +10,6 @@
 #import "UIKit+LLExt.h"
 @import ImageIO;
 
-CGFloat SCREEN_WIDTH;
-CGFloat SCREEN_HEIGHT;
 CGSize SCREEN_SIZE;
 
 CGRect SCREEN_FRAME;
@@ -33,9 +31,6 @@ CGFloat CGPointDistanceBetween(CGPoint point1, CGPoint point2) {
     dispatch_once(&onceToken, ^{
         SCREEN_FRAME = [UIScreen mainScreen].bounds;
         SCREEN_SIZE = SCREEN_FRAME.size;
-        SCREEN_WIDTH = SCREEN_SIZE.width;
-        SCREEN_HEIGHT = SCREEN_SIZE.height;
-        
         SCREEN_CENTER = CGPointMake(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
     });
 }

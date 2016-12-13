@@ -29,11 +29,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.title = @"我";
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]
-            initWithTitle:@"我　" style:UIBarButtonItemStylePlain target:nil
-                   action:nil];    
+    self.navigationItem.title = @"更多";
     [self initTableView];
     NSArray<LLTableViewCellData *> *section1 = @[
             [[LLTableViewCellData alloc] initWithTitle:@"相册" iconName:@"MoreMyAlbum"],
