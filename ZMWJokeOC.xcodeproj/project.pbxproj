@@ -12,6 +12,25 @@
 		B2B1394F1D8A1BD900AAC4E5 /* PictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B1394E1D8A1BD900AAC4E5 /* PictureViewController.m */; };
 		B2B139521D8A1BE500AAC4E5 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B139511D8A1BE500AAC4E5 /* MoreViewController.m */; };
 		B2B139551D8A1BF000AAC4E5 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B139541D8A1BF000AAC4E5 /* CollectionViewController.m */; };
+		BD3F207E1DFFF8A600A8DAB1 /* LLContactAddController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3F20591DFFF8A600A8DAB1 /* LLContactAddController.m */; };
+		BD3F207F1DFFF8A600A8DAB1 /* LLContactApplyController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3F205B1DFFF8A600A8DAB1 /* LLContactApplyController.m */; };
+		BD3F20801DFFF8A600A8DAB1 /* LLContactController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3F205D1DFFF8A600A8DAB1 /* LLContactController.m */; };
+		BD3F20811DFFF8A600A8DAB1 /* LLContactSearchHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3F205F1DFFF8A600A8DAB1 /* LLContactSearchHeaderView.m */; };
+		BD3F20821DFFF8A600A8DAB1 /* LLContactSearchViews.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD3F20601DFFF8A600A8DAB1 /* LLContactSearchViews.xib */; };
+		BD3F20831DFFF8A600A8DAB1 /* LLContactWeChatIdSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3F20621DFFF8A600A8DAB1 /* LLContactWeChatIdSearchController.m */; };
+		BD3F20841DFFF8A600A8DAB1 /* LLConversationListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3F20651DFFF8A600A8DAB1 /* LLConversationListCell.m */; };
+		BD3F20851DFFF8A600A8DAB1 /* LLConversationListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD3F20661DFFF8A600A8DAB1 /* LLConversationListCell.xib */; };
+		BD3F20861DFFF8A600A8DAB1 /* LLConversationListController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3F20681DFFF8A600A8DAB1 /* LLConversationListController.m */; };
+		BD3F20871DFFF8A600A8DAB1 /* LLLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3F206B1DFFF8A600A8DAB1 /* LLLoginViewController.m */; };
+		BD3F20881DFFF8A600A8DAB1 /* LLArticleSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3F206E1DFFF8A600A8DAB1 /* LLArticleSearchController.m */; };
+		BD3F20891DFFF8A600A8DAB1 /* LLBrandContactSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3F20701DFFF8A600A8DAB1 /* LLBrandContactSearchController.m */; };
+		BD3F208A1DFFF8A600A8DAB1 /* LLChatSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3F20721DFFF8A600A8DAB1 /* LLChatSearchController.m */; };
+		BD3F208B1DFFF8A600A8DAB1 /* LLCollectionTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3F20741DFFF8A600A8DAB1 /* LLCollectionTextCell.m */; };
+		BD3F208C1DFFF8A600A8DAB1 /* LLMessageSearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3F20761DFFF8A600A8DAB1 /* LLMessageSearchResultCell.m */; };
+		BD3F208D1DFFF8A600A8DAB1 /* LLMessageSearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD3F20771DFFF8A600A8DAB1 /* LLMessageSearchResultCell.xib */; };
+		BD3F208E1DFFF8A600A8DAB1 /* LLSearchResultTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3F20791DFFF8A600A8DAB1 /* LLSearchResultTableController.m */; };
+		BD3F208F1DFFF8A600A8DAB1 /* LLSNSSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3F207B1DFFF8A600A8DAB1 /* LLSNSSearchController.m */; };
+		BD3F20901DFFF8A600A8DAB1 /* LLSubSearchBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3F207D1DFFF8A600A8DAB1 /* LLSubSearchBaseController.m */; };
 		BD9E6ED51DFFDF940022C487 /* LLMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD9E6EC91DFFDF940022C487 /* LLMeViewController.m */; };
 		BD9E6ED61DFFDF940022C487 /* LLTableViewMeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD9E6ECB1DFFDF940022C487 /* LLTableViewMeCell.m */; };
 		BD9E6ED71DFFDF940022C487 /* LLGeneralSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD9E6ECE1DFFDF940022C487 /* LLGeneralSettingController.m */; };
@@ -241,6 +260,41 @@
 		B2B139511D8A1BE500AAC4E5 /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
 		B2B139531D8A1BF000AAC4E5 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
 		B2B139541D8A1BF000AAC4E5 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
+		BD3F20581DFFF8A600A8DAB1 /* LLContactAddController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLContactAddController.h; sourceTree = "<group>"; };
+		BD3F20591DFFF8A600A8DAB1 /* LLContactAddController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLContactAddController.m; sourceTree = "<group>"; };
+		BD3F205A1DFFF8A600A8DAB1 /* LLContactApplyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLContactApplyController.h; sourceTree = "<group>"; };
+		BD3F205B1DFFF8A600A8DAB1 /* LLContactApplyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLContactApplyController.m; sourceTree = "<group>"; };
+		BD3F205C1DFFF8A600A8DAB1 /* LLContactController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLContactController.h; sourceTree = "<group>"; };
+		BD3F205D1DFFF8A600A8DAB1 /* LLContactController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLContactController.m; sourceTree = "<group>"; };
+		BD3F205E1DFFF8A600A8DAB1 /* LLContactSearchHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLContactSearchHeaderView.h; sourceTree = "<group>"; };
+		BD3F205F1DFFF8A600A8DAB1 /* LLContactSearchHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLContactSearchHeaderView.m; sourceTree = "<group>"; };
+		BD3F20601DFFF8A600A8DAB1 /* LLContactSearchViews.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LLContactSearchViews.xib; sourceTree = "<group>"; };
+		BD3F20611DFFF8A600A8DAB1 /* LLContactWeChatIdSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLContactWeChatIdSearchController.h; sourceTree = "<group>"; };
+		BD3F20621DFFF8A600A8DAB1 /* LLContactWeChatIdSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLContactWeChatIdSearchController.m; sourceTree = "<group>"; };
+		BD3F20641DFFF8A600A8DAB1 /* LLConversationListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLConversationListCell.h; sourceTree = "<group>"; };
+		BD3F20651DFFF8A600A8DAB1 /* LLConversationListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLConversationListCell.m; sourceTree = "<group>"; };
+		BD3F20661DFFF8A600A8DAB1 /* LLConversationListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LLConversationListCell.xib; sourceTree = "<group>"; };
+		BD3F20671DFFF8A600A8DAB1 /* LLConversationListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLConversationListController.h; sourceTree = "<group>"; };
+		BD3F20681DFFF8A600A8DAB1 /* LLConversationListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLConversationListController.m; sourceTree = "<group>"; };
+		BD3F206A1DFFF8A600A8DAB1 /* LLLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLLoginViewController.h; sourceTree = "<group>"; };
+		BD3F206B1DFFF8A600A8DAB1 /* LLLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLLoginViewController.m; sourceTree = "<group>"; };
+		BD3F206D1DFFF8A600A8DAB1 /* LLArticleSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLArticleSearchController.h; sourceTree = "<group>"; };
+		BD3F206E1DFFF8A600A8DAB1 /* LLArticleSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLArticleSearchController.m; sourceTree = "<group>"; };
+		BD3F206F1DFFF8A600A8DAB1 /* LLBrandContactSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLBrandContactSearchController.h; sourceTree = "<group>"; };
+		BD3F20701DFFF8A600A8DAB1 /* LLBrandContactSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLBrandContactSearchController.m; sourceTree = "<group>"; };
+		BD3F20711DFFF8A600A8DAB1 /* LLChatSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLChatSearchController.h; sourceTree = "<group>"; };
+		BD3F20721DFFF8A600A8DAB1 /* LLChatSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLChatSearchController.m; sourceTree = "<group>"; };
+		BD3F20731DFFF8A600A8DAB1 /* LLCollectionTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLCollectionTextCell.h; sourceTree = "<group>"; };
+		BD3F20741DFFF8A600A8DAB1 /* LLCollectionTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLCollectionTextCell.m; sourceTree = "<group>"; };
+		BD3F20751DFFF8A600A8DAB1 /* LLMessageSearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLMessageSearchResultCell.h; sourceTree = "<group>"; };
+		BD3F20761DFFF8A600A8DAB1 /* LLMessageSearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLMessageSearchResultCell.m; sourceTree = "<group>"; };
+		BD3F20771DFFF8A600A8DAB1 /* LLMessageSearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LLMessageSearchResultCell.xib; sourceTree = "<group>"; };
+		BD3F20781DFFF8A600A8DAB1 /* LLSearchResultTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLSearchResultTableController.h; sourceTree = "<group>"; };
+		BD3F20791DFFF8A600A8DAB1 /* LLSearchResultTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLSearchResultTableController.m; sourceTree = "<group>"; };
+		BD3F207A1DFFF8A600A8DAB1 /* LLSNSSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLSNSSearchController.h; sourceTree = "<group>"; };
+		BD3F207B1DFFF8A600A8DAB1 /* LLSNSSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLSNSSearchController.m; sourceTree = "<group>"; };
+		BD3F207C1DFFF8A600A8DAB1 /* LLSubSearchBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLSubSearchBaseController.h; sourceTree = "<group>"; };
+		BD3F207D1DFFF8A600A8DAB1 /* LLSubSearchBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLSubSearchBaseController.m; sourceTree = "<group>"; };
 		BD9E6EC81DFFDF940022C487 /* LLMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLMeViewController.h; sourceTree = "<group>"; };
 		BD9E6EC91DFFDF940022C487 /* LLMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLMeViewController.m; sourceTree = "<group>"; };
 		BD9E6ECA1DFFDF940022C487 /* LLTableViewMeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLTableViewMeCell.h; sourceTree = "<group>"; };
@@ -798,6 +852,69 @@
 			path = Text;
 			sourceTree = "<group>";
 		};
+		BD3F20571DFFF8A600A8DAB1 /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+				BD3F20581DFFF8A600A8DAB1 /* LLContactAddController.h */,
+				BD3F20591DFFF8A600A8DAB1 /* LLContactAddController.m */,
+				BD3F205A1DFFF8A600A8DAB1 /* LLContactApplyController.h */,
+				BD3F205B1DFFF8A600A8DAB1 /* LLContactApplyController.m */,
+				BD3F205C1DFFF8A600A8DAB1 /* LLContactController.h */,
+				BD3F205D1DFFF8A600A8DAB1 /* LLContactController.m */,
+				BD3F205E1DFFF8A600A8DAB1 /* LLContactSearchHeaderView.h */,
+				BD3F205F1DFFF8A600A8DAB1 /* LLContactSearchHeaderView.m */,
+				BD3F20601DFFF8A600A8DAB1 /* LLContactSearchViews.xib */,
+				BD3F20611DFFF8A600A8DAB1 /* LLContactWeChatIdSearchController.h */,
+				BD3F20621DFFF8A600A8DAB1 /* LLContactWeChatIdSearchController.m */,
+			);
+			path = Contact;
+			sourceTree = "<group>";
+		};
+		BD3F20631DFFF8A600A8DAB1 /* Conversation */ = {
+			isa = PBXGroup;
+			children = (
+				BD3F20641DFFF8A600A8DAB1 /* LLConversationListCell.h */,
+				BD3F20651DFFF8A600A8DAB1 /* LLConversationListCell.m */,
+				BD3F20661DFFF8A600A8DAB1 /* LLConversationListCell.xib */,
+				BD3F20671DFFF8A600A8DAB1 /* LLConversationListController.h */,
+				BD3F20681DFFF8A600A8DAB1 /* LLConversationListController.m */,
+			);
+			path = Conversation;
+			sourceTree = "<group>";
+		};
+		BD3F20691DFFF8A600A8DAB1 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				BD3F206A1DFFF8A600A8DAB1 /* LLLoginViewController.h */,
+				BD3F206B1DFFF8A600A8DAB1 /* LLLoginViewController.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		BD3F206C1DFFF8A600A8DAB1 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				BD3F206D1DFFF8A600A8DAB1 /* LLArticleSearchController.h */,
+				BD3F206E1DFFF8A600A8DAB1 /* LLArticleSearchController.m */,
+				BD3F206F1DFFF8A600A8DAB1 /* LLBrandContactSearchController.h */,
+				BD3F20701DFFF8A600A8DAB1 /* LLBrandContactSearchController.m */,
+				BD3F20711DFFF8A600A8DAB1 /* LLChatSearchController.h */,
+				BD3F20721DFFF8A600A8DAB1 /* LLChatSearchController.m */,
+				BD3F20731DFFF8A600A8DAB1 /* LLCollectionTextCell.h */,
+				BD3F20741DFFF8A600A8DAB1 /* LLCollectionTextCell.m */,
+				BD3F20751DFFF8A600A8DAB1 /* LLMessageSearchResultCell.h */,
+				BD3F20761DFFF8A600A8DAB1 /* LLMessageSearchResultCell.m */,
+				BD3F20771DFFF8A600A8DAB1 /* LLMessageSearchResultCell.xib */,
+				BD3F20781DFFF8A600A8DAB1 /* LLSearchResultTableController.h */,
+				BD3F20791DFFF8A600A8DAB1 /* LLSearchResultTableController.m */,
+				BD3F207A1DFFF8A600A8DAB1 /* LLSNSSearchController.h */,
+				BD3F207B1DFFF8A600A8DAB1 /* LLSNSSearchController.m */,
+				BD3F207C1DFFF8A600A8DAB1 /* LLSubSearchBaseController.h */,
+				BD3F207D1DFFF8A600A8DAB1 /* LLSubSearchBaseController.m */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		BD9E6EC71DFFDF940022C487 /* Me */ = {
 			isa = PBXGroup;
 			children = (
@@ -828,6 +945,10 @@
 		BD9E6EDB1DFFE0850022C487 /* ChatSDK */ = {
 			isa = PBXGroup;
 			children = (
+				BD3F20571DFFF8A600A8DAB1 /* Contact */,
+				BD3F20631DFFF8A600A8DAB1 /* Conversation */,
+				BD3F20691DFFF8A600A8DAB1 /* Login */,
+				BD3F206C1DFFF8A600A8DAB1 /* Search */,
 				BD9E71361DFFE4E20022C487 /* AMap */,
 				BD9E70441DFFE2E90022C487 /* General */,
 				BD9E6FF41DFFE1DA0022C487 /* Data */,
@@ -1734,6 +1855,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD9E70F11DFFE2E90022C487 /* CellBlueSelected.png in Resources */,
+				BD3F20851DFFF8A600A8DAB1 /* LLConversationListCell.xib in Resources */,
 				BD9E6F9C1DFFE0850022C487 /* LLShareCollectionViewCell.xib in Resources */,
 				BD9E70FA1DFFE2E90022C487 /* FriendsSendsPicturesSelectBigNIcon@2x.png in Resources */,
 				BD9E70F51DFFE2E90022C487 /* FriendsSendsPicturesNumberIcon.png in Resources */,
@@ -1750,6 +1872,7 @@
 				BD9E6F851DFFE0850022C487 /* LLVideoPlaybackController.xib in Resources */,
 				FFF14BD31D9142A60044E6A1 /* mss_browseLoading@2x.png in Resources */,
 				BD9E70F91DFFE2E90022C487 /* FriendsSendsPicturesSelectBigNIcon.png in Resources */,
+				BD3F20821DFFF8A600A8DAB1 /* LLContactSearchViews.xib in Resources */,
 				BD9E70FC1DFFE2E90022C487 /* FriendsSendsPicturesSelectBigYIcon@2x.png in Resources */,
 				BD9E6F981DFFE0850022C487 /* LLChatMoreBottomBar.xib in Resources */,
 				BD9E70FF1DFFE2E90022C487 /* FriendsSendsPicturesSelectYIcon.png in Resources */,
@@ -1761,6 +1884,7 @@
 				FFF14BD41D9142A60044E6A1 /* mss_browseLoading@3x.png in Resources */,
 				BD9E71051DFFE2E90022C487 /* VideoSendIcon@2x.png in Resources */,
 				BD9E70F31DFFE2E90022C487 /* CellGreySelected.png in Resources */,
+				BD3F208D1DFFF8A600A8DAB1 /* LLMessageSearchResultCell.xib in Resources */,
 				BD9E71011DFFE2E90022C487 /* MMVideoPreviewPlay@2x.png in Resources */,
 				BD9E70F81DFFE2E90022C487 /* FriendsSendsPicturesQuitBigIcon@2x.png in Resources */,
 				BD9E70F41DFFE2E90022C487 /* CellGreySelected@2x.png in Resources */,
@@ -1853,6 +1977,7 @@
 				BD9E6F791DFFE0850022C487 /* LLMessageVoiceCell.m in Sources */,
 				BD9E71131DFFE2E90022C487 /* README.mdown in Sources */,
 				BD9E71281DFFE2EA0022C487 /* UITextView+LLDebugOnly.m in Sources */,
+				BD3F208E1DFFF8A600A8DAB1 /* LLSearchResultTableController.m in Sources */,
 				BD9E70321DFFE1DA0022C487 /* LLConfig.m in Sources */,
 				FF995E521D87E02300C62FB0 /* NSString+IOSUtils.m in Sources */,
 				FFF14BDB1D9142A60044E6A1 /* MSSBrowseModel.m in Sources */,
@@ -1860,6 +1985,7 @@
 				FF995E561D87E02300C62FB0 /* UIView+Utils.m in Sources */,
 				BD9E6F7C1DFFE0850022C487 /* LLImageAnimationView.m in Sources */,
 				BD9E71161DFFE2E90022C487 /* LLLeftAlignedCollectionViewFlowLayout.m in Sources */,
+				BD3F20861DFFF8A600A8DAB1 /* LLConversationListController.m in Sources */,
 				BD9E6F9D1DFFE0850022C487 /* LLVoiceIndicatorView.m in Sources */,
 				BD9E71211DFFE2E90022C487 /* UICollectionView+LLExt.m in Sources */,
 				BD9E71061DFFE2E90022C487 /* LLAssetImageCell.m in Sources */,
@@ -1875,11 +2001,13 @@
 				BD9E70421DFFE1DA0022C487 /* LLContactManager.m in Sources */,
 				BD9E6F911DFFE0850022C487 /* LLLocationTableViewCell.m in Sources */,
 				BD9E71591DFFED0F0022C487 /* LLViewController.m in Sources */,
+				BD3F20831DFFF8A600A8DAB1 /* LLContactWeChatIdSearchController.m in Sources */,
 				FF995E1A1D87DC1800C62FB0 /* AppDelegate.m in Sources */,
 				BD9E71221DFFE2E90022C487 /* UIColor+LLExt.m in Sources */,
 				BD9E70381DFFE1DA0022C487 /* LLMessageSearchResultModel.m in Sources */,
 				BD9E6F961DFFE0850022C487 /* UIImagePickerController_L1.m in Sources */,
 				FFA283311D8E7E1100888EDF /* PictureCell.m in Sources */,
+				BD3F208C1DFFF8A600A8DAB1 /* LLMessageSearchResultCell.m in Sources */,
 				BD9E703E1DFFE1DA0022C487 /* LLMessageUploader.m in Sources */,
 				BD9E6F841DFFE0850022C487 /* LLVideoPlaybackController.m in Sources */,
 				BD9E71071DFFE2E90022C487 /* LLAssetVideoCell.m in Sources */,
@@ -1890,14 +2018,19 @@
 				FF995E171D87DC1800C62FB0 /* main.m in Sources */,
 				BD9E6F751DFFE0850022C487 /* LLMessageLocationCell.m in Sources */,
 				BD9E71291DFFE2EA0022C487 /* UIView+LLExt.m in Sources */,
+				BD3F20841DFFF8A600A8DAB1 /* LLConversationListCell.m in Sources */,
+				BD3F207E1DFFF8A600A8DAB1 /* LLContactAddController.m in Sources */,
+				BD3F208F1DFFF8A600A8DAB1 /* LLSNSSearchController.m in Sources */,
 				FF995E601D87E2ED00C62FB0 /* UserModel.m in Sources */,
 				FF995E511D87E02300C62FB0 /* EmptyView.m in Sources */,
 				BD9E6F8C1DFFE0850022C487 /* LLChatViewController.m in Sources */,
 				BD9E6F951DFFE0850022C487 /* MFMailComposeViewController_LL.m in Sources */,
+				BD3F20881DFFF8A600A8DAB1 /* LLArticleSearchController.m in Sources */,
 				BD9E71181DFFE2E90022C487 /* LLSearchViewController.m in Sources */,
 				BD9E6F9B1DFFE0850022C487 /* LLShareCollectionViewCell.m in Sources */,
 				FFF14BDE1D9142A60044E6A1 /* MSSBrowseZoomScrollView.m in Sources */,
 				BD9E71081DFFE2E90022C487 /* LLImageNumberView.m in Sources */,
+				BD3F208B1DFFF8A600A8DAB1 /* LLCollectionTextCell.m in Sources */,
 				BD9E6F711DFFE0850022C487 /* LLMessageBaseCell.m in Sources */,
 				BD9E6F821DFFE0850022C487 /* LLVideoDisplayView.m in Sources */,
 				BD9E71241DFFE2E90022C487 /* UIImage+LLExt.m in Sources */,
@@ -1913,6 +2046,7 @@
 				BD9E70ED1DFFE2E90022C487 /* LLAssetManager.m in Sources */,
 				BD9E71301DFFE2EA0022C487 /* LLUtils+Notification.m in Sources */,
 				BD9E6F871DFFE0850022C487 /* LLChatTextView.m in Sources */,
+				BD3F20801DFFF8A600A8DAB1 /* LLContactController.m in Sources */,
 				BD9E71261DFFE2E90022C487 /* UIScrollView+LLExt.m in Sources */,
 				BD9E6F721DFFE0850022C487 /* LLMessageDateCell.m in Sources */,
 				BD9E70331DFFE1DA0022C487 /* InvitationManager.m in Sources */,
@@ -1959,17 +2093,23 @@
 				BD9E6F881DFFE0850022C487 /* LLCollectionEmotionCell.m in Sources */,
 				BD9E711A1DFFE2E90022C487 /* LLTableViewCell.m in Sources */,
 				BD9E70E81DFFE2E90022C487 /* amrFileCodec.mm in Sources */,
+				BD3F20901DFFF8A600A8DAB1 /* LLSubSearchBaseController.m in Sources */,
 				BD9E6F931DFFE0850022C487 /* LLTextDisplayController.m in Sources */,
+				BD3F20871DFFF8A600A8DAB1 /* LLLoginViewController.m in Sources */,
 				BD9E70E91DFFE2E90022C487 /* wav.mm in Sources */,
 				BD9E70391DFFE1DA0022C487 /* LLContactModel.m in Sources */,
 				FF995E4B1D87E02300C62FB0 /* NSDictionary+CodeFragments.m in Sources */,
 				BD9E6ED81DFFDF940022C487 /* LLMeSettingController.m in Sources */,
+				BD3F208A1DFFF8A600A8DAB1 /* LLChatSearchController.m in Sources */,
+				BD3F20891DFFF8A600A8DAB1 /* LLBrandContactSearchController.m in Sources */,
+				BD3F20811DFFF8A600A8DAB1 /* LLContactSearchHeaderView.m in Sources */,
 				B2B139521D8A1BE500AAC4E5 /* MoreViewController.m in Sources */,
 				BD9E6F771DFFE0850022C487 /* LLMessageTextCell.m in Sources */,
 				BD9E71191DFFE2E90022C487 /* LLSimpleTextLabel.m in Sources */,
 				BD9E711F1DFFE2E90022C487 /* NSDate+LLExt.m in Sources */,
 				BD9E710F1DFFE2E90022C487 /* LLImageShowController.m in Sources */,
 				BD9E710A1DFFE2E90022C487 /* LLImageSelectIndicator.m in Sources */,
+				BD3F207F1DFFF8A600A8DAB1 /* LLContactApplyController.m in Sources */,
 				BD9E70E71DFFE2E90022C487 /* LLAudioManager.m in Sources */,
 				BD9E712C1DFFE2EA0022C487 /* LLUtils+Audio.m in Sources */,
 				BD9E70301DFFE1DA0022C487 /* LLMessageModelManager.m in Sources */,
