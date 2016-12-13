@@ -11,7 +11,8 @@
 #import "TextViewController.h"
 #import "PictureViewController.h"
 #import "CollectionViewController.h"
-#import "MoreViewController.h"
+//#import "MoreViewController.h"
+#import "LLMeViewController.h"
 
 
 @interface AppDelegate ()
@@ -39,7 +40,7 @@
 #pragma mark - 初始化自定义tabbar
 - (void) initTabbarAction {
     //控制器数组
-    NSArray *controllerArray = @[@"TextViewController",@"PictureViewController",@"CollectionViewController",@"LocalAbumViewController",@"MoreViewController"];
+    NSArray *controllerArray = @[@"TextViewController",@"PictureViewController",@"CollectionViewController",@"LocalAbumViewController",@"LLMeViewController"];
     //title数组
     NSArray * titleArray = @[@"文字",@"图片",@"收藏",@"本地",@"更多"];
     //默认图片数组

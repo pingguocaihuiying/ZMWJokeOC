@@ -15,8 +15,6 @@
 #import <MJRefresh.h>
 #import "Tooles.h"
 
-#import "MoreViewController.h"
-
 @interface TextViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView       *tableView;
