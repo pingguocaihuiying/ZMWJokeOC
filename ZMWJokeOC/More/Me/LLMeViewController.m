@@ -30,7 +30,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"更多";
-    self.title = @"更多";
     [self initTableView];
     NSArray<LLTableViewCellData *> *section1 = @[
             [[LLTableViewCellData alloc] initWithTitle:@"相册" iconName:@"MoreMyAlbum"],
