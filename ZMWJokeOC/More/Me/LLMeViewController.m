@@ -44,7 +44,7 @@
     ];
     
     NSArray<LLTableViewCellData *> *section3 = @[
-            [[LLTableViewCellData alloc] initWithTitle:@"设置" iconName:@"MoreSetting"],
+            [[LLTableViewCellData alloc] initWithTitle:@"退出" iconName:@"MoreSetting"],
     ];
     
     self.dataSource = @[section1, section2, section3];
@@ -165,13 +165,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+
     
-//    if (indexPath.section == 3) {
-//        LLMeSettingController  *settingVC = (LLMeSettingController *)[[LLUtils mainStoryboard] instantiateViewControllerWithIdentifier:@"MeSettingController"];
-//        settingVC.hidesBottomBarWhenPushed = YES;
-//        
-//        [self.navigationController pushViewController:settingVC animated:YES];
-//    } 
+    if (indexPath.section == 3) {
+        if (indexPath.row == 0) { // 退出登录
+            [[LLClientManager sharedManager] logout];
+        }
+    }
 }
 
 
