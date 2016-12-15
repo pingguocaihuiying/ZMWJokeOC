@@ -315,8 +315,8 @@
     LLNavigationController *navigationVC = [[LLNavigationController alloc] initWithRootViewController:vc];
     navigationVC.view.backgroundColor = [UIColor clearColor];
     vc.delegate = self;
-    LLChatSearchController *resultController = [[LLUtils mainStoryboard] instantiateViewControllerWithIdentifier:SB_CONVERSATION_SEARCH_VC_ID];
-    
+//    LLChatSearchController *resultController = [[LLUtils mainStoryboard] instantiateViewControllerWithIdentifier:SB_CONVERSATION_SEARCH_VC_ID];
+    LLChatSearchController *resultController = [[LLChatSearchController alloc] init];
     vc.searchResultController = resultController;
     resultController.searchViewController = vc;
     [vc showInViewController:self fromSearchBar:self.searchBar];

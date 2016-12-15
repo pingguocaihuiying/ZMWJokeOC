@@ -18,6 +18,10 @@
 #import <Masonry.h>
 #import "UtilMacro.h"
 
+// 聊天相关
+#import "LLConversationListController.h"
+#import "LLChatViewController.h"
+
 @interface LLMeViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -32,8 +36,8 @@
     self.navigationItem.title = @"更多";
     [self initTableView];
     NSArray<LLTableViewCellData *> *section1 = @[
-            [[LLTableViewCellData alloc] initWithTitle:@"相册" iconName:@"MoreMyAlbum"],
-            [[LLTableViewCellData alloc] initWithTitle:@"收藏" iconName:@"MoreMyFavorites"],
+            [[LLTableViewCellData alloc] initWithTitle:@"好友列表" iconName:@"MoreMyAlbum"],
+            [[LLTableViewCellData alloc] initWithTitle:@"最近消息列表" iconName:@"MoreMyFavorites"],
             [[LLTableViewCellData alloc] initWithTitle:@"钱包" iconName:@"MoreMyBankCard"],
             [[LLTableViewCellData alloc] initWithTitle:@"卡包" iconName:@"MyCardPackageIcon"],
     ];
@@ -165,8 +169,21 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 
-    
-    if (indexPath.section == 3) {
+    if (indexPath.section == 0) {
+        
+    } else if (indexPath.section == 1) {
+        if (indexPath.row == 0) { // 好友列表
+            LLConversationListController *vc = [[LLConversationListController alloc] init];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        } else if (indexPath.row == 1) { // 最近消息列表
+            LLChatViewController *vc = [[LLChatViewController alloc] init];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    } else if (indexPath.section == 2) {
+        
+    } else if (indexPath.section == 3) {
         if (indexPath.row == 0) { // 退出登录
             [[LLClientManager sharedManager] logout];
         }
