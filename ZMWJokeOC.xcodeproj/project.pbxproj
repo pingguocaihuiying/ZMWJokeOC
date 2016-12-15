@@ -207,6 +207,7 @@
 		BD9E71541DFFE8C00022C487 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BD9E71531DFFE8C00022C487 /* libiconv.tbd */; };
 		BD9E71561DFFE8CA0022C487 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BD9E71551DFFE8CA0022C487 /* libz.tbd */; };
 		BD9E71591DFFED0F0022C487 /* LLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD9E71581DFFED0F0022C487 /* LLViewController.m */; };
+		BDABE34F1E0229BB003BA455 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDABE34E1E0229BB003BA455 /* ChatViewController.m */; };
 		FF0467491D911B7F008B30E7 /* PictureRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0467481D911B7F008B30E7 /* PictureRequestManager.m */; };
 		FF2F9D231D9B93C6005FC20B /* LocalAbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2F9D221D9B93C6005FC20B /* LocalAbumViewController.m */; };
 		FF59D3AA1D8E9A1C003888ED /* TextModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF59D3A91D8E9A1C003888ED /* TextModel.m */; };
@@ -657,6 +658,8 @@
 		BD9E71551DFFE8CA0022C487 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		BD9E71571DFFED0F0022C487 /* LLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLViewController.h; sourceTree = "<group>"; };
 		BD9E71581DFFED0F0022C487 /* LLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLViewController.m; sourceTree = "<group>"; };
+		BDABE34D1E0229BB003BA455 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
+		BDABE34E1E0229BB003BA455 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 		BF05F4AF5821C082D0B7E24A /* Pods-ZMWJokeOC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZMWJokeOC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZMWJokeOC/Pods-ZMWJokeOC.debug.xcconfig"; sourceTree = "<group>"; };
 		FF0467471D911B7F008B30E7 /* PictureRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureRequestManager.h; sourceTree = "<group>"; };
 		FF0467481D911B7F008B30E7 /* PictureRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureRequestManager.m; sourceTree = "<group>"; };
@@ -968,6 +971,8 @@
 				BD9E6F0C1DFFE0850022C487 /* Input */,
 				BD9E6F1B1DFFE0850022C487 /* LLChatViewController.h */,
 				BD9E6F1C1DFFE0850022C487 /* LLChatViewController.m */,
+				BDABE34D1E0229BB003BA455 /* ChatViewController.h */,
+				BDABE34E1E0229BB003BA455 /* ChatViewController.m */,
 				BD9E6F1D1DFFE0850022C487 /* Location */,
 				BD9E6F291DFFE0850022C487 /* Sight */,
 				BD9E6F2C1DFFE0850022C487 /* ViewControllers */,
@@ -2128,6 +2133,7 @@
 				BD9E703A1DFFE1DA0022C487 /* LLPushOptions.m in Sources */,
 				FFF14BD61D9142A60044E6A1 /* MSSBrowseActionSheetCell.m in Sources */,
 				BD9E711D1DFFE2E90022C487 /* LLVideoPlaybackView.m in Sources */,
+				BDABE34F1E0229BB003BA455 /* ChatViewController.m in Sources */,
 				BD9E6F891DFFE0850022C487 /* LLCollectionEmotionTip.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

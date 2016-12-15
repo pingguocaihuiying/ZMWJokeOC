@@ -66,17 +66,17 @@ LLDeviceManagerDelegate, LLSightCapatureControllerDelegate, LLTextActionDelegate
 MFMailComposeViewControllerDelegate
 >
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) UITableView *tableView;
 
-@property (weak, nonatomic) IBOutlet LLChatInputView *chatInputView;
+@property (strong, nonatomic) LLChatInputView *chatInputView;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *chatInputViewBottomConstraint;
+//@property (strong, nonatomic) NSLayoutConstraint *chatInputViewBottomConstraint;
 
 @property (nonatomic) NSMutableArray<LLMessageModel *> *dataSource;
 
-@property (strong, nonatomic) IBOutlet UIView *refreshView;
+@property (strong, nonatomic) UIView *refreshView;
 
-@property (strong, nonatomic) IBOutlet LLChatVoiceTipView *voiceTipView;
+@property (strong, nonatomic) LLChatVoiceTipView *voiceTipView;
 
 @property (nonatomic) UIImagePickerController_L1 *imagePicker;
 
@@ -87,9 +87,9 @@ MFMailComposeViewControllerDelegate
 
 @property (nonatomic) NSMutableArray<LLMessageModel *> *selectedMessageModels;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeightConstraint;
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewBottomConstraint;
+//@property (strong, nonatomic) NSLayoutConstraint *tableViewHeightConstraint;
+//
+//@property (strong, nonatomic) NSLayoutConstraint *tableViewBottomConstraint;
 
 
 @end
@@ -130,20 +130,28 @@ MFMailComposeViewControllerDelegate
     self.navigationItem.backBarButtonItem = backItem;
     
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - NAVIGATION_BAR_HEIGHT - TABBAR_HEIGHT) style:UITableViewStylePlain];
+    [self.view addSubview:self.tableView];
     self.tableView.backgroundColor = TABLEVIEW_BACKGROUND_COLOR;
     self.tableView.contentInset = UIEdgeInsetsZero;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
     
+    self.refreshView = [[UIView alloc] init];
     self.refreshView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 40);
+    [self.view addSubview:self.refreshView];
+    self.voiceTipView = [[LLChatVoiceTipView alloc] init];
     self.voiceTipView.frame = CGRectMake(0, 64, SCREEN_WIDTH, 45);
+    [self.view addSubview:self.voiceTipView];
     
     tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHandler:)];
     tapGesture.numberOfTapsRequired = 1;
     tapGesture.numberOfTouchesRequired = 1;
     [self.tableView addGestureRecognizer:tapGesture];
     
+    self.chatInputView = [[LLChatInputView alloc] initWithFrame:CGRectMake(0, self.tableView.bottom, SCREEN_WIDTH, 50)];
+    [self.view addSubview:self.chatInputView];
     self.chatInputView.delegate = self;
     self.dataSource = [NSMutableArray array];
     
@@ -155,9 +163,9 @@ MFMailComposeViewControllerDelegate
 }
 
 - (void)updateViewConstraints {
-    self.tableViewHeightConstraint.constant = SCREEN_HEIGHT - 64 - MAIN_BOTTOM_TABBAR_HEIGHT;
+//    self.tableViewHeightConstraint.constant = SCREEN_HEIGHT - 64 - MAIN_BOTTOM_TABBAR_HEIGHT;
     
-    [super updateViewConstraints];
+//    [super updateViewConstraints];
     
 }
 
@@ -431,12 +439,12 @@ MFMailComposeViewControllerDelegate
     [self.chatInputView prepareKeyboardWhenConversationWillBegin];
     
     if (self.conversationModel.draft.length == 0 ) {
-        self.chatInputViewBottomConstraint.constant = 0;
+//        self.chatInputViewBottomConstraint.constant = 0;
     }
     
     [self.view layoutIfNeeded];
     
-    self.tableView.contentInset = UIEdgeInsetsMake(CGRectGetHeight(self.chatInputView.frame) - MAIN_BOTTOM_TABBAR_HEIGHT + self.chatInputViewBottomConstraint.constant, 0, 0, 0);
+//    self.tableView.contentInset = UIEdgeInsetsMake(CGRectGetHeight(self.chatInputView.frame) - MAIN_BOTTOM_TABBAR_HEIGHT + self.chatInputViewBottomConstraint.constant, 0, 0, 0);
     self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
 
     self.dataSource = [self processData:self.conversationModel];
@@ -899,13 +907,13 @@ MFMailComposeViewControllerDelegate
         [UIView setAnimationsEnabled:NO];
     }
     
-    BOOL needScrollToBottom = ((self.chatInputViewBottomConstraint.constant == 0) && (constant > 0));
+//    BOOL needScrollToBottom = ((self.chatInputViewBottomConstraint.constant == 0) && (constant > 0));
     [UIView animateWithDuration:keyboardInfo.duration
                           delay:0
                         options:UIViewAnimationOptionBeginFromCurrentState |
                                 keyboardInfo.curve
                      animations:^() {
-                         self.chatInputViewBottomConstraint.constant = constant;
+//                         self.chatInputViewBottomConstraint.constant = constant;
                          [self.view layoutIfNeeded];
                          
                          self.tableView.contentInset = UIEdgeInsetsMake(constant + CGRectGetHeight(self.chatInputView.frame) - MAIN_BOTTOM_TABBAR_HEIGHT, 0, 0, 0);
@@ -914,9 +922,9 @@ MFMailComposeViewControllerDelegate
                      }
                      completion: nil];
     
-    if (needScrollToBottom) {
-        [self scrollToBottom:keyboardInfo.duration > 0];
-    }
+//    if (needScrollToBottom) {
+//        [self scrollToBottom:keyboardInfo.duration > 0];
+//    }
 
     if (keyboardInfo.duration == 0) {
         [UIView setAnimationsEnabled:YES];
@@ -1184,8 +1192,8 @@ MFMailComposeViewControllerDelegate
     self.chatMoreBottomBar.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 50);
     [UIView animateWithDuration:0.3 animations:^{
         self.chatMoreBottomBar.frame = CGRectMake(0, SCREEN_HEIGHT - MAIN_BOTTOM_TABBAR_HEIGHT - NAVIGATION_BAR_HEIGHT, SCREEN_WIDTH, MAIN_BOTTOM_TABBAR_HEIGHT);
-        self.chatInputViewBottomConstraint.constant = -CGRectGetHeight(self.chatInputView.frame);
-        self.tableViewBottomConstraint.constant = MAIN_BOTTOM_TABBAR_HEIGHT;
+//        self.chatInputViewBottomConstraint.constant = -CGRectGetHeight(self.chatInputView.frame);
+//        self.tableViewBottomConstraint.constant = MAIN_BOTTOM_TABBAR_HEIGHT;
         [self.view layoutIfNeeded];
         
         self.tableView.contentInset = UIEdgeInsetsZero;
@@ -1214,8 +1222,8 @@ MFMailComposeViewControllerDelegate
     self.chatInputView.delegate = self;
     [UIView animateWithDuration:0.3 animations:^{
         self.chatMoreBottomBar.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 50);
-        self.chatInputViewBottomConstraint.constant = 0;
-        self.tableViewBottomConstraint.constant = 0;
+//        self.chatInputViewBottomConstraint.constant = 0;
+//        self.tableViewBottomConstraint.constant = 0;
         [self.view layoutIfNeeded];
         self.tableView.contentInset = UIEdgeInsetsMake(CGRectGetHeight(self.chatInputView.frame) - MAIN_BOTTOM_TABBAR_HEIGHT, 0, 0, 0);
         self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
@@ -2145,8 +2153,8 @@ MFMailComposeViewControllerDelegate
 
     self.view.backgroundColor = TABLEVIEW_BACKGROUND_COLOR;
     [UIView animateWithDuration:DEFAULT_DURATION animations:^{
-        self.chatInputViewBottomConstraint.constant = -CGRectGetHeight(self.chatInputView.frame);
-        self.tableViewBottomConstraint.constant = MAIN_BOTTOM_TABBAR_HEIGHT;
+//        self.chatInputViewBottomConstraint.constant = -CGRectGetHeight(self.chatInputView.frame);
+//        self.tableViewBottomConstraint.constant = MAIN_BOTTOM_TABBAR_HEIGHT;
         
         self.tableView.contentInset = UIEdgeInsetsMake(0, 0, _height - MAIN_BOTTOM_TABBAR_HEIGHT - NAVIGATION_BAR_HEIGHT, 0);
         self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
@@ -2181,8 +2189,8 @@ MFMailComposeViewControllerDelegate
         [dimView removeFromSuperview];
         
         [UIView animateWithDuration:DEFAULT_DURATION animations:^{
-            self.tableViewBottomConstraint.constant = 0;
-            self.chatInputViewBottomConstraint.constant = 0;
+//            self.tableViewBottomConstraint.constant = 0;
+//            self.chatInputViewBottomConstraint.constant = 0;
             [self.view layoutIfNeeded];
             self.tableView.contentInset = UIEdgeInsetsMake(CGRectGetHeight(self.chatInputView.frame) - MAIN_BOTTOM_TABBAR_HEIGHT, 0, 0, 0);
             self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
@@ -2203,8 +2211,8 @@ MFMailComposeViewControllerDelegate
     UIView *dimView = [self.view viewWithTag:DIM_VIEW_TAG];
     [dimView removeFromSuperview];
     self.view.backgroundColor = VIEW_BACKGROUND_COLOR;
-    self.tableViewBottomConstraint.constant = 0;
-    self.chatInputViewBottomConstraint.constant = 0;
+//    self.tableViewBottomConstraint.constant = 0;
+//    self.chatInputViewBottomConstraint.constant = 0;
     _sightController = nil;
 }
 
