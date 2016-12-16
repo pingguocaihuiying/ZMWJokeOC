@@ -33,15 +33,15 @@
 
 @interface LLChatInputView () <UITextViewDelegate, ILLEmotionInputDelegate, LLChatShareDelegate, UIScrollViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIButton *chatVoiceBtn;
+@property (strong, nonatomic) UIButton *chatVoiceBtn;
 
-@property (weak, nonatomic) IBOutlet UIButton *chatEmotionBtn;
+@property (strong, nonatomic) UIButton *chatEmotionBtn;
 
-@property (weak, nonatomic) IBOutlet UIButton *chatShareBtn;
+@property (strong, nonatomic) UIButton *chatShareBtn;
 
-@property (weak, nonatomic) IBOutlet UIButton *chatRecordBtn;
+@property (strong, nonatomic) UIButton *chatRecordBtn;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *chatTextViewHeightConstraint;
+//@property (strong, nonatomic) NSLayoutConstraint *chatTextViewHeightConstraint;
 
 @property (nonatomic) LLShareInputView *shareInputView;
 
@@ -73,9 +73,8 @@
     CGFloat maxTextViewHeight;
 }
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    
+- (instancetype)init {
+    self = [super init];
     _keyboardType = kLLKeyboardTypeNone;
     touchDownTime = 0;
 
@@ -125,6 +124,7 @@
     endScrollingAnimation = YES;
     textViewHeightConstant = MIN_TEXT_HEIGHT;
     maxTextViewHeight = TEXT_VIEW_MAX_LINE * lineHeight;
+    return self;
 }
 
 - (void)updateConstraints {
@@ -183,7 +183,7 @@
         case kLLKeyboardTypeNone:
         {
             SET_KEYBOARD_TYPE(kLLKeyboardTypeRecord);
-            self.chatTextViewHeightConstraint.constant = MIN_TEXT_HEIGHT;
+//            self.chatTextViewHeightConstraint.constant = MIN_TEXT_HEIGHT;
             [self layoutIfNeeded];
             keyboardShowHideInfo.keyboardHeight = 0;
             keyboardShowHideInfo.duration = 0.25;
@@ -216,7 +216,7 @@
             keyboardShowHideInfo.keyboardHeight = CHAT_KEYBOARD_PANEL_HEIGHT;
             SET_KEYBOARD_TYPE(kLLKeyboardTypeEmotion);
             keyboardShowHideInfo.duration = 0.25;
-            self.chatTextViewHeightConstraint.constant = textViewHeightConstant;
+//            self.chatTextViewHeightConstraint.constant = textViewHeightConstant;
             [self layoutIfNeeded];
             [self.delegate updateKeyboard:keyboardShowHideInfo];
             [self showEmotionKeyboard:NO];
@@ -247,7 +247,7 @@
             keyboardShowHideInfo.keyboardHeight = CHAT_KEYBOARD_PANEL_HEIGHT;
             SET_KEYBOARD_TYPE(kLLKeyboardTypePanel);
             keyboardShowHideInfo.duration = 0.25;
-            self.chatTextViewHeightConstraint.constant = textViewHeightConstant;
+//            self.chatTextViewHeightConstraint.constant = textViewHeightConstant;
             [self layoutIfNeeded];
             [self.delegate updateKeyboard:keyboardShowHideInfo];
             [self showPanelKeyboard:NO];
@@ -435,7 +435,7 @@
                          animations:^{
             self.chatInputTextView.alpha = 1;
             self.chatRecordBtn.alpha = 0;
-                             self.chatTextViewHeightConstraint.constant = textViewHeightConstant;
+//                             self.chatTextViewHeightConstraint.constant = textViewHeightConstant;
                              [self layoutIfNeeded];
             
         } completion:^(BOOL finished) {
@@ -464,7 +464,7 @@
             [UIView animateWithDuration:duration animations:^{
                 self.chatInputTextView.alpha = 0;
                 self.chatRecordBtn.alpha = 1;
-                self.chatTextViewHeightConstraint.constant = MIN_TEXT_HEIGHT;
+//                self.chatTextViewHeightConstraint.constant = MIN_TEXT_HEIGHT;
                 [self layoutIfNeeded];
             } completion:^(BOOL finished) {
                 
@@ -644,11 +644,11 @@
         self.chatInputTextView.textContainerInset = Regular_EdgeInset;
         size.height = MIN_TEXT_HEIGHT;
         
-        if (self.chatTextViewHeightConstraint.constant != size.height) {
-            self.chatTextViewHeightConstraint.constant = size.height;
-            textViewHeightConstant = size.height;
-            [self layoutIfNeeded];
-        }
+//        if (self.chatTextViewHeightConstraint.constant != size.height) {
+//            self.chatTextViewHeightConstraint.constant = size.height;
+//            textViewHeightConstant = size.height;
+//            [self layoutIfNeeded];
+//        }
         
     }else {
         if (size.height >= (TEXT_VIEW_MAX_LINE * lineHeight - lineSpacing - FLT_EPSILON)) {
@@ -675,11 +675,11 @@
             
         }
 
-        if (self.chatTextViewHeightConstraint.constant != size.height) {
-            self.chatTextViewHeightConstraint.constant = size.height;
-            textViewHeightConstant = size.height;
-            [self layoutIfNeeded];
-        }
+//        if (self.chatTextViewHeightConstraint.constant != size.height) {
+//            self.chatTextViewHeightConstraint.constant = size.height;
+//            textViewHeightConstant = size.height;
+//            [self layoutIfNeeded];
+//        }
 
     }
     
@@ -720,15 +720,15 @@
         
         size.height = MIN_TEXT_HEIGHT;
         
-        if (self.chatTextViewHeightConstraint.constant == size.height)
-            return;
+//        if (self.chatTextViewHeightConstraint.constant == size.height)
+//            return;
 
         [UIView animateWithDuration:DEFAULT_DURATION
                               delay:0
                             options:UIViewAnimationOptionCurveEaseInOut |
                                     UIViewAnimationOptionBeginFromCurrentState
                          animations:^{
-                             self.chatTextViewHeightConstraint.constant = size.height;
+//                             self.chatTextViewHeightConstraint.constant = size.height;
                              textViewHeightConstant = size.height;
                              [self layoutIfNeeded];
                          }
@@ -770,15 +770,15 @@
             [weakSelf adjustTextViewPosition:YES];
         });
         
-        if (self.chatTextViewHeightConstraint.constant == size.height)
-            return;
+//        if (self.chatTextViewHeightConstraint.constant == size.height)
+//            return;
         
         [UIView animateWithDuration:0.25
                               delay:0
                             options:UIViewAnimationOptionCurveEaseInOut |
                                     UIViewAnimationOptionBeginFromCurrentState
                          animations:^{
-                             self.chatTextViewHeightConstraint.constant = size.height;
+//                             self.chatTextViewHeightConstraint.constant = size.height;
                              textViewHeightConstant = size.height;
                              [self layoutIfNeeded];
                          }

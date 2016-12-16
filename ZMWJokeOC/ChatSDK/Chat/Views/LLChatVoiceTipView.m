@@ -21,7 +21,7 @@
                      }];
 }
 
-- (IBAction)closeButtonPressed:(UIButton *)sender {
+- (void)closeButtonPressed:(UIButton *)sender {
     [self removeWithAnimation];
 }
 

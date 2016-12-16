@@ -46,6 +46,9 @@
 #import "MFMailComposeViewController_LL.h"
 #import "LLNavigationController.h"
 
+#import "Tooles.h"
+#import "LLEmotionInputView.h"
+
 #define DIM_VIEW_TAG    100 
 #define BLACK_BAR_VIEW_TAG  101
 #define TABLEVIEW_BACKGROUND_COLOR  [UIColor colorFromHexString:@"0xEFEFEF"]
@@ -77,8 +80,19 @@ MFMailComposeViewControllerDelegate
 }
 
 @property (nonatomic, strong) UITableView                   *tableView;
-@property (nonatomic, strong) LLChatInputView               *chatInputView;
 @property (nonatomic, strong) LLChatVoiceTipView            *voiceTipView;
+
+/// 底部框，包含输入框
+@property (nonatomic, strong) LLChatInputView               *chatInputView;
+
+/// 自定义的底部view
+@property (nonatomic, strong) UIView                        *bottomView;
+@property (nonatomic, strong) UIButton                      *voiceBtn;
+@property (nonatomic, strong) UITextField                   *inputTF;
+@property (nonatomic, strong) UIButton                      *emotionBtn;
+@property (nonatomic, strong) UIButton                      *moreBtn;
+
+
 @property (nonatomic, strong) LLVoiceIndicatorView          *voiceIndicatorView;
 @property (nonatomic, strong) LLChatMoreBottomBar           *chatMoreBottomBar;
 @property (nonatomic, strong) LLChatSharePanel              *chatSharePanel;
@@ -123,14 +137,71 @@ MFMailComposeViewControllerDelegate
     tapGesture.numberOfTouchesRequired = 1;
     [self.tableView addGestureRecognizer:tapGesture];
     
-    self.chatInputView = [[LLChatInputView alloc] initWithFrame:CGRectMake(0, self.tableView.bottom, SCREEN_WIDTH, 50)];
-    [self.view addSubview:self.chatInputView];
-    self.chatInputView.delegate = self;
-    self.dataSource = [NSMutableArray array];
+//    self.chatInputView = [[LLChatInputView alloc] initWithFrame:CGRectMake(0, self.tableView.bottom, SCREEN_WIDTH, 50)];
+//    [self.view addSubview:self.chatInputView];
+//    self.chatInputView.delegate = self;
     
+    // 自定义底部View
+    self.bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, self.tableView.bottom, SCREEN_WIDTH, 50)];
+    self.bottomView.backgroundColor = [UIColor redColor];
+    [self.view addSubview:self.bottomView];
+    self.voiceBtn = [Tooles getButtonWithTitle:@"声音" titleColor:[UIColor whiteColor] font:FONT_Helvetica(15)];
+    self.voiceBtn.frame = CGRectMake(0, 0, 40, 40);
+    [self.bottomView addSubview:self.voiceBtn];
+    self.inputTF = [[UITextField alloc] initWithFrame:CGRectMake(self.voiceBtn.right + 10,0 , SCREEN_WIDTH - 50 * 3, 50)];
+    self.inputTF.text = @"测试问题";
+    [self.bottomView addSubview:self.inputTF];
+    self.emotionBtn = [Tooles getButtonWithTitle:@"表情" titleColor:[UIColor whiteColor] font:FONT_Helvetica(15)];
+    self.emotionBtn.frame = CGRectMake(self.inputTF.right + 10, 0, 40, 40);
+    [self.bottomView addSubview:self.emotionBtn];
+    self.moreBtn = [Tooles getButtonWithTitle:@"发送" titleColor:[UIColor whiteColor] font:FONT_Helvetica(15)];
+    self.moreBtn.frame = CGRectMake(self.emotionBtn.right + 10, 0, 40, 40);
+    [self.bottomView addSubview:self.moreBtn];
+    
+    __weak typeof(self) wSelf = self;
+    [[self.voiceBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        
+    }];
+    
+    [[self.emotionBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+//        [wSelf showEmotionKeyboard:YES];
+    }];
+    
+    [[self.moreBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+//        LLKeyboardShowHideInfo keyboardShowHideInfo;
+//        keyboardShowHideInfo.keyboardHeight = 0;
+//        [wSelf updateKeyboard:keyboardShowHideInfo];
+        [wSelf sendTextMessage:@"测试文字。。。"];
+    }];
+
+    
+    self.dataSource = [NSMutableArray array];
     self.refreshView.backgroundColor = TABLEVIEW_BACKGROUND_COLOR;
     isPulling = NO;
     isLoading = NO;
+    
+}
+
+
+
+- (void)showEmotionKeyboard:(BOOL)animated {
+    [LLEmotionInputView sharedInstance].hidden = NO;
+    
+    if (animated) {
+//        [LLEmotionInputView sharedInstance].top_LL = CGRectGetMaxY(self.frame) + CHAT_KEYBOARD_PANEL_HEIGHT;
+        [LLEmotionInputView sharedInstance].top_LL = 100;
+        [UIView animateWithDuration:0.25
+                              delay:0
+                            options:UIViewAnimationOptionBeginFromCurrentState |
+         UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+//                             [LLEmotionInputView sharedInstance].top_LL = CGRectGetMaxY(self.frame);
+                             [LLEmotionInputView sharedInstance].top_LL = 100;
+
+                         } completion:nil];
+    }else {
+//        [LLEmotionInputView sharedInstance].top_LL = CGRectGetMaxY(self.frame);
+    }
     
 }
 

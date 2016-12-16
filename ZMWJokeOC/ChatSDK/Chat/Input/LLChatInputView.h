@@ -18,7 +18,7 @@
 
 @property (nonatomic) LLKeyboardType keyboardType;
 
-@property (weak, nonatomic) IBOutlet LLChatTextView *chatInputTextView;
+@property (strong, nonatomic) LLChatTextView *chatInputTextView;
 
 @property (nonatomic) NSString *draft;
 
