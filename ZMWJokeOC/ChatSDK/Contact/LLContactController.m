@@ -19,6 +19,8 @@
 #import "LLContactAddController.h"
 #import "LLContactApplyController.h"
 
+#import "ChatViewController.h"
+
 #define CONTACT_CELL_ID @"contactCellID"
 
 @interface LLContactController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, LLSearchControllerDelegate>
@@ -221,12 +223,14 @@
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             LLContactApplyController *vc = [[LLContactApplyController alloc] init];
-            
             [self.navigationController pushViewController:vc animated:YES];
         }
     }else {
         LLContactModel *model = self.dataArray[indexPath.section-1][indexPath.row];
+        ChatViewController *vc = [[ChatViewController alloc] init];
+//        vc.conversationModel = [[LLConversationModel alloc] init];
         
+        [self.navigationController pushViewController:vc animated:YES];
 //        [[LLUtils appDelegate].mainViewController chatWithContact:model.userName];
        
     }

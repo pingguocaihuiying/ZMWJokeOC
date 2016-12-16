@@ -226,8 +226,11 @@ MFMailComposeViewControllerDelegate
     
     if (![self.navigationController.childViewControllers containsObject:self]) {
         //清理下拉刷新
-        UIActivityIndicatorView *indicator = self.refreshView.subviews[0];
-        [indicator stopAnimating];
+        if (self.refreshView.subviews.count > 0) {
+            UIActivityIndicatorView *indicator = self.refreshView.subviews[0];
+            [indicator stopAnimating];
+        }
+        
         self.tableView.tableHeaderView = nil;
         isLoading = NO;
         isPulling = NO;
