@@ -37,20 +37,14 @@
     [self initTableView];
     NSArray<LLTableViewCellData *> *section1 = @[
             [[LLTableViewCellData alloc] initWithTitle:@"好友列表" iconName:@"MoreMyAlbum"],
-            [[LLTableViewCellData alloc] initWithTitle:@"最近消息列表" iconName:@"MoreMyFavorites"],
-            [[LLTableViewCellData alloc] initWithTitle:@"钱包" iconName:@"MoreMyBankCard"],
-            [[LLTableViewCellData alloc] initWithTitle:@"卡包" iconName:@"MyCardPackageIcon"],
+            [[LLTableViewCellData alloc] initWithTitle:@"通讯录" iconName:@"MoreMyFavorites"],
     ];
     
     NSArray<LLTableViewCellData *> *section2 = @[
-            [[LLTableViewCellData alloc] initWithTitle:@"表情" iconName:@"MoreExpressionShops"],
-    ];
-    
-    NSArray<LLTableViewCellData *> *section3 = @[
             [[LLTableViewCellData alloc] initWithTitle:@"退出" iconName:@"MoreSetting"],
     ];
     
-    self.dataSource = @[section1, section2, section3];
+    self.dataSource = @[section1, section2];
     
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 0);
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, MAIN_BOTTOM_TABBAR_HEIGHT, 0);
@@ -135,15 +129,9 @@
     static NSString *MeID = @"MeInfoCell";
     
     if (indexPath.section == 0) {
-//        LLTableViewMeCell *cell = [tableView dequeueReusableCellWithIdentifier:MeID forIndexPath:indexPath];
-//        UITableViewce *cell = [tableView dequeueReusableCellWithIdentifier:MeID forIndexPath:indexPath];
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
 
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        
-//        cell.avatarImage.image = [UIImage imageNamed:[LLUserProfile myUserProfile].avatarURL];
-//        cell.nickNameLabel.text = [LLUserProfile myUserProfile].nickName;
-//        cell.WeChatIDLabel.text = [NSString stringWithFormat:@"微信号: %@", [LLUserProfile myUserProfile].userName];
         cell.imageView.image = [UIImage imageNamed:[LLUserProfile myUserProfile].avatarURL];
         cell.textLabel.text = [LLUserProfile myUserProfile].nickName;
         cell.detailTextLabel.text = [NSString stringWithFormat:@"微信号: %@", [LLUserProfile myUserProfile].userName];
@@ -151,17 +139,11 @@
         
         return cell;
     }else {
-//        LLTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-//        if (!cell) {
-//            cell = [LLTableViewCell cellWithStyle:kLLTableViewCellStyleDefault reuseIdentifier:ID];
-//        }
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
         LLTableViewCellData *itemData = self.dataSource[indexPath.section-1][indexPath.row];
-        
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.text = itemData.title;
         cell.imageView.image = itemData.icon;
-        
         return cell;
     }
 }
@@ -176,14 +158,12 @@
             LLConversationListController *vc = [[LLConversationListController alloc] init];
             vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
-        } else if (indexPath.row == 1) { // 最近消息列表
+        } else if (indexPath.row == 1) { //通讯录
             LLContactController *vc = [[LLContactController alloc] init];
             vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
         }
     } else if (indexPath.section == 2) {
-        
-    } else if (indexPath.section == 3) {
         if (indexPath.row == 0) { // 退出登录
             [[LLClientManager sharedManager] logout];
         }
