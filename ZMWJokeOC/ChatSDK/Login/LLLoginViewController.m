@@ -59,7 +59,7 @@
     self.registButton = [Tooles getButtonWithTitle:@"注册" titleColor:[UIColor blueColor] font:[UIFont systemFontOfSize:16]];
     self.registButton.frame = CGRectMake(10, self.loginButton.bottom_LL + 20, SCREEN_WIDTH - 20, 40);
     [self.view addSubview:self.registButton];
-    [self.registButton addTarget:self action:@selector(registerButtonPressed::) forControlEvents:UIControlEventTouchUpInside];
+    [self.registButton addTarget:self action:@selector(registerButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
@@ -98,28 +98,19 @@
 
 #pragma mark - 用户登录
 
-- (IBAction)loginButtonPressed:(UIButton *)sender {
+- (void)loginButtonPressed:(UIButton *)sender {
     [self.view endEditing:YES];
-
     [[LLClientManager sharedManager] loginWithUsername:self.accountTextField.text password:self.passwordTextField.text];
-    
 }
 
-- (IBAction)registerButtonPressed:(id)sender {
+- (void)registerButtonPressed:(id)sender {
     [self.view endEditing:YES];
-
     [[LLClientManager sharedManager] registerWithUsername:self.accountTextField.text password:self.passwordTextField.text];
-       
 }
-
-
 
 - (NSString *)getLastLoginUsername {
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     return [ud objectForKey:LAST_LOGIN_USERNAME_KEY];
 }
-
-
-
 
 @end

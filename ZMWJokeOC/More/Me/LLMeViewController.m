@@ -20,7 +20,7 @@
 
 // 聊天相关
 #import "LLConversationListController.h"
-#import "ChatViewController.h"
+#import "LLContactController.h"
 
 @interface LLMeViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -177,7 +177,7 @@
             vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
         } else if (indexPath.row == 1) { // 最近消息列表
-            ChatViewController *vc = [[ChatViewController alloc] init];
+            LLContactController *vc = [[LLContactController alloc] init];
             vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
         }
