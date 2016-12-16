@@ -58,7 +58,7 @@
     [[LLEmotionModelManager sharedManager] prepareEmotionModel];
     [self configureAPIKey];
     [self initializeSDK];
-    [self initUIAppearance];
+    [self initUIAppearance]; // 导航栏设置 - 暂时不用。
     [self registerRemoteNotification];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
@@ -236,7 +236,8 @@
 // 注册deviceToken失败
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
-    [LLUtils showMessageAlertWithTitle:NSLocalizedString(@"apns.failToRegisterApns", @"Fail to register apns") message:error.description];
+    // 暂时注释掉注册通知失败的提示。。。。。。。。。。。。
+//    [LLUtils showMessageAlertWithTitle:NSLocalizedString(@"apns.failToRegisterApns", @"Fail to register apns") message:error.description];
     
 }
 
