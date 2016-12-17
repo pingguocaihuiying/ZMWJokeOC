@@ -16,4 +16,8 @@
 
 @property (nonatomic, strong)  LLConversationModel *conversationModel;
 
+- (void)fetchMessageList;
+
+- (void)refreshChatControllerForReuse;
+
 @end

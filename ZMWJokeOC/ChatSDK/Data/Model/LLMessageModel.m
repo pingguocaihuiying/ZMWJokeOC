@@ -538,7 +538,9 @@ static NSMutableDictionary<NSString *, UIImage *> *tmpImageDict;
             }else {
                 EMTextMessageBody *textBody = (EMTextMessageBody *)(self.sdk_message.body);
                 self.text = textBody.text;
-                self.attributedText = [LLSimpleTextLabel createAttributedStringWithEmotionString:self.text font:[LLMessageTextCell font] lineSpacing:0];
+//                self.attributedText = [LLSimpleTextLabel createAttributedStringWithEmotionString:self.text font:[LLMessageTextCell font] lineSpacing:0];
+//                self.attributedText = [LLSimpleTextLabel createAttributedStringWithEmotionString:self.text font:[UIFont systemFontOfSize:16] lineSpacing:0];
+                self.attributedText = [[NSMutableAttributedString alloc] initWithString:self.text];
                 
                 self.cellHeight = [LLMessageTextCell heightForModel:self];
             }

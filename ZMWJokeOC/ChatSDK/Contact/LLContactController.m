@@ -20,6 +20,7 @@
 #import "LLContactApplyController.h"
 
 #import "ChatViewController.h"
+#import "LLMessageCacheManager.h"
 
 #define CONTACT_CELL_ID @"contactCellID"
 
@@ -228,7 +229,22 @@
     }else {
         LLContactModel *model = self.dataArray[indexPath.section-1][indexPath.row];
         ChatViewController *vc = [[ChatViewController alloc] init];
-//        vc.conversationModel = [[LLConversationModel alloc] init];
+        
+        LLConversationModel *conversationModel = [[LLChatManager sharedManager] getConversationWithConversationChatter:model.userName conversationType:kLLConversationTypeChat];
+        [[LLMessageCacheManager sharedManager] prepareCacheWhenConversationBegin:conversationModel];
+        vc.conversationModel = conversationModel;
+        [vc fetchMessageList];
+        [vc refreshChatControllerForReuse];
+//        _currentViewController = [self viewControllerForTabbarIndex:0];
+//        [_currentViewController.view addSubview:self.tabBar];
+//        self.tabBar.selectedItem = self.tabBar.items[0];
+//        [self setViewControllers:@[_currentViewController, self.chatViewController] animated:YES];
+
+        
+        
+        
+        
+        
         
         [self.navigationController pushViewController:vc animated:YES];
 //        [[LLUtils appDelegate].mainViewController chatWithContact:model.userName];
