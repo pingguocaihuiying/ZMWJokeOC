@@ -52,7 +52,15 @@
     [[[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"kCurrentPhotoIndex" object:nil] takeUntil:[self rac_willDeallocSignal]] subscribeNext:^(id x) {
         dispatch_async(dispatch_get_main_queue(), ^{
             wSelf.currentSelectPicture = [[x object] intValue];
-            NSIndexPath *indexP = [NSIndexPath indexPathForRow:wSelf.currentSelectPicture inSection:0];
+            NSIndexPath *indexP ;
+            if (wSelf.dataArray.count == 0) {
+                return ;
+            } else if (wSelf.dataArray.count <= wSelf.currentSelectPicture) {
+                indexP = [NSIndexPath indexPathForRow:0 inSection:0];
+                return ; // 避免崩溃
+            } else {
+                indexP = [NSIndexPath indexPathForRow:wSelf.currentSelectPicture inSection:0];
+            }
             [wSelf.tableView scrollToRowAtIndexPath:indexP atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
         });
         
