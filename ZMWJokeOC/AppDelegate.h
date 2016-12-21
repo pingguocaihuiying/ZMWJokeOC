@@ -13,16 +13,10 @@
  
  */
 #import <UIKit/UIKit.h>
-#import "LLLoginViewController.h"   // 登录页面
-
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
-@property (nonatomic) LLLoginViewController *loginViewController;
-
-- (void)showRootControllerForLoginStatus:(BOOL)successed;
 
 @end
 
