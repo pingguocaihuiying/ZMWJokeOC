@@ -30,7 +30,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     // 融云相关
-    [[RCIM sharedRCIM] initWithAppKey:@"融云的key" ];
+    [[RCIM sharedRCIM] initWithAppKey:kRongCloudKey];
     [[RCIM sharedRCIM] setUserInfoDataSource:self];
     
     // 初始化自定义tabbar

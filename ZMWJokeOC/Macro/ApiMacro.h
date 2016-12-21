@@ -27,6 +27,9 @@
 #if DEBUG
 // debug模式下-----------------Begin--------------------------
 #define kBaseRequestKey         @"b13defd332c76c3abf2895f7796e2a45"
+
+// 融云的key debug
+#define kRongCloudKey           @"qf3d5gbjqffih"
 // debug模式下-----------------End--------------------------
 
 #else
