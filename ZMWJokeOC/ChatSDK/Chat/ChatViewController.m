@@ -49,6 +49,8 @@
 #import "Tooles.h"
 #import "LLEmotionInputView.h"
 
+#import "ChatMessageViewController.h"
+
 #define DIM_VIEW_TAG    100 
 #define BLACK_BAR_VIEW_TAG  101
 #define TABLEVIEW_BACKGROUND_COLOR  [UIColor colorFromHexString:@"0xEFEFEF"]
@@ -160,7 +162,8 @@ MFMailComposeViewControllerDelegate
     
     __weak typeof(self) wSelf = self;
     [[self.voiceBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        
+        ChatMessageViewController *vc = [[ChatMessageViewController alloc] init];
+        [wSelf.navigationController pushViewController:vc animated:YES];
     }];
     
     [[self.emotionBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {

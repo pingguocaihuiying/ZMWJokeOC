@@ -23,12 +23,6 @@ case "${TARGETED_DEVICE_FAMILY}" in
     ;;
 esac
 
-realpath() {
-  DIRECTORY="$(cd "${1%/*}" && pwd)"
-  FILENAME="${1##*/}"
-  echo "$DIRECTORY/$FILENAME"
-}
-
 install_resource()
 {
   if [[ "$1" = /* ]] ; then
@@ -70,7 +64,7 @@ EOM
       xcrun mapc "$RESOURCE_PATH" "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename "$RESOURCE_PATH" .xcmappingmodel`.cdm"
       ;;
     *.xcassets)
-      ABSOLUTE_XCASSET_FILE=$(realpath "$RESOURCE_PATH")
+      ABSOLUTE_XCASSET_FILE="$RESOURCE_PATH"
       XCASSET_FILES+=("$ABSOLUTE_XCASSET_FILE")
       ;;
     *)
@@ -81,9 +75,95 @@ EOM
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/avator@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/face@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/face_HL@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/Fav_Cell_Loc@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/input-bar-flat.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/input-bar-flat@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/keyboard@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/keyboard_HL@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/MessageVideoPlay@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/msg_chat_voice_unread.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/msg_chat_voice_unread@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/multiMedia@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/multiMedia_HL@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/placeholderImage@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/ReceiverVoiceNodePlaying000@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/ReceiverVoiceNodePlaying001@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/ReceiverVoiceNodePlaying002@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/ReceiverVoiceNodePlaying003@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/ReceiverVoiceNodePlaying@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/RecordCancel@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/RecordingBkg@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/RecordingSignal001@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/RecordingSignal002@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/RecordingSignal003@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/RecordingSignal004@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/RecordingSignal005@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/RecordingSignal006@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/RecordingSignal007@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/RecordingSignal008@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/SenderVoiceNodePlaying000@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/SenderVoiceNodePlaying001@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/SenderVoiceNodePlaying002@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/SenderVoiceNodePlaying003@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/SenderVoiceNodePlaying@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/voice@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/VoiceBtn_Black@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/VoiceBtn_BlackHL@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/voice_HL@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/weChatBubble_Receiving_Solid@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/weChatBubble_Sending_Solid@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/en.lproj"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/SECoreTextView.bundle"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/zh-Hans.lproj"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/avator@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/face@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/face_HL@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/Fav_Cell_Loc@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/input-bar-flat.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/input-bar-flat@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/keyboard@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/keyboard_HL@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/MessageVideoPlay@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/msg_chat_voice_unread.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/msg_chat_voice_unread@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/multiMedia@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/multiMedia_HL@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/placeholderImage@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/ReceiverVoiceNodePlaying000@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/ReceiverVoiceNodePlaying001@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/ReceiverVoiceNodePlaying002@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/ReceiverVoiceNodePlaying003@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/ReceiverVoiceNodePlaying@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/RecordCancel@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/RecordingBkg@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/RecordingSignal001@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/RecordingSignal002@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/RecordingSignal003@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/RecordingSignal004@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/RecordingSignal005@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/RecordingSignal006@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/RecordingSignal007@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/RecordingSignal008@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/SenderVoiceNodePlaying000@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/SenderVoiceNodePlaying001@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/SenderVoiceNodePlaying002@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/SenderVoiceNodePlaying003@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/SenderVoiceNodePlaying@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/voice@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/VoiceBtn_Black@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/VoiceBtn_BlackHL@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/voice_HL@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/weChatBubble_Receiving_Solid@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/weChatBubble_Sending_Solid@2x.png"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/en.lproj"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/SECoreTextView.bundle"
+  install_resource "MessageDisplayKit/MessageDisplayKit/Resources/zh-Hans.lproj"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
@@ -99,7 +179,7 @@ then
   # Find all other xcassets (this unfortunately includes those of path pods and other targets).
   OTHER_XCASSETS=$(find "$PWD" -iname "*.xcassets" -type d)
   while read line; do
-    if [[ $line != "`realpath $PODS_ROOT`*" ]]; then
+    if [[ $line != "${PODS_ROOT}*" ]]; then
       XCASSET_FILES+=("$line")
     fi
   done <<<"$OTHER_XCASSETS"

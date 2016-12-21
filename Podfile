@@ -25,6 +25,8 @@ pod 'YYModel', '~> 1.0.3'      # YYKit
 
 pod 'HMSegmentedControl', '~> 1.5.3'
 
+pod 'MessageDisplayKit', '~> 5.4'       # 微信聊天功能
+
 # 暂时先不要删，检查内存的时候会经常用
 #pod 'MLeaksFinder'
 

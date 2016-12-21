@@ -25,6 +25,7 @@
 #import "LLMessageModelManager.h"
 
 #import "ChatViewController.h"
+#import "ChatMessageViewController.h"   // messageDisplayKit
 
 #define TABLE_CELL_HEIGHT 68
 
@@ -277,8 +278,9 @@
     LLConversationListCell *cell = [tableView cellForRowAtIndexPath:indexPath];
 //    [[LLUtils appDelegate].mainViewController chatWithConversationModel:cell.conversationModel];
     
-    ChatViewController *vc = [[ChatViewController alloc] init];
-    vc.conversationModel = cell.conversationModel;
+//    ChatViewController *vc = [[ChatViewController alloc] init];
+//    vc.conversationModel = cell.conversationModel;
+    ChatMessageViewController *vc = [[ChatMessageViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }

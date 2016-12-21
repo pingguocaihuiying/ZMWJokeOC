@@ -20,6 +20,7 @@
 #import "LLContactApplyController.h"
 
 #import "ChatViewController.h"
+#import "ChatMessageViewController.h"   // messageDisplayKit
 #import "LLMessageCacheManager.h"
 
 #define CONTACT_CELL_ID @"contactCellID"
@@ -228,13 +229,19 @@
         }
     }else {
         LLContactModel *model = self.dataArray[indexPath.section-1][indexPath.row];
-        ChatViewController *vc = [[ChatViewController alloc] init];
+//        ChatViewController *vc = [[ChatViewController alloc] init];
+//        
+//        LLConversationModel *conversationModel = [[LLChatManager sharedManager] getConversationWithConversationChatter:model.userName conversationType:kLLConversationTypeChat];
+//        [[LLMessageCacheManager sharedManager] prepareCacheWhenConversationBegin:conversationModel];
+//        vc.conversationModel = conversationModel;
+//        [vc fetchMessageList];
+//        [vc refreshChatControllerForReuse];
         
-        LLConversationModel *conversationModel = [[LLChatManager sharedManager] getConversationWithConversationChatter:model.userName conversationType:kLLConversationTypeChat];
-        [[LLMessageCacheManager sharedManager] prepareCacheWhenConversationBegin:conversationModel];
-        vc.conversationModel = conversationModel;
-        [vc fetchMessageList];
-        [vc refreshChatControllerForReuse];
+        
+        ChatMessageViewController *vc = [[ChatMessageViewController alloc] init];
+        
+        
+        
 //        _currentViewController = [self viewControllerForTabbarIndex:0];
 //        [_currentViewController.view addSubview:self.tabBar];
 //        self.tabBar.selectedItem = self.tabBar.items[0];

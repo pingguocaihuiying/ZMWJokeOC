@@ -12,6 +12,7 @@
 		B2B1394F1D8A1BD900AAC4E5 /* PictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B1394E1D8A1BD900AAC4E5 /* PictureViewController.m */; };
 		B2B139521D8A1BE500AAC4E5 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B139511D8A1BE500AAC4E5 /* MoreViewController.m */; };
 		B2B139551D8A1BF000AAC4E5 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B139541D8A1BF000AAC4E5 /* CollectionViewController.m */; };
+		BD37B2841E0A506200F0E131 /* ChatMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD37B2831E0A506200F0E131 /* ChatMessageViewController.m */; };
 		BD3F207E1DFFF8A600A8DAB1 /* LLContactAddController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3F20591DFFF8A600A8DAB1 /* LLContactAddController.m */; };
 		BD3F207F1DFFF8A600A8DAB1 /* LLContactApplyController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3F205B1DFFF8A600A8DAB1 /* LLContactApplyController.m */; };
 		BD3F20801DFFF8A600A8DAB1 /* LLContactController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3F205D1DFFF8A600A8DAB1 /* LLContactController.m */; };
@@ -261,6 +262,8 @@
 		B2B139511D8A1BE500AAC4E5 /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
 		B2B139531D8A1BF000AAC4E5 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
 		B2B139541D8A1BF000AAC4E5 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
+		BD37B2821E0A506200F0E131 /* ChatMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessageViewController.h; sourceTree = "<group>"; };
+		BD37B2831E0A506200F0E131 /* ChatMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessageViewController.m; sourceTree = "<group>"; };
 		BD3F20581DFFF8A600A8DAB1 /* LLContactAddController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLContactAddController.h; sourceTree = "<group>"; };
 		BD3F20591DFFF8A600A8DAB1 /* LLContactAddController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLContactAddController.m; sourceTree = "<group>"; };
 		BD3F205A1DFFF8A600A8DAB1 /* LLContactApplyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLContactApplyController.h; sourceTree = "<group>"; };
@@ -973,6 +976,8 @@
 				BD9E6F1C1DFFE0850022C487 /* LLChatViewController.m */,
 				BDABE34D1E0229BB003BA455 /* ChatViewController.h */,
 				BDABE34E1E0229BB003BA455 /* ChatViewController.m */,
+				BD37B2821E0A506200F0E131 /* ChatMessageViewController.h */,
+				BD37B2831E0A506200F0E131 /* ChatMessageViewController.m */,
 				BD9E6F1D1DFFE0850022C487 /* Location */,
 				BD9E6F291DFFE0850022C487 /* Sight */,
 				BD9E6F2C1DFFE0850022C487 /* ViewControllers */,
@@ -2003,6 +2008,7 @@
 				B2B1394C1D8A1BCE00AAC4E5 /* TextViewController.m in Sources */,
 				BD9E6F761DFFE0850022C487 /* LLMessageRecordingCell.m in Sources */,
 				BD9E71171DFFE2E90022C487 /* LLSearchBar.m in Sources */,
+				BD37B2841E0A506200F0E131 /* ChatMessageViewController.m in Sources */,
 				BD9E70421DFFE1DA0022C487 /* LLContactManager.m in Sources */,
 				BD9E6F911DFFE0850022C487 /* LLLocationTableViewCell.m in Sources */,
 				BD9E71591DFFED0F0022C487 /* LLViewController.m in Sources */,
