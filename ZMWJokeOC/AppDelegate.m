@@ -7,13 +7,19 @@
 //
 
 #import "AppDelegate.h"
+
 #import <XHTabBar.h>
 #import "TextViewController.h"
 #import "PictureViewController.h"
 #import "CollectionViewController.h"
 #import "MoreViewController.h"
 
-@interface AppDelegate ()
+// 融云相关
+#import <RongCloudIMKit/RongIMKit/RongIMKit.h>
+#import <RongCloudIMKit/RongIMLib/RongIMLib.h>
+
+
+@interface AppDelegate ()<RCIMUserInfoDataSource, RCIMUserInfoDataSource>
 
 @property (nonatomic, strong) XHTabBar                  *tabbar;
 
@@ -23,6 +29,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    // 融云相关
+    [[RCIM sharedRCIM] initWithAppKey:@"融云的key" ];
+    [[RCIM sharedRCIM] setUserInfoDataSource:self];
     
     // 初始化自定义tabbar
     [self initTabbarAction];

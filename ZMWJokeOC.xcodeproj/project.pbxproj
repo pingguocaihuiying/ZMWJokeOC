@@ -12,6 +12,12 @@
 		B2B1394F1D8A1BD900AAC4E5 /* PictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B1394E1D8A1BD900AAC4E5 /* PictureViewController.m */; };
 		B2B139521D8A1BE500AAC4E5 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B139511D8A1BE500AAC4E5 /* MoreViewController.m */; };
 		B2B139551D8A1BF000AAC4E5 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B139541D8A1BF000AAC4E5 /* CollectionViewController.m */; };
+		BD37B2861E0A80CE00F0E131 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD37B2851E0A80CE00F0E131 /* MobileCoreServices.framework */; };
+		BD37B2981E0A821600F0E131 /* ChatBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD37B28C1E0A821500F0E131 /* ChatBaseViewController.m */; };
+		BD37B2991E0A821600F0E131 /* ChatGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD37B28E1E0A821500F0E131 /* ChatGroupViewController.m */; };
+		BD37B29A1E0A821600F0E131 /* ChatPriveateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD37B2901E0A821500F0E131 /* ChatPriveateViewController.m */; };
+		BD37B29C1E0A821600F0E131 /* SpeedxAssistantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD37B2941E0A821600F0E131 /* SpeedxAssistantViewController.m */; };
+		BD37B29D1E0A821600F0E131 /* SpeedxMessageRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD37B2961E0A821600F0E131 /* SpeedxMessageRootViewController.m */; };
 		BD9E71401DFFE79B0022C487 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD9E713F1DFFE79B0022C487 /* MapKit.framework */; };
 		BD9E71421DFFE7AB0022C487 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD9E71411DFFE7AB0022C487 /* AudioToolbox.framework */; };
 		BD9E71441DFFE7B80022C487 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD9E71431DFFE7B80022C487 /* CFNetwork.framework */; };
@@ -77,6 +83,17 @@
 		B2B139511D8A1BE500AAC4E5 /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
 		B2B139531D8A1BF000AAC4E5 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
 		B2B139541D8A1BF000AAC4E5 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
+		BD37B2851E0A80CE00F0E131 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		BD37B28B1E0A821500F0E131 /* ChatBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatBaseViewController.h; sourceTree = "<group>"; };
+		BD37B28C1E0A821500F0E131 /* ChatBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatBaseViewController.m; sourceTree = "<group>"; };
+		BD37B28D1E0A821500F0E131 /* ChatGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatGroupViewController.h; sourceTree = "<group>"; };
+		BD37B28E1E0A821500F0E131 /* ChatGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatGroupViewController.m; sourceTree = "<group>"; };
+		BD37B28F1E0A821500F0E131 /* ChatPriveateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatPriveateViewController.h; sourceTree = "<group>"; };
+		BD37B2901E0A821500F0E131 /* ChatPriveateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatPriveateViewController.m; sourceTree = "<group>"; };
+		BD37B2931E0A821600F0E131 /* SpeedxAssistantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeedxAssistantViewController.h; sourceTree = "<group>"; };
+		BD37B2941E0A821600F0E131 /* SpeedxAssistantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeedxAssistantViewController.m; sourceTree = "<group>"; };
+		BD37B2951E0A821600F0E131 /* SpeedxMessageRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeedxMessageRootViewController.h; sourceTree = "<group>"; };
+		BD37B2961E0A821600F0E131 /* SpeedxMessageRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeedxMessageRootViewController.m; sourceTree = "<group>"; };
 		BD9E713F1DFFE79B0022C487 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		BD9E71411DFFE7AB0022C487 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		BD9E71431DFFE7B80022C487 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -183,6 +200,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD37B2861E0A80CE00F0E131 /* MobileCoreServices.framework in Frameworks */,
 				BD9E71561DFFE8CA0022C487 /* libz.tbd in Frameworks */,
 				BD9E71541DFFE8C00022C487 /* libiconv.tbd in Frameworks */,
 				BD9E71521DFFE8B10022C487 /* libstdc++.6.0.9.tbd in Frameworks */,
@@ -214,6 +232,7 @@
 		874EF382A025065E9110E802 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BD37B2851E0A80CE00F0E131 /* MobileCoreServices.framework */,
 				BD9E71551DFFE8CA0022C487 /* libz.tbd */,
 				BD9E71531DFFE8C00022C487 /* libiconv.tbd */,
 				BD9E71511DFFE8B10022C487 /* libstdc++.6.0.9.tbd */,
@@ -273,6 +292,31 @@
 			path = Text;
 			sourceTree = "<group>";
 		};
+		BD37B2871E0A821500F0E131 /* RCIMViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BD37B28A1E0A821500F0E131 /* ViewControllers */,
+			);
+			path = RCIMViewController;
+			sourceTree = "<group>";
+		};
+		BD37B28A1E0A821500F0E131 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				BD37B28B1E0A821500F0E131 /* ChatBaseViewController.h */,
+				BD37B28C1E0A821500F0E131 /* ChatBaseViewController.m */,
+				BD37B28D1E0A821500F0E131 /* ChatGroupViewController.h */,
+				BD37B28E1E0A821500F0E131 /* ChatGroupViewController.m */,
+				BD37B28F1E0A821500F0E131 /* ChatPriveateViewController.h */,
+				BD37B2901E0A821500F0E131 /* ChatPriveateViewController.m */,
+				BD37B2931E0A821600F0E131 /* SpeedxAssistantViewController.h */,
+				BD37B2941E0A821600F0E131 /* SpeedxAssistantViewController.m */,
+				BD37B2951E0A821600F0E131 /* SpeedxMessageRootViewController.h */,
+				BD37B2961E0A821600F0E131 /* SpeedxMessageRootViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		FF2F9D1E1D9B92C2005FC20B /* LocalAbum */ = {
 			isa = PBXGroup;
 			children = (
@@ -307,6 +351,7 @@
 				FF995E191D87DC1800C62FB0 /* AppDelegate.m */,
 				FF995E571D87E17000C62FB0 /* BaseViewController.h */,
 				FF995E581D87E17000C62FB0 /* BaseViewController.m */,
+				BD37B2871E0A821500F0E131 /* RCIMViewController */,
 				FFA283281D8E778400888EDF /* Macro */,
 				FF2F9D1E1D9B92C2005FC20B /* LocalAbum */,
 				B2B139461D8A1BAF00AAC4E5 /* Collection */,
@@ -400,8 +445,8 @@
 		FFA283281D8E778400888EDF /* Macro */ = {
 			isa = PBXGroup;
 			children = (
-				FFA283291D8E77E000888EDF /* SizeMacro.h */,
 				FFA2832B1D8E780B00888EDF /* UtilMacro.h */,
+				FFA283291D8E77E000888EDF /* SizeMacro.h */,
 				FFA2832A1D8E77FA00888EDF /* PathMacro.h */,
 				FFA283351D8E8F0300888EDF /* ApiMacro.h */,
 				FF2F9D1F1D9B92E8005FC20B /* NotificationMacro.h */,
@@ -570,10 +615,12 @@
 			files = (
 				FF2F9D231D9B93C6005FC20B /* LocalAbumViewController.m in Sources */,
 				FF995E5F1D87E2ED00C62FB0 /* UserManager.m in Sources */,
+				BD37B29C1E0A821600F0E131 /* SpeedxAssistantViewController.m in Sources */,
 				B2B1394F1D8A1BD900AAC4E5 /* PictureViewController.m in Sources */,
 				FF995E501D87E02300C62FB0 /* DJTextField.m in Sources */,
 				FF995E541D87E02300C62FB0 /* UIColor+IOSUtils.m in Sources */,
 				FFF14BD81D9142A60044E6A1 /* MSSBrowseCollectionViewCell.m in Sources */,
+				BD37B29D1E0A821600F0E131 /* SpeedxMessageRootViewController.m in Sources */,
 				FF995E521D87E02300C62FB0 /* NSString+IOSUtils.m in Sources */,
 				FFF14BDB1D9142A60044E6A1 /* MSSBrowseModel.m in Sources */,
 				FF995E561D87E02300C62FB0 /* UIView+Utils.m in Sources */,
@@ -592,12 +639,15 @@
 				FF995E591D87E17000C62FB0 /* BaseViewController.m in Sources */,
 				FF995E4D1D87E02300C62FB0 /* BigImageBrowser.m in Sources */,
 				FFF14BDD1D9142A60044E6A1 /* MSSBrowseRemindView.m in Sources */,
+				BD37B2981E0A821600F0E131 /* ChatBaseViewController.m in Sources */,
 				FF995E4A1D87E02300C62FB0 /* NSArray+CodeFragments.m in Sources */,
 				FFA2832E1D8E7D4200888EDF /* NSObject+CodeFragments.m in Sources */,
 				FFF14BDC1D9142A60044E6A1 /* MSSBrowseNetworkViewController.m in Sources */,
 				FF995E531D87E02300C62FB0 /* Tooles.m in Sources */,
 				FF995E4F1D87E02300C62FB0 /* CustomTextView.m in Sources */,
 				FFF14BD51D9142A60044E6A1 /* MSSBrowseActionSheet.m in Sources */,
+				BD37B29A1E0A821600F0E131 /* ChatPriveateViewController.m in Sources */,
+				BD37B2991E0A821600F0E131 /* ChatGroupViewController.m in Sources */,
 				FFF14BDA1D9142A60044E6A1 /* MSSBrowseLocalViewController.m in Sources */,
 				FFA283341D8E85F700888EDF /* TextRequestManager.m in Sources */,
 				FF995E4B1D87E02300C62FB0 /* NSDictionary+CodeFragments.m in Sources */,
