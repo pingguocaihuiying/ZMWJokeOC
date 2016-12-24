@@ -18,6 +18,8 @@
 #import <RongCloudIMKit/RongIMKit/RongIMKit.h>
 #import <RongCloudIMKit/RongIMLib/RongIMLib.h>
 
+// umeng统计
+#import "UMMobClick/MobClick.h"
 
 @interface AppDelegate ()<RCIMUserInfoDataSource, RCIMUserInfoDataSource>
 
@@ -32,6 +34,14 @@
     // 融云相关
     [[RCIM sharedRCIM] initWithAppKey:kRongCloudKey];
     [[RCIM sharedRCIM] setUserInfoDataSource:self];
+    // umeng统计 文档地址：http://dev.umeng.com/analytics/ios-doc/integration
+    UMConfigInstance.appKey = kUmengKey;
+    UMConfigInstance.channelId = @"App Store";
+    [MobClick startWithConfigure:UMConfigInstance];//配置以上参数后调用此方法初始化SDK！
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    [MobClick setAppVersion:version];
+    // + (void)profileSignInWithPUID:(NSString *)puid; // 账号相关的统计，暂时不用
+
     
     // 初始化自定义tabbar
     [self initTabbarAction];
@@ -41,6 +51,22 @@
     self.window.rootViewController = self.tabbar;
     [self.window makeKeyAndVisible];
     // 聊天相关 end
+    
+    
+    
+    // umeng 统计添加测试机需要的代码---以后可以删除
+    Class cls = NSClassFromString(@"UMANUtil");
+    SEL deviceIDSelector = @selector(openUDIDString);
+    NSString *deviceID = nil;
+    if(cls && [cls respondsToSelector:deviceIDSelector]){
+        deviceID = [cls performSelector:deviceIDSelector];
+    }
+    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:@{@"oid" : deviceID}
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:nil];
+    
+    NSLog(@"%@", [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding]);
+    
     return YES;
 }
 

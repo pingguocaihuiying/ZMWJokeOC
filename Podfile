@@ -30,6 +30,9 @@ pod 'HMSegmentedControl', '~> 1.5.3'
 # 融云没有数量限制，多少人用都是免费的 --- 暂时决定用融云
 pod 'RongCloudIMKit', '~> 2.7.3'
 
+# umeng统计
+pod 'UMengAnalytics-NO-IDFA', '~> 4.1.9'
+
 # 暂时先不要删，检查内存的时候会经常用
 #pod 'MLeaksFinder'
 

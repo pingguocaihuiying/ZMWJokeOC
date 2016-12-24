@@ -25,9 +25,11 @@ PODS:
   - ReactiveCocoa/no-arc (2.5)
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
+  - RongCloudIMKit (2.7.3.1)
   - SDWebImage (3.7.6):
     - SDWebImage/Core (= 3.7.6)
   - SDWebImage/Core (3.7.6)
+  - UMengAnalytics-NO-IDFA (4.1.9)
   - XHTabBar (1.5.4)
   - YYModel (1.0.4)
 
@@ -38,7 +40,9 @@ DEPENDENCIES:
   - Masonry (~> 1.0.1)
   - MJRefresh (~> 3.1.12)
   - ReactiveCocoa (~> 2.5)
+  - RongCloudIMKit (~> 2.7.3)
   - SDWebImage (~> 3.7.6)
+  - UMengAnalytics-NO-IDFA (~> 4.1.9)
   - XHTabBar (~> 1.5.4)
   - YYModel (~> 1.0.3)
 
@@ -49,10 +53,12 @@ SPEC CHECKSUMS:
   Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
+  RongCloudIMKit: bc83889f5b7fbb82c104d778ca6633b3681e81d5
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
+  UMengAnalytics-NO-IDFA: 985292af177111685325c90c321094172b95d2cb
   XHTabBar: 63fa6d295e1eb2e8d47056356cf138419a4458a2
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 3b0fe67b0254392f22d3bfd872134d603a126ff2
+PODFILE CHECKSUM: d1048a305ffbacc87a70cea29dd20dd6ba4204b8
 
-COCOAPODS: 1.1.0.beta.2
+COCOAPODS: 1.0.1

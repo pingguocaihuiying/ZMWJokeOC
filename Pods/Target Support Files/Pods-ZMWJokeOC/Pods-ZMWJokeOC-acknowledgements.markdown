@@ -172,6 +172,11 @@ THE SOFTWARE.
 
 
 
+## UMengAnalytics-NO-IDFA
+
+Copyright 2011 - 2015 UMeng.com. All rights reserved.
+
+
 ## XHTabBar
 
 The MIT License (MIT)

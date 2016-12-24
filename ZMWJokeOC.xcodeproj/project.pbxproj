@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1B5E3D8D48B3582E52A969AE /* libPods-ZMWJokeOC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F70811872AC539D571899CE /* libPods-ZMWJokeOC.a */; };
+		B28F96561E0DF1F700160A7A /* WHookUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = B28F96551E0DF1F700160A7A /* WHookUtility.m */; };
+		B28F96591E0DF23C00160A7A /* UIViewController+userStastistics.m in Sources */ = {isa = PBXBuildFile; fileRef = B28F96581E0DF23C00160A7A /* UIViewController+userStastistics.m */; };
+		B28F965C1E0DF29F00160A7A /* WUserStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = B28F965B1E0DF29F00160A7A /* WUserStatistics.m */; };
+		B28F965E1E0DF33B00160A7A /* WGlobalUserStatisticsConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = B28F965D1E0DF33B00160A7A /* WGlobalUserStatisticsConfig.plist */; };
 		B2B1394C1D8A1BCE00AAC4E5 /* TextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B1394B1D8A1BCE00AAC4E5 /* TextViewController.m */; };
 		B2B1394F1D8A1BD900AAC4E5 /* PictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B1394E1D8A1BD900AAC4E5 /* PictureViewController.m */; };
 		B2B139521D8A1BE500AAC4E5 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B139511D8A1BE500AAC4E5 /* MoreViewController.m */; };
@@ -75,6 +79,13 @@
 /* Begin PBXFileReference section */
 		3D2A6B4E624552C4067C7290 /* Pods-ZMWJokeOC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZMWJokeOC.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZMWJokeOC/Pods-ZMWJokeOC.release.xcconfig"; sourceTree = "<group>"; };
 		4F70811872AC539D571899CE /* libPods-ZMWJokeOC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZMWJokeOC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B28F96541E0DF1F700160A7A /* WHookUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHookUtility.h; sourceTree = "<group>"; };
+		B28F96551E0DF1F700160A7A /* WHookUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHookUtility.m; sourceTree = "<group>"; };
+		B28F96571E0DF23C00160A7A /* UIViewController+userStastistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+userStastistics.h"; sourceTree = "<group>"; };
+		B28F96581E0DF23C00160A7A /* UIViewController+userStastistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+userStastistics.m"; sourceTree = "<group>"; };
+		B28F965A1E0DF29F00160A7A /* WUserStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WUserStatistics.h; sourceTree = "<group>"; };
+		B28F965B1E0DF29F00160A7A /* WUserStatistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WUserStatistics.m; sourceTree = "<group>"; };
+		B28F965D1E0DF33B00160A7A /* WGlobalUserStatisticsConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = WGlobalUserStatisticsConfig.plist; sourceTree = "<group>"; };
 		B2B1394A1D8A1BCE00AAC4E5 /* TextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewController.h; sourceTree = "<group>"; };
 		B2B1394B1D8A1BCE00AAC4E5 /* TextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewController.m; sourceTree = "<group>"; };
 		B2B1394D1D8A1BD900AAC4E5 /* PictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureViewController.h; sourceTree = "<group>"; };
@@ -250,6 +261,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B28F96531E0DF1DD00160A7A /* WHookUtil */ = {
+			isa = PBXGroup;
+			children = (
+				B28F96541E0DF1F700160A7A /* WHookUtility.h */,
+				B28F96551E0DF1F700160A7A /* WHookUtility.m */,
+				B28F96571E0DF23C00160A7A /* UIViewController+userStastistics.h */,
+				B28F96581E0DF23C00160A7A /* UIViewController+userStastistics.m */,
+				B28F965A1E0DF29F00160A7A /* WUserStatistics.h */,
+				B28F965B1E0DF29F00160A7A /* WUserStatistics.m */,
+				B28F965D1E0DF33B00160A7A /* WGlobalUserStatisticsConfig.plist */,
+			);
+			path = WHookUtil;
+			sourceTree = "<group>";
+		};
 		B2B139461D8A1BAF00AAC4E5 /* Collection */ = {
 			isa = PBXGroup;
 			children = (
@@ -380,6 +405,7 @@
 		FF995E2C1D87E02300C62FB0 /* MyFrameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B28F96531E0DF1DD00160A7A /* WHookUtil */,
 				FFF14BB71D9142A60044E6A1 /* MSSBrowse */,
 			);
 			path = MyFrameworks;
@@ -553,6 +579,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF995E221D87DC1800C62FB0 /* Assets.xcassets in Resources */,
+				B28F965E1E0DF33B00160A7A /* WGlobalUserStatisticsConfig.plist in Resources */,
 				FFF14BD31D9142A60044E6A1 /* mss_browseLoading@2x.png in Resources */,
 				FFF14BD41D9142A60044E6A1 /* mss_browseLoading@3x.png in Resources */,
 			);
@@ -573,7 +600,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		29B970CCFADE8EE59E2E1A65 /* [CP] Embed Pods Frameworks */ = {
@@ -622,7 +649,9 @@
 				FFF14BD81D9142A60044E6A1 /* MSSBrowseCollectionViewCell.m in Sources */,
 				BD37B29D1E0A821600F0E131 /* SpeedxMessageRootViewController.m in Sources */,
 				FF995E521D87E02300C62FB0 /* NSString+IOSUtils.m in Sources */,
+				B28F965C1E0DF29F00160A7A /* WUserStatistics.m in Sources */,
 				FFF14BDB1D9142A60044E6A1 /* MSSBrowseModel.m in Sources */,
+				B28F96591E0DF23C00160A7A /* UIViewController+userStastistics.m in Sources */,
 				FF995E561D87E02300C62FB0 /* UIView+Utils.m in Sources */,
 				FF995E4C1D87E02300C62FB0 /* RequestBaseManager.m in Sources */,
 				B2B1394C1D8A1BCE00AAC4E5 /* TextViewController.m in Sources */,
@@ -654,6 +683,7 @@
 				B2B139521D8A1BE500AAC4E5 /* MoreViewController.m in Sources */,
 				B2B139551D8A1BF000AAC4E5 /* CollectionViewController.m in Sources */,
 				FFF14BD91D9142A60044E6A1 /* MSSBrowseLoadingImageView.m in Sources */,
+				B28F96561E0DF1F700160A7A /* WHookUtility.m in Sources */,
 				FFF14BD71D9142A60044E6A1 /* MSSBrowseBaseViewController.m in Sources */,
 				FFF14BDF1D9142A60044E6A1 /* UIImage+MSSScale.m in Sources */,
 				FFA283271D8E76FC00888EDF /* TextCell.m in Sources */,
