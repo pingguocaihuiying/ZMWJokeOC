@@ -50,7 +50,7 @@
 {
     NSString *pageID = [self pageEventID:YES];
     if (pageID) {
-        [WUserStatistics sendEventToServer:pageID];
+        [WUserStatistics enterPageViewWithPageID:pageID];
     }
 }
 
@@ -58,7 +58,7 @@
 {
     NSString *pageID = [self pageEventID:NO];
     if (pageID) {
-        [WUserStatistics sendEventToServer:pageID];
+        [WUserStatistics leavePageViewWithPageID:pageID];
     }
 }
 

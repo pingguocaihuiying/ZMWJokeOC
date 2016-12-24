@@ -40,6 +40,7 @@
     [MobClick startWithConfigure:UMConfigInstance];//配置以上参数后调用此方法初始化SDK！
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     [MobClick setAppVersion:version];
+    [MobClick setLogEnabled:YES]; // 可以实时查看数据，否则的话统计显示昨天的数据
     // + (void)profileSignInWithPUID:(NSString *)puid; // 账号相关的统计，暂时不用
 
     

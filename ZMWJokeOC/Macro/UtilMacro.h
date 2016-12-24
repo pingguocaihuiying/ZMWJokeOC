@@ -13,6 +13,8 @@
 #import "ThridMacro.h"              // 第三方账号相关宏
 #import "UserDefaultMacro.h"        // userDefault相关存储的宏
 
+#import "WUserStatistics.h"         // 统计相关
+
 #import "Tooles.h"                  // 工具类
 #import "UIColor+IOSUtils.h"        // 颜色的
 #import "NSString+IOSUtils.h"       // 字符串的

@@ -13,23 +13,14 @@
 
 @implementation WUserStatistics
 
-/**
- *  初始化配置，一般在launchWithOption中调用
- */
-+ (void)configure
-{
-    
-}
-
-#pragma mark -- 页面统计部分
-
+#pragma mark -- 页面统计部分:进入页面
 + (void)enterPageViewWithPageID:(NSString *)pageID
 {
     //进入页面
     [MobClick beginLogPageView:pageID];//("PageOne"为页面名称，可自定义)
-
 }
 
+#pragma mark -- 页面统计部分:离开页面
 + (void)leavePageViewWithPageID:(NSString *)pageID
 {
     //离开页面
@@ -38,12 +29,10 @@
 
 
 #pragma mark -- 自定义事件统计部分
-
-
 + (void)sendEventToServer:(NSString *)eventId
 {
     //在这里发送event统计信息给服务端
-    // NSLog(@"***模拟发送统计事件给服务端，事件ID: %@", eventId);
+    [MobClick event:eventId];
 }
 
 @end

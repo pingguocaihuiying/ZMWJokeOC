@@ -16,9 +16,6 @@
 #import "TextRequestManager.h"
 #import "PictureRequestManager.h"
 
-// umeng统计
-#import "UMMobClick/MobClick.h"
-
 @interface Tooles ()
 
 @end
@@ -664,7 +661,7 @@
         [arr addObject:textModel];
         [Tooles saveFileToLoc:urlString theFile:arr isModel:YES];
         // 收藏文字的统计
-        [MobClick event:@"kCollection_text"];
+        [WUserStatistics sendEventToServer:@"点击收藏文字"];
     }
 }
 
