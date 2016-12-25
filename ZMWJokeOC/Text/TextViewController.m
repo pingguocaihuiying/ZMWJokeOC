@@ -58,6 +58,10 @@
     
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+}
+
 #pragma mark - 获取本地缓存的数据
 - (BOOL)getLocalArray {
     NSMutableArray *arr = [NSMutableArray array];
