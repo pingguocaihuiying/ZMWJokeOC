@@ -653,6 +653,8 @@
     if ([Tooles getFileFromLoc:urlString into:arr isModel:YES]) {
         if (![Tooles isContainsObject:textModel withArray:arr]) { // 不包含就添加。
             [arr addObject:textModel];
+            // 收藏文字的统计
+            [WUserStatistics sendEventToServer:@"点击收藏文字"];
         } else { // 包含就删除
             [Tooles removeObject:textModel withArray:arr];
         }

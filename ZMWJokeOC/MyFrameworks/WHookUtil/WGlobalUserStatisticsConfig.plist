@@ -7,9 +7,9 @@
 		<key>PageEventIDs</key>
 		<dict>
 			<key>Enter</key>
-			<string>进入文字笑话页面</string>
+			<string>文字笑话页面</string>
 			<key>Leave</key>
-			<string>离开文字笑话页面</string>
+			<string>文字笑话页面</string>
 		</dict>
 	</dict>
 	<key>PictureViewController</key>
@@ -17,9 +17,9 @@
 		<key>PageEventIDs</key>
 		<dict>
 			<key>Enter</key>
-			<string>进入图片笑话页面</string>
+			<string>图片笑话页面</string>
 			<key>Leave</key>
-			<string>离开图片笑话页面</string>
+			<string>图片笑话页面</string>
 		</dict>
 	</dict>
 </dict>
