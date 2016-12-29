@@ -17,6 +17,16 @@
 		B2B139521D8A1BE500AAC4E5 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B139511D8A1BE500AAC4E5 /* MoreViewController.m */; };
 		B2B139551D8A1BF000AAC4E5 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B139541D8A1BF000AAC4E5 /* CollectionViewController.m */; };
 		BD2A02F61E14FCD900932F32 /* LCStarView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD2A02F51E14FCD900932F32 /* LCStarView.m */; };
+		BD2A03091E150F7D00932F32 /* UIView+ZJFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = BD2A02F91E150F7D00932F32 /* UIView+ZJFrame.m */; };
+		BD2A030A1E150F7D00932F32 /* UIViewController+ZJScrollPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD2A02FB1E150F7D00932F32 /* UIViewController+ZJScrollPageController.m */; };
+		BD2A030B1E150F7D00932F32 /* ZJCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD2A02FD1E150F7D00932F32 /* ZJCollectionView.m */; };
+		BD2A030C1E150F7D00932F32 /* ZJContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD2A02FF1E150F7D00932F32 /* ZJContentView.m */; };
+		BD2A030D1E150F7D00932F32 /* ZJScrollPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD2A03011E150F7D00932F32 /* ZJScrollPageView.m */; };
+		BD2A030E1E150F7D00932F32 /* ZJScrollSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD2A03041E150F7D00932F32 /* ZJScrollSegmentView.m */; };
+		BD2A030F1E150F7D00932F32 /* ZJSegmentStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = BD2A03061E150F7D00932F32 /* ZJSegmentStyle.m */; };
+		BD2A03101E150F7D00932F32 /* ZJTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD2A03081E150F7D00932F32 /* ZJTitleView.m */; };
+		BD2A03131E1512C500932F32 /* CollectionTextVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BD2A03121E1512C500932F32 /* CollectionTextVC.m */; };
+		BD2A03161E15148700932F32 /* CollectionPictureVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BD2A03151E15148700932F32 /* CollectionPictureVC.m */; };
 		BD37B2861E0A80CE00F0E131 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD37B2851E0A80CE00F0E131 /* MobileCoreServices.framework */; };
 		BD37B2981E0A821600F0E131 /* ChatBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD37B28C1E0A821500F0E131 /* ChatBaseViewController.m */; };
 		BD37B2991E0A821600F0E131 /* ChatGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD37B28E1E0A821500F0E131 /* ChatGroupViewController.m */; };
@@ -97,6 +107,27 @@
 		B2B139541D8A1BF000AAC4E5 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
 		BD2A02F41E14FCD900932F32 /* LCStarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCStarView.h; sourceTree = "<group>"; };
 		BD2A02F51E14FCD900932F32 /* LCStarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCStarView.m; sourceTree = "<group>"; };
+		BD2A02F81E150F7D00932F32 /* UIView+ZJFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ZJFrame.h"; sourceTree = "<group>"; };
+		BD2A02F91E150F7D00932F32 /* UIView+ZJFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZJFrame.m"; sourceTree = "<group>"; };
+		BD2A02FA1E150F7D00932F32 /* UIViewController+ZJScrollPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ZJScrollPageController.h"; sourceTree = "<group>"; };
+		BD2A02FB1E150F7D00932F32 /* UIViewController+ZJScrollPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ZJScrollPageController.m"; sourceTree = "<group>"; };
+		BD2A02FC1E150F7D00932F32 /* ZJCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJCollectionView.h; sourceTree = "<group>"; };
+		BD2A02FD1E150F7D00932F32 /* ZJCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJCollectionView.m; sourceTree = "<group>"; };
+		BD2A02FE1E150F7D00932F32 /* ZJContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJContentView.h; sourceTree = "<group>"; };
+		BD2A02FF1E150F7D00932F32 /* ZJContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJContentView.m; sourceTree = "<group>"; };
+		BD2A03001E150F7D00932F32 /* ZJScrollPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJScrollPageView.h; sourceTree = "<group>"; };
+		BD2A03011E150F7D00932F32 /* ZJScrollPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJScrollPageView.m; sourceTree = "<group>"; };
+		BD2A03021E150F7D00932F32 /* ZJScrollPageViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJScrollPageViewDelegate.h; sourceTree = "<group>"; };
+		BD2A03031E150F7D00932F32 /* ZJScrollSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJScrollSegmentView.h; sourceTree = "<group>"; };
+		BD2A03041E150F7D00932F32 /* ZJScrollSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJScrollSegmentView.m; sourceTree = "<group>"; };
+		BD2A03051E150F7D00932F32 /* ZJSegmentStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJSegmentStyle.h; sourceTree = "<group>"; };
+		BD2A03061E150F7D00932F32 /* ZJSegmentStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJSegmentStyle.m; sourceTree = "<group>"; };
+		BD2A03071E150F7D00932F32 /* ZJTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTitleView.h; sourceTree = "<group>"; };
+		BD2A03081E150F7D00932F32 /* ZJTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTitleView.m; sourceTree = "<group>"; };
+		BD2A03111E1512C500932F32 /* CollectionTextVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionTextVC.h; sourceTree = "<group>"; };
+		BD2A03121E1512C500932F32 /* CollectionTextVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionTextVC.m; sourceTree = "<group>"; };
+		BD2A03141E15148700932F32 /* CollectionPictureVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionPictureVC.h; sourceTree = "<group>"; };
+		BD2A03151E15148700932F32 /* CollectionPictureVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionPictureVC.m; sourceTree = "<group>"; };
 		BD37B2851E0A80CE00F0E131 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		BD37B28B1E0A821500F0E131 /* ChatBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatBaseViewController.h; sourceTree = "<group>"; };
 		BD37B28C1E0A821500F0E131 /* ChatBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatBaseViewController.m; sourceTree = "<group>"; };
@@ -283,6 +314,10 @@
 			children = (
 				B2B139531D8A1BF000AAC4E5 /* CollectionViewController.h */,
 				B2B139541D8A1BF000AAC4E5 /* CollectionViewController.m */,
+				BD2A03111E1512C500932F32 /* CollectionTextVC.h */,
+				BD2A03121E1512C500932F32 /* CollectionTextVC.m */,
+				BD2A03141E15148700932F32 /* CollectionPictureVC.h */,
+				BD2A03151E15148700932F32 /* CollectionPictureVC.m */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -318,6 +353,30 @@
 				FF59D3A91D8E9A1C003888ED /* TextModel.m */,
 			);
 			path = Text;
+			sourceTree = "<group>";
+		};
+		BD2A02F71E150F7D00932F32 /* ZJScrollPageView */ = {
+			isa = PBXGroup;
+			children = (
+				BD2A02F81E150F7D00932F32 /* UIView+ZJFrame.h */,
+				BD2A02F91E150F7D00932F32 /* UIView+ZJFrame.m */,
+				BD2A02FA1E150F7D00932F32 /* UIViewController+ZJScrollPageController.h */,
+				BD2A02FB1E150F7D00932F32 /* UIViewController+ZJScrollPageController.m */,
+				BD2A02FC1E150F7D00932F32 /* ZJCollectionView.h */,
+				BD2A02FD1E150F7D00932F32 /* ZJCollectionView.m */,
+				BD2A02FE1E150F7D00932F32 /* ZJContentView.h */,
+				BD2A02FF1E150F7D00932F32 /* ZJContentView.m */,
+				BD2A03001E150F7D00932F32 /* ZJScrollPageView.h */,
+				BD2A03011E150F7D00932F32 /* ZJScrollPageView.m */,
+				BD2A03021E150F7D00932F32 /* ZJScrollPageViewDelegate.h */,
+				BD2A03031E150F7D00932F32 /* ZJScrollSegmentView.h */,
+				BD2A03041E150F7D00932F32 /* ZJScrollSegmentView.m */,
+				BD2A03051E150F7D00932F32 /* ZJSegmentStyle.h */,
+				BD2A03061E150F7D00932F32 /* ZJSegmentStyle.m */,
+				BD2A03071E150F7D00932F32 /* ZJTitleView.h */,
+				BD2A03081E150F7D00932F32 /* ZJTitleView.m */,
+			);
+			path = ZJScrollPageView;
 			sourceTree = "<group>";
 		};
 		BD37B2871E0A821500F0E131 /* RCIMViewController */ = {
@@ -408,6 +467,7 @@
 		FF995E2C1D87E02300C62FB0 /* MyFrameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BD2A02F71E150F7D00932F32 /* ZJScrollPageView */,
 				B28F96531E0DF1DD00160A7A /* WHookUtil */,
 				FFF14BB71D9142A60044E6A1 /* MSSBrowse */,
 			);
@@ -648,10 +708,14 @@
 				FF2F9D231D9B93C6005FC20B /* LocalAbumViewController.m in Sources */,
 				FF995E5F1D87E2ED00C62FB0 /* UserManager.m in Sources */,
 				BD37B29C1E0A821600F0E131 /* SpeedxAssistantViewController.m in Sources */,
+				BD2A03101E150F7D00932F32 /* ZJTitleView.m in Sources */,
+				BD2A030D1E150F7D00932F32 /* ZJScrollPageView.m in Sources */,
 				B2B1394F1D8A1BD900AAC4E5 /* PictureViewController.m in Sources */,
+				BD2A030A1E150F7D00932F32 /* UIViewController+ZJScrollPageController.m in Sources */,
 				FF995E501D87E02300C62FB0 /* DJTextField.m in Sources */,
 				BD2A02F61E14FCD900932F32 /* LCStarView.m in Sources */,
 				FF995E541D87E02300C62FB0 /* UIColor+IOSUtils.m in Sources */,
+				BD2A030E1E150F7D00932F32 /* ZJScrollSegmentView.m in Sources */,
 				FFF14BD81D9142A60044E6A1 /* MSSBrowseCollectionViewCell.m in Sources */,
 				BD37B29D1E0A821600F0E131 /* SpeedxMessageRootViewController.m in Sources */,
 				FF995E521D87E02300C62FB0 /* NSString+IOSUtils.m in Sources */,
@@ -666,10 +730,14 @@
 				FF59D3AA1D8E9A1C003888ED /* TextModel.m in Sources */,
 				FF995E171D87DC1800C62FB0 /* main.m in Sources */,
 				FF995E601D87E2ED00C62FB0 /* UserModel.m in Sources */,
+				BD2A03161E15148700932F32 /* CollectionPictureVC.m in Sources */,
 				FF995E511D87E02300C62FB0 /* EmptyView.m in Sources */,
 				FFF14BDE1D9142A60044E6A1 /* MSSBrowseZoomScrollView.m in Sources */,
+				BD2A03131E1512C500932F32 /* CollectionTextVC.m in Sources */,
 				FF0467491D911B7F008B30E7 /* PictureRequestManager.m in Sources */,
+				BD2A030B1E150F7D00932F32 /* ZJCollectionView.m in Sources */,
 				FFF14BE01D9142A60044E6A1 /* UIView+MSSLayout.m in Sources */,
+				BD2A030F1E150F7D00932F32 /* ZJSegmentStyle.m in Sources */,
 				FF995E4E1D87E02300C62FB0 /* CustomLabel.m in Sources */,
 				FF995E591D87E17000C62FB0 /* BaseViewController.m in Sources */,
 				FF995E4D1D87E02300C62FB0 /* BigImageBrowser.m in Sources */,
@@ -685,6 +753,7 @@
 				BD37B2991E0A821600F0E131 /* ChatGroupViewController.m in Sources */,
 				FFF14BDA1D9142A60044E6A1 /* MSSBrowseLocalViewController.m in Sources */,
 				FFA283341D8E85F700888EDF /* TextRequestManager.m in Sources */,
+				BD2A030C1E150F7D00932F32 /* ZJContentView.m in Sources */,
 				FF995E4B1D87E02300C62FB0 /* NSDictionary+CodeFragments.m in Sources */,
 				B2B139521D8A1BE500AAC4E5 /* MoreViewController.m in Sources */,
 				B2B139551D8A1BF000AAC4E5 /* CollectionViewController.m in Sources */,
@@ -692,6 +761,7 @@
 				B28F96561E0DF1F700160A7A /* WHookUtility.m in Sources */,
 				FFF14BD71D9142A60044E6A1 /* MSSBrowseBaseViewController.m in Sources */,
 				FFF14BDF1D9142A60044E6A1 /* UIImage+MSSScale.m in Sources */,
+				BD2A03091E150F7D00932F32 /* UIView+ZJFrame.m in Sources */,
 				FFA283271D8E76FC00888EDF /* TextCell.m in Sources */,
 				FF995E551D87E02300C62FB0 /* UIImage+IOSUtils.m in Sources */,
 				FFF14BD61D9142A60044E6A1 /* MSSBrowseActionSheetCell.m in Sources */,

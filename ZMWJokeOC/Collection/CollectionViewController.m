@@ -7,30 +7,14 @@
 //
 
 #import "CollectionViewController.h"
-#import <HMSegmentedControl.h>
-#import <Masonry.h>
-#import "TextModel.h"
-#import "TextCell.h"
-#import "Tooles.h"
-#import "TextRequestManager.h"
-// 图片相关
-#import "PictureCell.h"
-#import "PictureRequestManager.h"
-#import <YYModel.h>
-#import "MSSBrowseDefine.h"
+#import "ZJScrollPageView.h"        // 切换滚动
+#import "CollectionTextVC.h"        // 文字页面
+#import "CollectionPictureVC.h"     // 图片页面
 
+@interface CollectionViewController ()<ZJScrollPageViewDelegate>
 
-@interface CollectionViewController ()<UITableViewDelegate,UITableViewDataSource>
-
-@property (nonatomic, strong) HMSegmentedControl *segmentedControl;
-
-@property (nonatomic, strong) UITableView       *tableView;
-@property (nonatomic, strong) NSMutableArray    *dataArray;
-@property (nonatomic, strong) NSMutableArray    *jsonArray;     // 保存本地用的
-@property (nonatomic, strong) NSCache           *rowHeightCache;
-// 图片相关
-@property (nonatomic,strong)  NSMutableArray    *arrayImageUrl;
-@property (nonatomic, assign) int               currentSelectPicture;   // 点击当前cell或者滚动大图到的位置
+@property(strong, nonatomic)NSArray<NSString *> *titles;
+@property(strong, nonatomic)NSArray<UIViewController *> *childVcs;
 
 @end
 
@@ -39,207 +23,50 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"收藏";
-    [self initSegment];
-    self.pageType = PageTypeText;
-    self.dataArray = [NSMutableArray array];
-    self.jsonArray = [NSMutableArray array];
-    self.rowHeightCache = [[NSCache alloc] init];
-    self.arrayImageUrl = [NSMutableArray array];
-    
-    // 初始化表格
-    [self initTableView];
-    __weak typeof(self) wSelf = self;
-    [[[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"kCurrentPhotoIndex" object:nil] takeUntil:[self rac_willDeallocSignal]] subscribeNext:^(id x) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            wSelf.currentSelectPicture = [[x object] intValue];
-            NSIndexPath *indexP ;
-            if (wSelf.dataArray.count == 0) {
-                return ;
-            } else if (wSelf.dataArray.count <= wSelf.currentSelectPicture) {
-                indexP = [NSIndexPath indexPathForRow:0 inSection:0];
-                return ; // 避免崩溃
-            } else {
-                indexP = [NSIndexPath indexPathForRow:wSelf.currentSelectPicture inSection:0];
-            }
-            [wSelf.tableView scrollToRowAtIndexPath:indexP atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
-        });
-        
-    }];
+    [self initScrollPageView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    // 获取本地收藏的数据
-    [self getCollectionList:self.pageType];
 }
 
-#pragma mark - 初始化segment
-- (void)initSegment {
-    __weak typeof(self) wSelf = self;
-    self.segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"文字", @"图片"]];
-    [self.view addSubview:self.segmentedControl];
-    [self.segmentedControl mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(wSelf.view).offset(0);
-        make.right.equalTo(wSelf.view).offset(0);
-        make.top.equalTo(wSelf.view).offset(NAVIGATIONBAR_HEIGHT);
-        make.height.mas_equalTo(44);
-    }];
-    [self.segmentedControl addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
-    self.segmentedControl.selectionIndicatorColor = [UIColor blueColor];
-    self.segmentedControl.backgroundColor = self.view.backgroundColor;
-    self.segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
+#pragma mark - 滚动视图相关
+- (void)initScrollPageView {
+    //必要的设置, 如果没有设置可能导致内容显示不正常
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    ZJSegmentStyle *style = [[ZJSegmentStyle alloc] init];
+    //显示滚动条
+    style.showLine = YES;
+    // 颜色渐变
+    style.gradualChangeTitleColor = YES;
+    self.titles = @[@"文字",@"图片"];
+    // 初始化 - 包含上面的条和下面的内容的view
+    ZJScrollPageView *scrollPageView = [[ZJScrollPageView alloc] initWithFrame:CGRectMake(0, 64.0, self.view.bounds.size.width, self.view.bounds.size.height - 64.0 - TABBAR_HEIGHT) segmentStyle:style titles:self.titles parentViewController:self delegate:self];
+    [self.view addSubview:scrollPageView];
+}
+
+- (NSInteger)numberOfChildViewControllers {
+    return self.titles.count;
+}
+
+- (UIViewController<ZJScrollPageViewChildVcDelegate> *)childViewController:(UIViewController<ZJScrollPageViewChildVcDelegate> *)reuseViewController forIndex:(NSInteger)index {
     
-}
-
-- (void)segmentedControlChangedValue:(HMSegmentedControl *)segmentControl {
-    if (segmentControl.selectedSegmentIndex == 0) {
-        self.pageType = PageTypeText;
-    } else {
-        self.pageType = PageTypePicture;
-    }
-    [self getCollectionList:self.pageType];
-}
-
-#pragma mark - 初始化表格
-- (void)initTableView {
-    __weak typeof(self) wSelf = self;
-    _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-    _tableView.backgroundColor = [UIColor clearColor];
-    _tableView.dataSource = self;
-    _tableView.delegate = self;
-    _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    _tableView.separatorColor = [UIColor colorFromHexString:@"0xCCCCCC"];
-    _tableView.separatorInset = UIEdgeInsetsMake(0, 10, 0, 0);
-    [self.view addSubview:_tableView];
-    [_tableView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(wSelf.view).with.insets(UIEdgeInsetsMake(44 + NAVIGATIONBAR_HEIGHT, 0, TABBAR_HEIGHT, 0));
-    }];
-    // 注册cell
-    [_tableView registerClass:[TextCell class] forCellReuseIdentifier:@"TextCell"];
-    [_tableView registerClass:[PictureCell class] forCellReuseIdentifier:@"PictureCell"];
-}
-
-#pragma mark - UITableViewDataSource
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 0;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *view = [[UIView alloc] init];
-    view.backgroundColor = [UIColor clearColor];
-    return view;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.dataArray.count;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TextModel *model = self.dataArray[indexPath.row];
-    if ([self.rowHeightCache objectForKey:model.hashId]) {
-        float height = [[self.rowHeightCache objectForKey:model.hashId] floatValue];
-        if (height > 0) {
-            return height;
+    UIViewController<ZJScrollPageViewChildVcDelegate> *childVc = reuseViewController;
+    if (!childVc) {
+        if (index == 0) {
+            childVc = [[CollectionTextVC alloc] init];
+        } else {
+            childVc = [[CollectionPictureVC alloc] init];
         }
     }
-    NSString *contentString = [model.content stringByReplacingOccurrencesOfString:@"&nbsp;" withString:@""];
-    CGSize size = [contentString boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 20, 1000.0f) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName: FONT_Helvetica(15) } context:nil].size;
     
-    // 缓存下来
-    if (self.pageType == PageTypeText) {
-        [self.rowHeightCache setObject:@(size.height + 20) forKey:model.hashId];
-        return size.height + 20;
-    } else {
-        [self.rowHeightCache setObject:@(size.height + 20 + 210 + 35) forKey:model.hashId];
-        return size.height + 20 + 210 + 35;
-    }
+    NSLog(@"%ld-----%@",(long)index, childVc);
+    
+    return childVc;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.pageType == PageTypeText) {
-        return 100.0;
-    } else {
-        return 250.0;
-    }
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TextModel *textModel = self.dataArray[indexPath.row];
-    if (self.pageType == PageTypeText) {
-        TextCell *textCell = [tableView dequeueReusableCellWithIdentifier:@"TextCell" forIndexPath:indexPath];
-        [textCell updateCellWithModel:textModel indexPath:indexPath];
-        return textCell;
-    } else {
-        PictureCell *picCell = [tableView dequeueReusableCellWithIdentifier:@"PictureCell" forIndexPath:indexPath];
-        picCell.indexPath = indexPath;
-        __weak typeof(self) wSelf = self;
-        __weak typeof(picCell) wCell = picCell;
-        [picCell setCollectionClickBlock:^(NSIndexPath *indexP) {
-            TextModel *textModel = wSelf.dataArray[indexPath.row];
-            if ([Tooles existCollectionListWithModel:textModel]) {
-                [wCell.starView goCollection:NO];
-            } else {
-                [wCell.starView goCollection:YES];
-            }
-            [Tooles saveOrRemoveToCollectionListWithModel:textModel];
-            //        [wSelf.tableView reloadData];// 因为点击的时候，收藏按钮已经变化了，所有不用再刷新tableView了
-        }];
-        [picCell updateCellWithModel:textModel indexPath:indexPath];
-        return picCell;
-    }
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (self.pageType == PageTypeText) { // 文字
-        TextModel *textModel = self.dataArray[indexPath.row];
-        [Tooles saveOrRemoveToCollectionListWithModel:textModel];
-        // 获取本地收藏的数据
-        [self getCollectionList:self.pageType];
-    } else { // 图片
-        self.currentSelectPicture = (int)indexPath.row;
-        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
-        
-        PictureCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PictureCell" forIndexPath:indexPath];
-        // 加载网络图片
-        NSMutableArray *browseItemArray = [[NSMutableArray alloc]init];
-        int i = 0;
-        for(i = 0;i < [self.arrayImageUrl count];i++)
-        {
-            UIImageView     *imageView = cell.smallImageView;
-            MSSBrowseModel *browseItem = [[MSSBrowseModel alloc]init];
-            browseItem.bigImageUrl = self.arrayImageUrl[i];// 加载网络图片大图地址
-            browseItem.smallImageView = imageView;// 小图
-            [browseItemArray addObject:browseItem];
-        }
-        MSSBrowseNetworkViewController *bvc = [[MSSBrowseNetworkViewController alloc]initWithBrowseItemArray:browseItemArray currentIndex:indexPath.row];
-        bvc.isEqualRatio = NO;// 大图小图不等比时需要设置这个属性（建议等比）
-        [bvc showBrowseViewController];
-    }
-}
-
-#pragma mark - 获取本地收藏的数据列表
-- (void)getCollectionList:(PageType)pageType {
-    [self.dataArray removeAllObjects];
-    self.dataArray = [NSMutableArray array];
-    if (self.pageType == PageTypeText) {
-        [Tooles getFileFromLoc:kContentUrl_Collection into:self.dataArray isModel:YES];
-    } else {
-        [Tooles getFileFromLoc:kPictureUrl_Collection into:self.dataArray isModel:YES];
-        [self.arrayImageUrl removeAllObjects];
-        self.arrayImageUrl = [NSMutableArray array];
-        for (TextModel *model in self.dataArray) {
-            if (model.url && ![model.url isEmptyString]) {
-                [self.arrayImageUrl addObject:model.url];
-            }
-        }
-    }
-    [self.tableView reloadData];
+- (BOOL)shouldAutomaticallyForwardAppearanceMethods {
+    return NO;
 }
 
 @end

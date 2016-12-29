@@ -7,7 +7,8 @@
 //
 
 #import "BaseViewController.h"
+#import "ZJScrollPageViewDelegate.h"
 
-@interface TextViewController : BaseViewController
+@interface TextViewController : BaseViewController<ZJScrollPageViewChildVcDelegate>
 
 @end
