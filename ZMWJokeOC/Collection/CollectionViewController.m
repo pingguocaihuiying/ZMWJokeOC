@@ -155,8 +155,8 @@
         [self.rowHeightCache setObject:@(size.height + 20) forKey:model.hashId];
         return size.height + 20;
     } else {
-        [self.rowHeightCache setObject:@(size.height + 20 + 210) forKey:model.hashId];
-        return size.height + 20 + 210;
+        [self.rowHeightCache setObject:@(size.height + 20 + 210 + 35) forKey:model.hashId];
+        return size.height + 20 + 210 + 35;
     }
 }
 
@@ -176,6 +176,19 @@
         return textCell;
     } else {
         PictureCell *picCell = [tableView dequeueReusableCellWithIdentifier:@"PictureCell" forIndexPath:indexPath];
+        picCell.indexPath = indexPath;
+        __weak typeof(self) wSelf = self;
+        __weak typeof(picCell) wCell = picCell;
+        [picCell setCollectionClickBlock:^(NSIndexPath *indexP) {
+            TextModel *textModel = wSelf.dataArray[indexPath.row];
+            if ([Tooles existCollectionListWithModel:textModel]) {
+                [wCell.starView goCollection:NO];
+            } else {
+                [wCell.starView goCollection:YES];
+            }
+            [Tooles saveOrRemoveToCollectionListWithModel:textModel];
+            //        [wSelf.tableView reloadData];// 因为点击的时候，收藏按钮已经变化了，所有不用再刷新tableView了
+        }];
         [picCell updateCellWithModel:textModel indexPath:indexPath];
         return picCell;
     }

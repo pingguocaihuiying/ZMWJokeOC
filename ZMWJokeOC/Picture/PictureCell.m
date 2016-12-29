@@ -42,6 +42,26 @@
             make.centerX.equalTo(wSelf.contentView);
         }];
         
+        // 点赞的view
+        UIImage *maskImage = [UIImage imageNamed:@"collect_fill"];
+        UIImage *lineImage = [UIImage imageNamed:@"collect_line"];
+        self.starView = [[LCStarView alloc] init];
+        self.starView.frame = CGRectMake(0, 0, 30, 30); // 必须有frame才可以
+        self.starView.maskImage = maskImage;
+        self.starView.borderImage = lineImage;
+        self.starView.fillColor = [UIColor colorWithRed:0.94 green:0.27 blue:0.32 alpha:1];
+        [self.contentView addSubview:self.starView];
+        [self.starView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(wSelf.contentView).offset(-20);
+            make.top.equalTo(wSelf.smallImageView.mas_bottom).offset(5);
+            make.size.mas_equalTo(CGSizeMake(30, 30));
+        }];
+        [self.starView setTapActionWithBlock:^{
+            if (wSelf.collectionClickBlock) {
+                wSelf.collectionClickBlock(wSelf.indexPath);
+            }
+        }];
+        
         self.backgroundColor = kSpeedX_Color_Table_Cell_Default_Bg;
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.accessoryType = UITableViewCellAccessoryNone;
@@ -59,9 +79,9 @@
     [self.smallImageView sd_setImageWithURL:[NSURL URLWithString:model.url] placeholderImage:nil options:SDWebImageProgressiveDownload];
     // 判断是否收藏，展示不同的样式
     if ([Tooles existCollectionListWithModel:model]) {
-        self.backgroundColor = [UIColor colorFromHexString:@"0xDDDDDD"];
+        self.starView.fillView.transform = CGAffineTransformMakeScale(1, 1);
     } else {
-        self.backgroundColor = kSpeedX_Color_Table_Cell_Default_Bg;
+        self.starView.fillView.transform = CGAffineTransformMakeScale(FLT_MIN, FLT_MIN);
     }
 }
 

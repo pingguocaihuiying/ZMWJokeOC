@@ -162,11 +162,6 @@
     }];
     // 注册cell
     [_tableView registerClass:[PictureCell class] forCellReuseIdentifier:@"PictureCell"];
-    // 给表格添加长按手势
-    UILongPressGestureRecognizer *lonGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-    lonGesture.minimumPressDuration = 1.0; // seconds  设置响应时间
-    lonGesture.delegate = self;
-    [_tableView addGestureRecognizer:lonGesture]; //启用长按事件
 }
 
 #pragma mark - UITableViewDataSource
@@ -200,8 +195,8 @@
     NSString *contentString = [model.content stringByReplacingOccurrencesOfString:@"&nbsp;" withString:@""];
     CGSize size = [contentString boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 20, 1000.0f) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName: FONT_Helvetica(15) } context:nil].size;
     // 缓存下来
-    [self.rowHeightCache setObject:@(size.height + 20 + 210) forKey:model.hashId];
-    return size.height + 20 + 210;
+    [self.rowHeightCache setObject:@(size.height + 20 + 210 + 35) forKey:model.hashId];
+    return size.height + 20 + 210 + 35;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -210,6 +205,19 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PictureCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PictureCell" forIndexPath:indexPath];
+    cell.indexPath = indexPath;
+    __weak typeof(self) wSelf = self;
+    __weak typeof(cell) wCell = cell;
+    [cell setCollectionClickBlock:^(NSIndexPath *indexP) {
+        TextModel *textModel = wSelf.dataArray[indexPath.row];
+        if ([Tooles existCollectionListWithModel:textModel]) {
+            [wCell.starView goCollection:NO];
+        } else {
+            [wCell.starView goCollection:YES];
+        }
+        [Tooles saveOrRemoveToCollectionListWithModel:textModel];
+//        [wSelf.tableView reloadData];// 因为点击的时候，收藏按钮已经变化了，所有不用再刷新tableView了
+    }];
     TextModel *textModel = self.dataArray[indexPath.row];
     [cell updateCellWithModel:textModel indexPath:indexPath];
     
@@ -236,20 +244,6 @@
     MSSBrowseNetworkViewController *bvc = [[MSSBrowseNetworkViewController alloc]initWithBrowseItemArray:browseItemArray currentIndex:indexPath.row];
     bvc.isEqualRatio = NO;// 大图小图不等比时需要设置这个属性（建议等比）
     [bvc showBrowseViewController];
-}
-
--(void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer  //长按响应函数
-{
-    CGPoint p = [gestureRecognizer locationInView:self.tableView];
-    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];//获取响应的长按的indexpath
-    if (indexPath == nil) {
-        NSLog(@"long press on table view but not on a row");
-    } else {
-        NSLog(@"long press on table view at row %ld", (long)indexPath.row);
-        TextModel *textModel = self.dataArray[indexPath.row];
-        [Tooles saveOrRemoveToCollectionListWithModel:textModel];
-        [self.tableView reloadData];
-    }
 }
 
 @end
