@@ -12,7 +12,6 @@
 #import "PictureRequestManager.h"
 #import "TextModel.h"
 #import <YYModel.h>
-#import <MJRefresh.h>
 #import "Tooles.h"
 
 #import "MSSBrowseDefine.h"
@@ -44,21 +43,7 @@
     
     // 初始化表格
     [self initTableView];
-    
-    if (![self getLocalArray]) {
-        [self requestAction];
-    }
-    
     __weak typeof(self) wSelf = self;
-    // 下拉刷新
-    self.tableView.mj_header = [MJRefreshStateHeader headerWithRefreshingBlock:^{
-        [wSelf requestAction];
-    }];
-    // 加载更多
-    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        [wSelf requestMoreAction];
-    }];
-    
     [[[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"kCurrentPhotoIndex" object:nil] takeUntil:[self rac_willDeallocSignal]] subscribeNext:^(id x) {
         dispatch_async(dispatch_get_main_queue(), ^{
             wSelf.currentSelectPicture = [[x object] intValue];
@@ -66,6 +51,12 @@
             [wSelf.tableView scrollToRowAtIndexPath:indexP atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
         });
     }];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    // 获取本地收藏的数据
+    [self getCollectionList];
 }
 
 #pragma mark - 初始化大图相关
@@ -91,60 +82,6 @@
     }
     return NO;
 }
-
-#pragma mark - 下拉刷新
-- (void)requestAction {
-    self.currentPage = 1;
-    __weak typeof(self) wSelf = self;
-    [PictureRequestManager getPictureWithPage:self.currentPage response:^(BOOL successed, NSInteger code, NSString *responseString) {
-        [wSelf.tableView.mj_header endRefreshing];
-        if (successed) {
-            NSArray *resultArray = [[responseString jsonvalue] objectForKey:@"data"];
-            if (resultArray && resultArray.count > 0) {
-                wSelf.jsonArray = [NSMutableArray arrayWithArray:resultArray];
-                [Tooles saveFileToLoc:kPictureUrl theFile:resultArray];
-                wSelf.dataArray = [NSMutableArray array];
-                wSelf.arrayImageUrl = [NSMutableArray arrayWithCapacity:10];
-                for (int i = 0; i < resultArray.count; i++) {
-                    NSDictionary *dict = resultArray[i];
-                    TextModel *model = [[TextModel alloc] init];
-                    [model yy_modelSetWithDictionary:dict];
-                    [wSelf.dataArray addObject:model];
-                    [wSelf.arrayImageUrl addObject:model.url];
-                }
-            }
-        }
-        [wSelf.tableView reloadData];
-    }];
-}
-
-#pragma mark - 加载更多
-- (void)requestMoreAction {
-    if (self.currentPage < 1) {
-        self.currentPage = 1;
-    }
-    self.currentPage ++;
-    __weak typeof(self) wSelf = self;
-    [PictureRequestManager getPictureWithPage:self.currentPage response:^(BOOL successed, NSInteger code, NSString *responseString) {
-        [wSelf.tableView.mj_footer endRefreshing];
-        if (successed) {
-            NSArray *resultArray = [[responseString jsonvalue] objectForKey:@"data"];
-            if (resultArray && resultArray.count > 0) {
-                [wSelf.jsonArray addObjectsFromArray:resultArray];
-                [Tooles saveFileToLoc:kPictureUrl theFile:wSelf.jsonArray];
-                for (int i = 0; i < resultArray.count; i++) {
-                    NSDictionary *dict = resultArray[i];
-                    TextModel *model = [[TextModel alloc] init];
-                    [model yy_modelSetWithDictionary:dict];
-                    [wSelf.dataArray addObject:model];
-                    [wSelf.arrayImageUrl addObject:model.url];
-                }
-            }
-        }
-        [wSelf.tableView reloadData];
-    }];
-}
-
 
 #pragma mark - 初始化表格
 - (void)initTableView {
@@ -244,6 +181,21 @@
     MSSBrowseNetworkViewController *bvc = [[MSSBrowseNetworkViewController alloc]initWithBrowseItemArray:browseItemArray currentIndex:indexPath.row];
     bvc.isEqualRatio = NO;// 大图小图不等比时需要设置这个属性（建议等比）
     [bvc showBrowseViewController];
+}
+
+#pragma mark - 获取本地收藏的数据列表
+- (void)getCollectionList {
+    [self.dataArray removeAllObjects];
+    self.dataArray = [NSMutableArray array];
+    [Tooles getFileFromLoc:kPictureUrl_Collection into:self.dataArray isModel:YES];
+    [self.arrayImageUrl removeAllObjects];
+    self.arrayImageUrl = [NSMutableArray array];
+    for (TextModel *model in self.dataArray) {
+        if (model.url && ![model.url isEmptyString]) {
+            [self.arrayImageUrl addObject:model.url];
+        }
+    }
+    [self.tableView reloadData];
 }
 
 @end

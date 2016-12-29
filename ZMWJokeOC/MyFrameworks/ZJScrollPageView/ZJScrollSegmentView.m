@@ -156,6 +156,8 @@ static CGFloat const contentSizeXOff = 20.0;
         [titleView addGestureRecognizer:tapGes];
         
         CGFloat titleViewWidth = [titleView titleViewWidth];
+        // todo 设置宽度...固定 zhangmingwei
+        titleViewWidth = [UIScreen mainScreen].bounds.size.width/2.0 - 15*2;
         [self.titleWidths addObject:@(titleViewWidth)];
         
         [self.titleViews addObject:titleView];

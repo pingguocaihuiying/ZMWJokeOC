@@ -42,6 +42,10 @@
     self.titles = @[@"文字",@"图片"];
     // 初始化 - 包含上面的条和下面的内容的view
     ZJScrollPageView *scrollPageView = [[ZJScrollPageView alloc] initWithFrame:CGRectMake(0, 64.0, self.view.bounds.size.width, self.view.bounds.size.height - 64.0 - TABBAR_HEIGHT) segmentStyle:style titles:self.titles parentViewController:self delegate:self];
+    scrollPageView.segmentView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 44);
+    scrollPageView.segmentView.segmentStyle.scrollTitle = NO; // 平分屏幕宽度
+    scrollPageView.segmentView.segmentStyle.titleFont = FONT_Helvetica(17);
+    scrollPageView.segmentView.segmentStyle.titleMargin = 0;
     [self.view addSubview:scrollPageView];
 }
 

@@ -37,100 +37,17 @@
     self.rowHeightCache = [[NSCache alloc] init];
     // 初始化表格
     [self initTableView];
-    
-    if (![self getLocalArray]) {
-        [self requestAction];
-    }
-    
-    __weak typeof(self) wSelf = self;
-    // 下拉刷新
-    self.tableView.mj_header = [MJRefreshStateHeader headerWithRefreshingBlock:^{
-        [wSelf requestAction];
-    }];
-    // 加载更多
-    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        [wSelf requestMoreAction];
-    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+    // 获取本地收藏的数据
+    [self getCollectionList];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
 }
-
-#pragma mark - 获取本地缓存的数据
-- (BOOL)getLocalArray {
-    NSMutableArray *arr = [NSMutableArray array];
-    if ([Tooles getFileFromLoc:kContentUrl into:arr]) {
-        self.dataArray = [NSMutableArray array];
-        for (int i = 0; i < arr.count; i++) {
-            NSDictionary *dict = arr[i];
-            TextModel *model = [[TextModel alloc] init];
-            [model yy_modelSetWithDictionary:dict];
-            [self.dataArray addObject:model];
-        }
-        [self.tableView reloadData];
-        return YES;
-    }
-    return NO;
-}
-
-#pragma mark - 下拉刷新
-- (void)requestAction {
-    self.currentPage = 1;
-    __weak typeof(self) wSelf = self;
-    [TextRequestManager getTextWithPage:self.currentPage response:^(BOOL successed, NSInteger code, NSString *responseString) {
-        [wSelf.tableView.mj_header endRefreshing];
-        if (successed) {
-            NSArray *resultArray = [[responseString jsonvalue] objectForKey:@"data"];
-            if (resultArray && resultArray.count > 0) {
-                wSelf.jsonArray = [NSMutableArray arrayWithArray:resultArray];
-                [Tooles saveFileToLoc:kContentUrl theFile:resultArray];
-                wSelf.dataArray = [NSMutableArray array];
-                for (int i = 0; i < resultArray.count; i++) {
-                    NSDictionary *dict = resultArray[i];
-                    TextModel *model = [[TextModel alloc] init];
-                    [model yy_modelSetWithDictionary:dict];
-                    [wSelf.dataArray addObject:model];
-                }
-            }
-        }
-        [wSelf.tableView reloadData];
-    }];
-}
-
-#pragma mark - 加载更多
-- (void)requestMoreAction {
-    
-    if (self.currentPage < 1) {
-        self.currentPage = 1;
-    }
-    
-    self.currentPage ++;
-    __weak typeof(self) wSelf = self;
-    [TextRequestManager getTextWithPage:self.currentPage response:^(BOOL successed, NSInteger code, NSString *responseString) {
-        [wSelf.tableView.mj_footer endRefreshing];
-        if (successed) {
-            NSArray *resultArray = [[responseString jsonvalue] objectForKey:@"data"];
-            if (resultArray && resultArray.count > 0) {
-                [wSelf.jsonArray addObjectsFromArray:resultArray];
-                [Tooles saveFileToLoc:kContentUrl theFile:wSelf.jsonArray];
-                for (int i = 0; i < resultArray.count; i++) {
-                    NSDictionary *dict = resultArray[i];
-                    TextModel *model = [[TextModel alloc] init];
-                    [model yy_modelSetWithDictionary:dict];
-                    [wSelf.dataArray addObject:model];
-                }
-            }
-        }
-        [wSelf.tableView reloadData];
-    }];
-}
-
 
 #pragma mark - 初始化表格
 - (void)initTableView {
@@ -144,7 +61,7 @@
     _tableView.separatorInset = UIEdgeInsetsMake(0, 10, 0, 0);
     [self.view addSubview:_tableView];
     [_tableView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(wSelf.view).with.insets(UIEdgeInsetsMake(0, 0, -TABBAR_HEIGHT, 0));
+        make.edges.equalTo(wSelf.view).with.insets(UIEdgeInsetsMake(0, 0, 0, 0));
     }];
     // 注册cell
     [_tableView registerClass:[TextCell class] forCellReuseIdentifier:@"TextCell"];
@@ -205,6 +122,14 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     TextModel *textModel = self.dataArray[indexPath.row];
     [Tooles saveOrRemoveToCollectionListWithModel:textModel];
+    [self.tableView reloadData];
+}
+
+#pragma mark - 获取本地收藏的数据列表
+- (void)getCollectionList {
+    [self.dataArray removeAllObjects];
+    self.dataArray = [NSMutableArray array];
+    [Tooles getFileFromLoc:kContentUrl_Collection into:self.dataArray isModel:YES];
     [self.tableView reloadData];
 }
 
